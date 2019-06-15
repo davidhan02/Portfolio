@@ -11,8 +11,8 @@
       "headers": { "cache-control": "s-maxage=31536000,immutable" },
       "dest": "/client/static/$1"
     },
-    { "src": "/icon-192.png", "dest": "/client/icon-192.png" },
-    { "src": "/icon-512.png", "dest": "/client/icon-512.png" },
+    { "src": "/icons-192.png", "dest": "/client/icons-192.png" },
+    { "src": "/icons-512.png", "dest": "/client/icons-512.png" },
     { "src": "/favicon.ico", "dest": "/client/favicon.ico" },
     { "src": "/asset-manifest.json", "dest": "/client/asset-manifest.json" },
     { "src": "/manifest.json", "dest": "/client/manifest.json" },
