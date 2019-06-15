@@ -1,7 +1,13 @@
 const router = require('express').Router();
 
+if (process.env.NODE_ENV === 'production') {
+  router.get('/return', (req, res) => {
+    res.json({ message: 'deployed' });
+  });
+}
+
 router.get('/return', (req, res) => {
-  res.json({ message: 'success' });
+  res.json({ message: 'testing' });
 });
 
 module.exports = app => {
