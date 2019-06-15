@@ -10,7 +10,7 @@ import {
   nameValidator,
   emailValidator,
   passwordValidator
-} from '../../utils/validators';
+} from '../../util/validators';
 
 class Register extends Component {
   componentDidMount() {
