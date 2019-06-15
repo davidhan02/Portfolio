@@ -1,11 +1,7 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "client/package.json",
-      "use": "@now/static-build",
-      "config": { "distDir": "/client/build" }
-    },
+    { "src": "client/package.json", "use": "@now/static-build" },
     { "src": "server/index.js", "use": "@now/node-server" }
   ],
   "routes": [
