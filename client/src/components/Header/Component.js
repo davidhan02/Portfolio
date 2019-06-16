@@ -216,7 +216,7 @@ const Header = ({ auth, logout, toggleTheme }) => {
           aria-label="Toggle navigation"
           onClick={toggleMenu}
         >
-          <i class="fas fa-caret-down" aria-hidden="true" />
+          +
         </NavButton>
       </NavContainer>
     </NavWrapper>
