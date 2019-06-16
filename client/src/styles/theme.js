@@ -16,6 +16,7 @@ const dark = {
   foreground: '#262626',
   activeBackground: '#333333',
   inputBackground: '#212121',
+  imageFilter: '-webkit-filter: invert(100%);',
   shadow: 'rgba(0, 0, 0, 0.4)'
 };
 

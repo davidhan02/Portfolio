@@ -1,5 +1,12 @@
 import { css, keyframes } from 'styled-components';
 
+export const trueCenter = css`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const smallFont = css`
   font-size: 12px;
   font-weight: 600;
@@ -25,7 +32,7 @@ export const transition = (...props) => {
   let str = 'transition: ';
   props.forEach((item, index) => {
     str = str.concat(
-      `${item} 0.1s ease${index === props.length - 1 ? ';' : ', '}`
+      `${item} 0.4s ease${index === props.length - 1 ? ';' : ', '}`
     );
   });
   return str;
