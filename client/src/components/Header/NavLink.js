@@ -1,4 +1,4 @@
-import { headerItem, wideFont, link, transition } from '../../styles/helpers';
+import { headerItem, wideFont, link, transition } from '../shared/helpers';
 import styled from 'styled-components/macro';
 import NavLink from '../shared/NavLink';
 

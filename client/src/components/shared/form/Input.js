@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { transition } from '../../../styles/helpers';
+import { transition } from '../helpers';
 
 const Input = styled.input`
   ${transition('border', 'box-shadow')};

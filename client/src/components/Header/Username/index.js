@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import HeaderUsernameWrapper from './Wrapper';
-import { wideFont, overflow } from '../../../styles/helpers';
+import { wideFont, overflow } from '../../shared/helpers';
 
 const HeaderUsernameText = styled.span`
   ${wideFont};

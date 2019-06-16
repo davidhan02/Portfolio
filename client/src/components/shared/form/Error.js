@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { fade, smallFont } from '../../../styles/helpers';
+import { fade, smallFont } from '../helpers';
 
 const Error = styled.span`
   ${fade};

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { transition, wideFont } from '../../../../styles/helpers';
+import { transition, wideFont } from '../../helpers';
 
 const Label = styled.label`
   ${wideFont};

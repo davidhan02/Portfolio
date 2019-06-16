@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { headerItem } from '../../../styles/helpers';
+import { headerItem } from '../../shared/helpers';
 import HeaderDarkButtonIcon from './Icon';
 
 const DarkButton = styled.span`

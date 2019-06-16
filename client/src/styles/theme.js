@@ -21,15 +21,15 @@ const dark = {
 
 const light = {
   ...constants,
-  normalText: '#454f5b',
+  normalText: '#000000',
   mutedText: '#818e99',
-  border: '#ebedf0',
+  border: '#d3d5d8',
   accent: '#1890ff',
   pageBackground: '#f4f6f8',
   iconHover: '#f2f2f2',
-  foreground: '#ffffff',
-  activeBackground: '#f0f0f0',
-  inputBackground: '#fcfcfc',
+  foreground: '#fcfcfc',
+  activeBackground: '#efefef',
+  inputBackground: '#efefef',
   shadow: 'rgba(0, 0, 0, 0.05)'
 };
 

@@ -1,5 +1,5 @@
 import { NavLink as RouterNavLink } from 'react-router-dom';
-import { link, transition } from '../../styles/helpers';
+import { link, transition } from '../shared/helpers';
 import styled from 'styled-components/macro';
 
 const activeClassName = 'active';

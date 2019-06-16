@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { transition } from '../../../styles/helpers';
+import { transition } from '../../shared/helpers';
 
 const Icon = styled.svg`
   width: 20px;
