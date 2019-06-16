@@ -1,21 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/macro';
-import { transition } from '../../shared/helpers';
-
-const Icon = styled.svg`
-  width: 20px;
-  height: 20px;
-
-  & path {
-    ${transition('fill')};
-    fill: ${props => props.theme.mutedText};
-  }
-
-  @media (max-width: 425px) {
-    width: 18px;
-    height: 18px;
-  }
-`;
+import { Icon } from '../style';
 
 const NavDarkButtonIcon = () => (
   <Icon viewBox="0 0 24 24" aria-labelledby="themeIcon">

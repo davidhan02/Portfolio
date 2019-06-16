@@ -3,7 +3,7 @@ import { ThemeProvider as Theme } from 'styled-components';
 import RegisterContainer from '../Register/Container';
 import GlobalStyle from '../../styles/globalStyle';
 import PrivateRoute from '../shared/PrivateRoute';
-import HeaderContainer from '../Header/Container';
+import NavbarContainer from '../Navbar/Container';
 import LoginContainer from '../Login/Container';
 import history from '../../util/history';
 import theme from '../../styles/theme';
@@ -24,7 +24,7 @@ const App = ({ dark }) => (
     <Router history={history}>
       <>
         <GlobalStyle />
-        <HeaderContainer />
+        <NavbarContainer />
         <Switch>
           <Route path="/login" component={LoginContainer} />
           <Route path="/register" component={RegisterContainer} />

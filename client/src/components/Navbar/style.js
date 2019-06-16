@@ -1,5 +1,33 @@
 import styled from 'styled-components/macro';
-import { trueCenter } from '../shared/helpers';
+import { trueCenter, transition, headerItem } from '../shared/helpers';
+
+export const Icon = styled.svg`
+  width: 20px;
+  height: 20px;
+
+  & path {
+    ${transition('fill')};
+    fill: ${props => props.theme.mutedText};
+  }
+
+  @media (max-width: 425px) {
+    width: 18px;
+    height: 18px;
+  }
+`;
+
+export const DarkButton = styled.span`
+  ${headerItem};
+
+  padding: 0 8px;
+  cursor: pointer;
+
+  @media (hover: hover) {
+    :hover path {
+      fill: ${props => props.theme.accent};
+    }
+  }
+`;
 
 export const NavWrapper = styled.nav`
   background: ${props => props.theme.foreground};
@@ -23,7 +51,7 @@ export const NavContainer = styled.div`
   padding: 0 10px;
 `;
 
-export const NavBrand = styled.div`
+export const Brand = styled.div`
   margin-right: auto;
   ${trueCenter};
   transition: transform 0.1s linear;
@@ -34,25 +62,25 @@ export const NavBrand = styled.div`
   }
 `;
 
-export const NavBrandLink = styled.a`
+export const BrandLink = styled.a`
   text-decoration: none;
   ${trueCenter};
   color: #000;
 `;
 
-export const NavBrandLogo = styled.img`
+export const BrandLogo = styled.img`
   height: 45px;
   width: auto;
   ${props => props.theme.imageFilter}
 `;
 
-export const NavBrandText = styled.h1`
+export const BrandText = styled.h1`
   font-size: 2rem;
   font-weight: 300;
   color: ${props => props.theme.normalText};
 `;
 
-export const NavList = styled.ul`
+export const List = styled.ul`
   list-style-type: none;
 
   @media (max-width: 800px) {
@@ -60,7 +88,7 @@ export const NavList = styled.ul`
   }
 `;
 
-export const NavListItem = styled.li`
+export const ListItem = styled.li`
   display: inline;
   margin-left: 5px;
 
@@ -74,7 +102,7 @@ export const NavListItem = styled.li`
   }
 `;
 
-export const NavListLink = styled.a`
+export const ListLink = styled.a`
   color: ${props => props.theme.mutedText};
   position: relative;
   text-decoration: none;
@@ -117,7 +145,7 @@ export const NavListLink = styled.a`
   }
 `;
 
-export const NavButton = styled.button`
+export const Button = styled.button`
   display: none;
   padding: 10px 14px;
   margin-left: 10px;
@@ -136,7 +164,7 @@ export const NavButton = styled.button`
   ${props => props.active && 'transform: rotate(-180deg);'}
 `;
 
-export const NavListContainer = styled.div`
+export const ListContainer = styled.div`
   ${trueCenter};
   position: relative;
 
