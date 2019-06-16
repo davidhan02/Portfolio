@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import Logo from './Logo.png';
-
 import NavDarkButton from './DarkButton';
 import {
   NavWrapper,

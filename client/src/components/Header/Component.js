@@ -98,6 +98,7 @@ const NavListItem = styled.li`
   @media (max-width: 800px) {
     display: block;
     margin-top: 10px;
+    margin-left: 0px;
     :last-child {
       margin-bottom: 10px;
     }
