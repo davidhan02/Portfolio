@@ -22,13 +22,13 @@ const dark = {
 const light = {
   ...constants,
   normalText: '#000000',
-  mutedText: '#818e99',
+  mutedText: '#5d5d5d',
   border: '#d3d5d8',
   accent: '#1890ff',
   pageBackground: '#f4f6f8',
   iconHover: '#f2f2f2',
   foreground: '#fcfcfc',
-  activeBackground: '#efefef',
+  activeBackground: '#ffffff',
   inputBackground: '#efefef',
   shadow: 'rgba(0, 0, 0, 0.05)'
 };
