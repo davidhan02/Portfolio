@@ -168,6 +168,8 @@ const NavButton = styled.button`
 
 const Header = ({ auth, logout, toggleTheme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () =>
+    window.innerWidth < 800 && setIsMenuOpen(!isMenuOpen);
   return (
     <NavWrapper>
       <NavContainer>
@@ -179,7 +181,7 @@ const Header = ({ auth, logout, toggleTheme }) => {
         </NavBrand>
         <HeaderDarkButton onClick={toggleTheme} />
         <NavListContainer id="nav-list" open={isMenuOpen}>
-          <NavList>
+          <NavList onClick={toggleMenu}>
             <NavListItem>
               <NavListLink href="#home" aria-label="Return home">
                 HOME
@@ -212,9 +214,9 @@ const Header = ({ auth, logout, toggleTheme }) => {
           aria-expanded="false"
           aria-controls="nav-list"
           aria-label="Toggle navigation"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={toggleMenu}
         >
-          +
+          <i class="fas fa-caret-down" aria-hidden="true" />
         </NavButton>
       </NavContainer>
     </NavWrapper>
