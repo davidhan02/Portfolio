@@ -5,7 +5,7 @@
     { "src": "server/index.js", "use": "@now/node-server" }
   ],
   "routes": [
-    { "src": "/api/?(.*)", "dest": "/server" },
+    { "src": "/api/?(.*)", "dest": "/server/index.js" },
     {
       "src": "/static/(.*)",
       "headers": { "cache-control": "s-maxage=31536000,immutable" },
