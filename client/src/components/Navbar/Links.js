@@ -1,9 +1,9 @@
 import React from 'react';
 import { ListContainer, List, ListItem, ListLink } from './style';
 
-const NavLinks = ({ open }) => (
+const NavLinks = ({ open, onClick }) => (
   <ListContainer id="nav-list" open={open}>
-    <List>
+    <List onClick={onClick}>
       <ListItem>
         <ListLink href="#home" aria-label="Return home">
           HOME

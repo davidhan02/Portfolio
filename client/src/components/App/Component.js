@@ -4,6 +4,7 @@ import RegisterContainer from '../Register/Container';
 import GlobalStyle from '../../styles/globalStyle';
 import PrivateRoute from '../shared/PrivateRoute';
 import NavbarContainer from '../Navbar/Container';
+import HeaderContainer from '../Header/Container';
 import LoginContainer from '../Login/Container';
 import history from '../../util/history';
 import theme from '../../styles/theme';
