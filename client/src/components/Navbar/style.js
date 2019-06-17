@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { NavLink as RouterNavLink } from 'react-router-dom';
 import { trueCenter, transition, headerItem } from '../shared/helpers';
 
 export const Icon = styled.svg`
@@ -77,6 +78,7 @@ export const BrandLogo = styled.img`
 export const BrandText = styled.h1`
   font-size: 2rem;
   font-weight: 300;
+  text-transform: uppercase;
   color: ${props => props.theme.normalText};
 `;
 
@@ -102,16 +104,20 @@ export const ListItem = styled.li`
   }
 `;
 
-export const ListLink = styled.a`
+const activeClassName = 'active';
+
+export const ListLink = styled(RouterNavLink).attrs({ activeClassName })`
   color: ${props => props.theme.mutedText};
   position: relative;
+  text-transform: uppercase;
   text-decoration: none;
   display: inline-block;
   padding: 7px 10px;
   margin: 0;
   transition: all 0.3s ease;
 
-  :hover {
+  :hover,
+  &.${activeClassName} {
     color: ${props => props.theme.accent};
   }
   :before,
@@ -134,7 +140,8 @@ export const ListLink = styled.a`
     transform: translateY(-15px);
   }
   :hover:before,
-  :hover:after {
+  :hover:after,
+  &.${activeClassName}:before, &.${activeClassName}:after {
     opacity: 1;
     transform: translateY(0px);
   }

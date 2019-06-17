@@ -3,7 +3,7 @@ import { logout } from '../../actions/auth';
 import { connect } from 'react-redux';
 import Navbar from './Component';
 
-const mapStateToProps = ({ auth }) => ({ auth });
+const mapStateToProps = ({ token }) => ({ token });
 
 const mapDispatchToProps = { toggleTheme, logout };
 
