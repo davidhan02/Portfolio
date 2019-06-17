@@ -7,16 +7,16 @@ import NavButton from './Button';
 import NavDarkButton from './DarkButton';
 import { NavWrapper, NavContainer } from './style';
 
-const Navbar = ({ token, logout, toggleTheme }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const toggleMenu = () =>
-    window.innerWidth < 800 && setIsMenuOpen(!isMenuOpen);
+const Navbar = ({ open, token, logout, toggleMenu, toggleTheme }) => {
+  const toggleCheck = () => {
+    if (window.innerWidth < 800) toggleMenu();
+  };
   return (
     <NavWrapper>
       <NavContainer>
         <NavBrand text={'David Han'} />
         <NavDarkButton onClick={toggleTheme} />
-        <NavList open={isMenuOpen} onClick={toggleMenu}>
+        <NavList open={open} onClick={toggleCheck}>
           <NavLink
             to={'/home'}
             label={'Return back to the top'}
@@ -43,7 +43,7 @@ const Navbar = ({ token, logout, toggleTheme }) => {
             text={'Contact'}
           />
         </NavList>
-        <NavButton open={isMenuOpen} onClick={toggleMenu} />
+        <NavButton open={open} onClick={toggleCheck} />
       </NavContainer>
     </NavWrapper>
   );

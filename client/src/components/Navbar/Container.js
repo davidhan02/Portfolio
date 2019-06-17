@@ -1,11 +1,12 @@
 import { toggleTheme } from '../../actions/theme';
+import { toggleMenu } from '../../actions/menu';
 import { logout } from '../../actions/auth';
 import { connect } from 'react-redux';
 import Navbar from './Component';
 
-const mapStateToProps = ({ token }) => ({ token });
+const mapStateToProps = ({ menu, token }) => ({ token, open: menu.open });
 
-const mapDispatchToProps = { toggleTheme, logout };
+const mapDispatchToProps = { toggleMenu, toggleTheme, logout };
 
 const NavbarContainer = connect(
   mapStateToProps,

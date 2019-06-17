@@ -1,4 +1,5 @@
 export const TOGGLE_THEME = 'TOGGLE_THEME';
+export const TOGGLE_MENU = 'TOGGLE_MENU';
 
 export const SET_USER = 'SET_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
