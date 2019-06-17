@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import Form from '../shared/form/Form';
-import OutlineButton from '../shared/OutlineButton';
 import ServerError from '../shared/ServerError';
 import renderField from '../shared/form/renderField';
 import SubmitButton from '../shared/form/SubmitButton';
@@ -38,9 +37,6 @@ class Register extends Component {
     const { error, handleSubmit, loading } = this.props;
     return (
       <Form loading={loading} onSubmit={handleSubmit(this.onSubmit)} wide>
-        <OutlineButton as="a" href="/auth/google">
-          Quick register with Google
-        </OutlineButton>
         <Field
           type="text"
           name="name"
