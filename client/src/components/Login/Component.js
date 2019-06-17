@@ -4,7 +4,7 @@ import Form from '../shared/form/Form';
 import ServerError from '../shared/ServerError';
 import renderField from '../shared/form/renderField';
 import SubmitButton from '../shared/form/SubmitButton';
-import { emailValidator, passwordValidator } from '../../util/validators';
+import { usernameValidator, passwordValidator } from '../../util/validators';
 
 class Login extends Component {
   componentDidMount() {
@@ -33,11 +33,11 @@ class Login extends Component {
     return (
       <Form loading={loading} onSubmit={handleSubmit(this.onSubmit)}>
         <Field
-          type="email"
-          name="email"
-          label="email"
+          type="username"
+          name="username"
+          label="username"
           component={renderField}
-          validate={emailValidator}
+          validate={usernameValidator}
         />
         <Field
           type="password"

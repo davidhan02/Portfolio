@@ -1,14 +1,9 @@
 const router = require('express').Router();
+const users = require('./controllers/users');
+const validate = require('./middleware/validate');
 
-if (process.env.NODE_ENV === 'production') {
-  router.get('/return', (req, res) => {
-    res.json({ message: 'deployed' });
-  });
-}
-
-router.get('/return', (req, res) => {
-  res.json({ message: 'testing' });
-});
+router.post('/login', validate.login, users.login);
+router.post('/register', validate.register, users.register);
 
 module.exports = app => {
   app.use('/api', router);

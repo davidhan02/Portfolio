@@ -28,7 +28,7 @@ export const submitLogin = formValues => async dispatch => {
     const user = await axios.post('/api/login', formValues);
     dispatch({
       type: SET_USER,
-      payload: user.data
+      payload: user.token
     });
   } catch (err) {
     dispatch({
@@ -44,7 +44,7 @@ export const submitRegister = formValues => async dispatch => {
     const user = await axios.post('/api/register', formValues);
     dispatch({
       type: SET_USER,
-      payload: user.data
+      payload: user.token
     });
   } catch (err) {
     dispatch({
