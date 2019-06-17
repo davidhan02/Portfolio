@@ -18,12 +18,12 @@ const VariableField = field => {
     case 'select':
       return (
         <InputWrapper>
-          <Label>{field.label}</Label>
+          <Label htmlFor={field.label}>{field.label}</Label>
           {field.meta.touched && field.meta.error && (
             <Error>{field.meta.error}</Error>
           )}
           <SelectWrapper>
-            <Input {...field.input} as="select" type="select">
+            <Input id={field.label} {...field.input} as="select" type="select">
               {field.children}
             </Input>
           </SelectWrapper>
@@ -33,11 +33,12 @@ const VariableField = field => {
     case 'textarea':
       return (
         <InputWrapper>
-          <Label>{field.label}</Label>
+          <Label htmlFor={field.label}>{field.label}</Label>
           {field.meta.touched && field.meta.error && (
             <Error>{field.meta.error}</Error>
           )}
           <Input
+            id={field.label}
             {...field.input}
             as="textarea"
             rows="6"
@@ -50,11 +51,12 @@ const VariableField = field => {
     default:
       return (
         <InputWrapper>
-          <Label>{field.label}</Label>
+          <Label htmlFor={field.label}>{field.label}</Label>
           {field.meta.touched && field.meta.error && (
             <Error>{field.meta.error}</Error>
           )}
           <Input
+            id={field.label}
             {...field.input}
             error={field.meta.touched && !!field.meta.error}
             type={field.type}
