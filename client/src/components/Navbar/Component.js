@@ -17,8 +17,8 @@ const Navbar = ({ open, token, logout, toggleMenu, toggleTheme }) => {
         <NavDarkButton onClick={toggleTheme} />
         <NavList open={open} onClick={toggleCheck}>
           <NavLink
-            to={'/home'}
-            label={'Return back to the top'}
+            to={'/'}
+            label={'Return back to landing page'}
             text={'Home'}
           />
           <NavLink

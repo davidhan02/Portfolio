@@ -14,10 +14,11 @@ import styled from 'styled-components/macro';
 
 const Placeholder = styled.h2`
   text-align: center;
+  color: ${props => props.theme.normalText};
 `;
 
 const Dashboard = () => <Placeholder>Dashboard</Placeholder>;
-const SurveyNew = () => <Placeholder>SurveyNew</Placeholder>;
+const Resume = () => <Placeholder>Resume</Placeholder>;
 const Landing = () => <Placeholder>Landing</Placeholder>;
 
 const App = ({ dark }) => (
@@ -32,7 +33,7 @@ const App = ({ dark }) => (
           <Route path="/register" component={RegisterContainer} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <Route exact path="/" component={Landing} />
-          <Route path="/surveys" component={SurveyNew} />
+          <Route path="/resume" component={Resume} />
         </Switch>
       </>
     </Router>

@@ -2,7 +2,7 @@ import React from 'react';
 import FormWrapper from './Wrapper';
 import styled from 'styled-components/macro';
 import { transition } from '../../helpers';
-import LoadingSpinner from '../Loading/Spinner';
+import LoadingSpinner from '../../Loading/Spinner';
 
 const StyledForm = styled.form`
   ${transition('filter')};

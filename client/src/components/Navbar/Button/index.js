@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button } from './style';
+import { Button } from '../style';
+import ButtonIcon from './Icon';
 
 const NavButton = ({ open, onClick }) => (
   <Button
@@ -9,7 +10,7 @@ const NavButton = ({ open, onClick }) => (
     aria-label="Toggle navigation"
     onClick={onClick}
   >
-    +
+    <ButtonIcon />
   </Button>
 );
 

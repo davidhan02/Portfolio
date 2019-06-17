@@ -2,7 +2,17 @@ import styled from 'styled-components/macro';
 import { NavLink as RouterNavLink } from 'react-router-dom';
 import { trueCenter, transition, headerItem } from '../shared/helpers';
 
-export const Icon = styled.svg`
+export const MenuIcon = styled.svg`
+  width: 13px;
+  height: 13px;
+
+  & path {
+    ${transition('fill')};
+    fill: ${props => props.theme.mutedText};
+  }
+`;
+
+export const DarkIcon = styled.svg`
   width: 20px;
   height: 20px;
 
@@ -155,7 +165,7 @@ export const ListLink = styled(RouterNavLink).attrs({ activeClassName })`
 
 export const Button = styled.button`
   display: none;
-  padding: 10px 14px;
+  padding: 12px 12px 8px;
   margin-left: 10px;
   background: ${props => props.theme.foreground};
   border: 1px solid ${props => props.theme.mutedText};
