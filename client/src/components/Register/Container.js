@@ -5,10 +5,10 @@ import { submitRegister, clearError } from '../../actions/auth';
 import Register from './Component';
 import validate from './validate';
 
-const mapStateToProps = ({ error, auth }) => ({
+const mapStateToProps = ({ error, auth: { token, loading } }) => ({
   error,
-  loading: auth.loading,
-  isAuthenticated: auth.isAuthenticated
+  token,
+  loading
 });
 
 const mapDispatchToProps = { submitRegister, clearError };

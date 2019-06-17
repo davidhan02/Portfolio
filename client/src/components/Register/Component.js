@@ -21,8 +21,8 @@ class Register extends Component {
   }
 
   redirectIfLoggedIn() {
-    const { history, isAuthenticated } = this.props;
-    if (isAuthenticated) history.push('/dashboard');
+    const { token, history } = this.props;
+    if (token) history.push('/');
   }
 
   onSubmit = formValues => {
@@ -54,7 +54,7 @@ class Register extends Component {
           component={renderField}
           validate={passwordValidator}
         />
-        {error && <ServerError>{error.msg}</ServerError>}
+        {error && <ServerError>{error.message}</ServerError>}
         <SubmitButton type="submit">Register</SubmitButton>
       </Form>
     );

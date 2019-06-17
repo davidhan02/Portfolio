@@ -25,10 +25,10 @@ export const fetchUser = () => async dispatch => {
 export const submitLogin = formValues => async dispatch => {
   dispatch(setUserLoading());
   try {
-    const user = await axios.post('/api/login', formValues);
+    const login = await axios.post('/api/login', formValues);
     dispatch({
       type: SET_USER,
-      payload: user.token
+      payload: login.data.token
     });
   } catch (err) {
     dispatch({
@@ -41,10 +41,10 @@ export const submitLogin = formValues => async dispatch => {
 export const submitRegister = formValues => async dispatch => {
   dispatch(setUserLoading());
   try {
-    const user = await axios.post('/api/register', formValues);
+    const register = await axios.post('/api/register', formValues);
     dispatch({
       type: SET_USER,
-      payload: user.token
+      payload: register.data.token
     });
   } catch (err) {
     dispatch({

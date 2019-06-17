@@ -20,9 +20,10 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
       return {
+        ...state,
+        user: jwtDecode(action.payload).user,
         token: action.payload,
-        loading: false,
-        user
+        loading: false
       };
     case SET_USER_LOADING:
       return {
@@ -43,7 +44,8 @@ export default function(state = initialState, action) {
       return {
         ...state,
         token: null,
-        user: null
+        user: null,
+        loading: false
       };
     default:
       return state;

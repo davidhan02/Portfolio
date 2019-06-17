@@ -4,7 +4,10 @@ import { logout } from '../../actions/auth';
 import { connect } from 'react-redux';
 import Navbar from './Component';
 
-const mapStateToProps = ({ menu, token }) => ({ token, open: menu.open });
+const mapStateToProps = ({ menu: { open }, auth: { token } }) => ({
+  token,
+  open
+});
 
 const mapDispatchToProps = { toggleMenu, toggleTheme, logout };
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import NavBrand from './Brand';
 import NavList from './List';
 import NavLink from './Link';
