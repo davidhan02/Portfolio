@@ -15,7 +15,7 @@ const Navbar = ({ open, token, logout, toggleMenu, toggleTheme }) => {
       <NavContainer>
         <NavBrand text={'David Han'} />
         <NavDarkButton onClick={toggleTheme} />
-        <NavList open={open} onClick={toggleCheck}>
+        <NavList token={token} open={open} onClick={toggleCheck}>
           <NavLink
             to={'/'}
             label={'Return back to landing page'}
@@ -41,6 +41,21 @@ const Navbar = ({ open, token, logout, toggleMenu, toggleTheme }) => {
             label={'How you can contact me'}
             text={'Contact'}
           />
+          {token && (
+            <>
+              <NavLink
+                to={'/dashboard'}
+                label={'Admin Dashboard'}
+                text={'Admin'}
+              />
+              <NavLink
+                onClick={logout}
+                to={'/'}
+                label={'Log Out'}
+                text={'Logout'}
+              />
+            </>
+          )}
         </NavList>
         <NavButton open={open} onClick={toggleCheck} />
       </NavContainer>

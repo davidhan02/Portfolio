@@ -191,7 +191,7 @@ export const ListContainer = styled.div`
     position: absolute;
     top: 65px;
     background: ${props => props.theme.foreground};
-    box-shadow: 0 8px 10px 0 ${props => props.theme.shadow};
+    box-shadow: 2px 8px 10px ${props => props.theme.shadow};
 
     width: 80%;
     left: 10%;
@@ -199,11 +199,14 @@ export const ListContainer = styled.div`
 
     overflow: hidden;
     text-align: center;
-    transition: all 0.1s ease, height 0.5s ease;
+    transition: box-shadow 0.1s ease, height 0.5s ease;
     border: 1px solid ${props => props.theme.border};
     border-top: 0px;
     ${props =>
       props.open &&
-      `height: 280px; border-top: 1px solid ${props.theme.foreground};`}
+      `
+      border-top: 1px solid ${props.theme.foreground};
+      height: ${props.token ? '385px' : '280px'}; 
+      `}
   }
 `;
