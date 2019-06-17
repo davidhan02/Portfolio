@@ -1,24 +1,28 @@
 import {
   SET_ERROR,
-  FETCH_USER,
+  SET_USER,
+  LOGOUT_USER,
   SET_USER_LOADING,
   CLEAR_USER_LOADING
 } from '../actions/types';
-import { isEmpty } from '../util/validators';
+import jwtDecode from 'jwt-decode';
+
+const token = localStorage.getItem('token');
+const user = token && jwtDecode(token).user;
 
 const initialState = {
-  isAuthenticated: false,
-  loading: false,
-  user: {}
+  ...(token && { token }),
+  ...(user && { user }),
+  loading: false
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case FETCH_USER:
+    case SET_USER:
       return {
-        isAuthenticated: !isEmpty(action.payload),
-        user: action.payload,
-        loading: false
+        token: action.payload,
+        loading: false,
+        user
       };
     case SET_USER_LOADING:
       return {
@@ -34,6 +38,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         loading: false
+      };
+    case LOGOUT_USER:
+      return {
+        ...state,
+        token: null,
+        user: null
       };
     default:
       return state;

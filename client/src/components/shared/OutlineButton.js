@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 import Button from './Button';
 
-const OAuthButton = styled(Button)`
+const OutlineButton = styled(Button)`
   width: 100%;
   text-align: center;
   padding: 12px 30px;
@@ -16,4 +16,4 @@ const OAuthButton = styled(Button)`
   }
 `;
 
-export default OAuthButton;
+export default OutlineButton;
