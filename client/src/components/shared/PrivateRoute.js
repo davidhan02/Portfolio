@@ -11,6 +11,6 @@ const PrivateRoute = ({ component: Component, token, ...rest }) => (
   />
 );
 
-const mapStateToProps = ({ token }) => ({ token });
+const mapStateToProps = ({ auth: { token } }) => ({ token });
 
 export default connect(mapStateToProps)(PrivateRoute);

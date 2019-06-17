@@ -1,5 +1,6 @@
 import { Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider as Theme } from 'styled-components';
+import ErrorDisplayContainer from '../ErrorDisplay/Container';
 import RegisterContainer from '../Register/Container';
 import GlobalStyle from '../../styles/globalStyle';
 import PrivateRoute from '../shared/PrivateRoute';
@@ -25,6 +26,7 @@ const App = ({ dark }) => (
       <>
         <GlobalStyle />
         <NavbarContainer />
+        <ErrorDisplayContainer />
         <Switch>
           <Route path="/login" component={LoginContainer} />
           <Route path="/register" component={RegisterContainer} />
