@@ -114,7 +114,8 @@ export const ListLink = styled(RouterNavLink).attrs({ activeClassName })`
   display: inline-block;
   padding: 7px 10px;
   margin: 0;
-  transition: all 0.3s ease;
+  transition: all 0.1s ease;
+  background: ${props => props.theme.foreground};
 
   :hover,
   &.${activeClassName} {
@@ -129,7 +130,7 @@ export const ListLink = styled(RouterNavLink).attrs({ activeClassName })`
     width: 100%;
     height: 1px;
     background: ${props => props.theme.accent};
-    transition: all 0.4s ease;
+    transition: all 0.4s ease, color 0.1s ease;
   }
   :before {
     top: 0px;

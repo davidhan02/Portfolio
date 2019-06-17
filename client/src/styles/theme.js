@@ -25,7 +25,7 @@ const light = {
   normalText: '#000000',
   mutedText: '#5d5d5d',
   border: '#d3d5d8',
-  accent: '#1890ff',
+  accent: '#1373CC',
   pageBackground: '#f4f6f8',
   iconHover: '#f2f2f2',
   foreground: '#fcfcfc',
