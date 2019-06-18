@@ -5,7 +5,7 @@ exports.jwt = (req, res, next) => {
   passport.authenticate('jwt', { session: false }, async (err, user) => {
     if (err) return next(err);
     const found = await User.findById(user.id);
-    if (!user || !found) {
+    if (!user || !found || !found.admin) {
       return res.status(401).json({ message: 'Unauthorized' });
     }
     req.user = found;

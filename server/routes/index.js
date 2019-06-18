@@ -16,8 +16,8 @@ router.param('project', project.load);
 router.get('/project/:project', project.showOne);
 router.delete('/project/:project', auth.jwt, project.destroy);
 
-router.get('/profile', profile.showFirst);
-router.post('/profile', auth.jwt, profile.submit);
+router.get('/profiles', profile.listAll);
+router.post('/profiles', auth.jwt, profile.submit);
 
 router.param('profile', profile.load);
 router.get('/profile/:profile', profile.showOne);

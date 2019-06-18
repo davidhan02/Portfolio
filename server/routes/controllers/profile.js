@@ -1,11 +1,11 @@
 const Profile = require('../../models/profile');
 
-exports.showFirst = async (req, res) => {
+exports.listAll = async (req, res) => {
   const profiles = await Profile.find();
   if (profiles.length < 1) {
     return res.status(500).json({ message: 'No profiles found' });
   }
-  res.json(profiles[0]);
+  res.json(profiles);
 };
 
 exports.submit = async (req, res, next) => {
