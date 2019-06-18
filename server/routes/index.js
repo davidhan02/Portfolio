@@ -1,10 +1,19 @@
 const router = require('express').Router();
-const user = require('./controllers/user');
-const validate = require('./middleware/validate');
 const auth = require('./middleware/auth');
+const validate = require('./middleware/validate');
+const user = require('./controllers/user');
+const project = require('./controllers/project');
 
 router.post('/login', validate.login, user.login);
 router.post('/register', validate.register, user.register);
+
+router.get('/projects', project.listAll);
+router.get('/projects/:category', project.listByCategory);
+router.post('/projects', auth.jwt, validate.project, project.submit);
+
+router.param('project', project.load);
+router.get('/project/:project', project.showOne);
+router.delete('/project/:project', auth.jwt, project.destroy);
 
 router.get('/test/', auth.jwt, (req, res) => {
   return res.status(200).json({ message: 'successfully tested jwt' });
