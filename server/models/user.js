@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
+const shortid = require('shortid');
 const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema(
   {
+    _id: { type: String, default: shortid.generate() },
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     admin: Boolean

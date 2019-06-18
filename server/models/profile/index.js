@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const shortid = require('shortid');
 const Schema = mongoose.Schema;
 
 const expSchema = require('./experience');
@@ -6,6 +7,10 @@ const eduSchema = require('./education');
 const socialSchema = require('./social');
 
 const profileSchema = new Schema({
+  _id: {
+    type: String,
+    default: shortid.generate()
+  },
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User',
@@ -43,8 +48,8 @@ const profileSchema = new Schema({
 profileSchema.set('toJSON', { getters: true });
 profileSchema.options.toJSON.transform = (doc, ret) => {
   const obj = { ...ret };
-  delete obj._id;
   delete obj.__v;
+  delete obj._id;
   return obj;
 };
 
