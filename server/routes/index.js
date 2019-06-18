@@ -16,12 +16,16 @@ router.param('project', project.load);
 router.get('/project/:project', project.showOne);
 router.delete('/project/:project', auth.jwt, project.destroy);
 
-router.get('/resumes', resume.listAll);
-router.post('/resumes', auth.jwt, resume.submit);
+router.get('/resume', resume.showFirst);
+router.post('/resume', auth.jwt, resume.submit);
 
 router.param('resume', resume.load);
 router.get('/resume/:resume', resume.showOne);
 router.delete('/resume/:resume', auth.jwt, resume.destroy);
+
+router.post('/exp/:resume', auth.jwt, resume.addExp);
+router.post('/edu/:resume', auth.jwt, resume.addEdu);
+router.post('/social/:resume', auth.jwt, resume.setSocial);
 
 module.exports = app => {
   app.use('/api', router);

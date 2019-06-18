@@ -1,9 +1,9 @@
 const Resume = require('../../models/resume');
 
-exports.listAll = async (req, res) => {
+exports.showFirst = async (req, res) => {
   try {
     const resumes = await Resume.find();
-    res.json(resumes);
+    res.json(resumes[0]);
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ message: 'No resumes found' });
@@ -47,6 +47,15 @@ exports.addExp = async (req, res, next) => {
 exports.addEdu = async (req, res, next) => {
   try {
     const resume = await req.myresume.addEdu(req.body);
+    res.status(201).json(resume);
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.setSocial = async (req, res, next) => {
+  try {
+    const resume = await req.myresume.setSocial(req.body);
     res.status(201).json(resume);
   } catch (err) {
     next(err);
