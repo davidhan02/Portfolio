@@ -27,6 +27,10 @@ router.post('/exp/:resume', auth.jwt, resume.addExp);
 router.post('/edu/:resume', auth.jwt, resume.addEdu);
 router.post('/social/:resume', auth.jwt, resume.setSocial);
 
+//router.delete('/exp/:resume', auth.jwt, resume.removeExp);
+//router.delete('/edu/:resume', auth.jwt, resume.removeEdu);
+//router.delete('/social/:resume', auth.jwt, resume.clearSocial);
+
 module.exports = app => {
   app.use('/api', router);
 

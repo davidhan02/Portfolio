@@ -5,6 +5,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const localStrategy = require('./passport/local');
+const jwtStrategy = require('./passport/jwt');
 
 const app = express();
 
@@ -14,7 +16,6 @@ mongoose.connect(keys.mongoURI, {
   useFindAndModify: false
 });
 
-require('./passport');
 require('./models/user');
 require('./models/resume');
 require('./models/project');
@@ -24,6 +25,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(morgan('common'));
 app.use(passport.initialize());
+
+passport.use(localStrategy);
+passport.use(jwtStrategy);
 
 require('./routes')(app);
 
