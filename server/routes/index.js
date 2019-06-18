@@ -17,16 +17,16 @@ router.get('/project/:project', project.showOne);
 router.delete('/project/:project', auth.jwt, project.destroy);
 
 router.get('/profiles', profile.listAll);
-router.post('/profiles', auth.jwt, profile.submit);
+router.post('/profiles', auth.jwt, validate.profile, profile.submit);
 
 router.param('profile', profile.load);
 router.get('/profile/:profile', profile.showOne);
 router.delete('/profile/:profile', auth.jwt, profile.destroy);
 
-router.post('/exp/:profile', auth.jwt, profile.addExp);
-router.post('/edu/:profile', auth.jwt, profile.addEdu);
+router.post('/exp/:profile', auth.jwt, validate.exp, profile.addExp);
+router.post('/edu/:profile', auth.jwt, validate.edu, profile.addEdu);
 
-router.post('/social/:profile', auth.jwt, profile.setSocial);
+router.post('/social/:profile', auth.jwt, validate.social, profile.setSocial);
 router.delete('/social/:profile', auth.jwt, profile.clearSocial);
 
 router.delete('/exp/:profile/:expId', auth.jwt, profile.removeExp);
