@@ -47,7 +47,6 @@ export const NavWrapper = styled.nav`
   margin-bottom: 20px;
   position: sticky;
   top: 0;
-  transition: all 0.1s ease;
   border-bottom: 1px solid ${props => props.theme.border};
   box-shadow: 0 4px 12px ${props => props.theme.shadow};
   width: 100%;
@@ -124,7 +123,7 @@ export const ListLink = styled(RouterNavLink).attrs({ activeClassName })`
   display: inline-block;
   padding: 7px 10px;
   margin: 0;
-  transition: all 0.1s ease;
+  transition: color 0.1s ease;
   background: ${props => props.theme.foreground};
 
   :hover,
