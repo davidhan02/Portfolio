@@ -22,7 +22,7 @@ exports.showOne = async (req, res) => {
 
 exports.destroy = async (req, res) => {
   await req.project.remove();
-  res.status(201).json({ message: 'Success' });
+  res.status(201).json({ message: 'Successfully deleted' });
 };
 
 exports.submit = async (req, res, next) => {

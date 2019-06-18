@@ -19,11 +19,6 @@ const resumeSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  handle: {
-    type: String,
-    required: true,
-    max: 40
-  },
   status: {
     type: String,
     required: true
@@ -64,10 +59,32 @@ resumeSchema.post('save', function(doc, next) {
     .then(() => next());
 });
 
+resumeSchema.methods.addEdu = function(body) {
+  this.education.unshift({ ...body });
+  return this.save();
+};
+
+resumeSchema.methods.addExp = function(body) {
+  this.experience.unshift({ ...body });
+  return this.save();
+};
+
+resumeSchema.methods.setSocial = function(body) {
+  this.social = { ...body };
+  return this.save();
+};
+
 resumeSchema.methods.removeEdu = function(eduId) {
   const edu = this.education.id(eduId);
   if (!edu) throw new Error('No education matches that ID');
   edu.remove();
+  return this.save();
+};
+
+resumeSchema.methods.removeExp = function(expId) {
+  const exp = this.experience.id(expId);
+  if (!exp) throw new Error('No experience matches that ID');
+  exp.remove();
   return this.save();
 };
 
