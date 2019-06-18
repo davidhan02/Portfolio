@@ -17,18 +17,6 @@ export const setUserLoading = () => ({
 
 export const logout = () => ({ type: LOGOUT_USER });
 
-export const testJWT = () => async dispatch => {
-  try {
-    const login = await axios.get('/api/test');
-    console.log(login.data);
-  } catch (err) {
-    dispatch({
-      type: SET_ERROR,
-      payload: err
-    });
-  }
-};
-
 export const submitLogin = formValues => async dispatch => {
   dispatch(setUserLoading());
   try {

@@ -9,7 +9,7 @@ const mapStateToProps = ({ menu: { open }, auth: { token } }) => ({
   open
 });
 
-const mapDispatchToProps = { testJWT, toggleMenu, toggleTheme, logout };
+const mapDispatchToProps = { toggleMenu, toggleTheme, logout };
 
 const NavbarContainer = connect(
   mapStateToProps,
