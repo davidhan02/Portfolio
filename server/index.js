@@ -1,10 +1,10 @@
 const express = require('express');
-const keys = require('./config/keys');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const keys = require('./config/keys');
 const localStrategy = require('./passport/local');
 const jwtStrategy = require('./passport/jwt');
 
@@ -17,7 +17,7 @@ mongoose.connect(keys.mongoURI, {
 });
 
 require('./models/user');
-require('./models/resume');
+require('./models/profile');
 require('./models/project');
 
 app.use(cors());

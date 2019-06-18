@@ -5,7 +5,7 @@ const expSchema = require('./experience');
 const eduSchema = require('./education');
 const socialSchema = require('./social');
 
-const resumeSchema = new Schema({
+const profileSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User',
@@ -40,54 +40,54 @@ const resumeSchema = new Schema({
   social: socialSchema
 });
 
-resumeSchema.set('toJSON', { getters: true });
-resumeSchema.options.toJSON.transform = (doc, ret) => {
+profileSchema.set('toJSON', { getters: true });
+profileSchema.options.toJSON.transform = (doc, ret) => {
   const obj = { ...ret };
   delete obj._id;
   delete obj.__v;
   return obj;
 };
 
-resumeSchema.pre(/^find/, function() {
+profileSchema.pre(/^find/, function() {
   this.populate('user');
 });
 
-resumeSchema.post('save', function(doc, next) {
+profileSchema.post('save', function(doc, next) {
   doc
     .populate('user')
     .execPopulate()
     .then(() => next());
 });
 
-resumeSchema.methods.addEdu = function(body) {
+profileSchema.methods.addEdu = function(body) {
   this.education.unshift({ ...body });
   return this.save();
 };
 
-resumeSchema.methods.addExp = function(body) {
+profileSchema.methods.addExp = function(body) {
   this.experience.unshift({ ...body });
   return this.save();
 };
 
-resumeSchema.methods.setSocial = function(body) {
+profileSchema.methods.setSocial = function(body) {
   this.social = { ...body };
   return this.save();
 };
 
-resumeSchema.methods.removeEdu = function(eduId) {
+profileSchema.methods.removeEdu = function(eduId) {
   const edu = this.education.id(eduId);
   if (!edu) throw new Error('No education matches that ID');
   edu.remove();
   return this.save();
 };
 
-resumeSchema.methods.removeExp = function(expId) {
+profileSchema.methods.removeExp = function(expId) {
   const exp = this.experience.id(expId);
   if (!exp) throw new Error('No experience matches that ID');
   exp.remove();
   return this.save();
 };
 
-const Resume = mongoose.model('Resume', resumeSchema);
+const Profile = mongoose.model('Profile', profileSchema);
 
-module.exports = Resume;
+module.exports = Profile;

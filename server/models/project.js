@@ -2,19 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const projectSchema = new Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  url: {
-    type: String
-  },
-  github: {
-    type: String
-  },
   author: {
     type: Schema.Types.ObjectId,
     ref: 'User',
+    required: true
+  },
+  title: {
+    type: String,
     required: true
   },
   categories: {
@@ -32,6 +26,12 @@ const projectSchema = new Schema({
   views: {
     type: Number,
     default: 0
+  },
+  url: {
+    type: String
+  },
+  code: {
+    type: String
   }
 });
 
