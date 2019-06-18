@@ -1,6 +1,6 @@
 import { toggleTheme } from '../../actions/theme';
 import { toggleMenu } from '../../actions/menu';
-import { logout, testJWT } from '../../actions/auth';
+import { logout } from '../../actions/auth';
 import { connect } from 'react-redux';
 import Navbar from './Component';
 

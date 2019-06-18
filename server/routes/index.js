@@ -1,11 +1,10 @@
 const router = require('express').Router();
-const users = require('./controllers/users');
+const user = require('./controllers/user');
 const validate = require('./middleware/validate');
 const auth = require('./middleware/auth');
-const passport = require('passport');
 
-router.post('/login', validate.login, users.login);
-router.post('/register', validate.register, users.register);
+router.post('/login', validate.login, user.login);
+router.post('/register', validate.register, user.register);
 
 router.get('/test/', auth.jwt, (req, res) => {
   return res.status(200).json({ message: 'successfully tested jwt' });
