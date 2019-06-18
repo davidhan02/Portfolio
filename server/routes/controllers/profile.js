@@ -60,9 +60,27 @@ exports.setSocial = async (req, res, next) => {
   }
 };
 
+exports.clearSocial = async (req, res, next) => {
+  try {
+    const profile = await req.profile.clearSocial();
+    res.status(201).json(profile);
+  } catch (err) {
+    next(err);
+  }
+};
+
 exports.removeExp = async (req, res, next) => {
   try {
     const profile = await req.profile.removeExp(req.params.expId);
+    res.status(201).json(profile);
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.removeEdu = async (req, res, next) => {
+  try {
+    const profile = await req.profile.removeEdu(req.params.eduId);
     res.status(201).json(profile);
   } catch (err) {
     next(err);

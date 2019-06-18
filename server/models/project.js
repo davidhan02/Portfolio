@@ -5,10 +5,10 @@ const Schema = mongoose.Schema;
 const projectSchema = new Schema({
   _id: {
     type: String,
-    default: shortid.generate()
+    default: shortid.generate
   },
   author: {
-    type: Schema.Types.ObjectId,
+    type: String,
     ref: 'User',
     required: true
   },

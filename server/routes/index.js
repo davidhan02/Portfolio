@@ -25,11 +25,12 @@ router.delete('/profile/:profile', auth.jwt, profile.destroy);
 
 router.post('/exp/:profile', auth.jwt, profile.addExp);
 router.post('/edu/:profile', auth.jwt, profile.addEdu);
+
 router.post('/social/:profile', auth.jwt, profile.setSocial);
+router.delete('/social/:profile', auth.jwt, profile.clearSocial);
 
 router.delete('/exp/:profile/:expId', auth.jwt, profile.removeExp);
-//router.delete('/edu/:profile', auth.jwt, profile.removeEdu);
-//router.delete('/social/:profile', auth.jwt, profile.clearSocial);
+router.delete('/edu/:profile/:eduId', auth.jwt, profile.removeEdu);
 
 module.exports = app => {
   app.use('/api', router);

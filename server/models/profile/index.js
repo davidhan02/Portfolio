@@ -9,10 +9,10 @@ const socialSchema = require('./social');
 const profileSchema = new Schema({
   _id: {
     type: String,
-    default: shortid.generate()
+    default: shortid.generate
   },
   user: {
-    type: Schema.Types.ObjectId,
+    type: String,
     ref: 'User',
     required: true
   },
@@ -76,6 +76,11 @@ profileSchema.methods.addExp = function(body) {
 
 profileSchema.methods.setSocial = function(body) {
   this.social = { ...body };
+  return this.save();
+};
+
+profileSchema.methods.clearSocial = function(body) {
+  this.social = {};
   return this.save();
 };
 
