@@ -1,6 +1,6 @@
 # Porfolio
 
-Full stack personal portfolio progressive web application. Mongoose, Express, Node for the back end; React + Redux for the front end.
+Full stack personal portfolio progressive web application. Mongoose, Express, Node for the back end; React + Redux for the front end. Showcases my resume, projects, and contact information and allows me to update them easily anytime.
 
 ## Installation
 
