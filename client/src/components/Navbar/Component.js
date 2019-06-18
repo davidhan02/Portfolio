@@ -6,7 +6,7 @@ import NavButton from './Button';
 import NavDarkButton from './DarkButton';
 import { NavWrapper, NavContainer } from './style';
 
-const Navbar = ({ open, token, logout, toggleMenu, toggleTheme }) => {
+const Navbar = ({ open, token, logout, toggleMenu, toggleTheme, testJWT }) => {
   const toggleCheck = () => {
     if (window.innerWidth < 800) toggleMenu();
   };
@@ -40,6 +40,7 @@ const Navbar = ({ open, token, logout, toggleMenu, toggleTheme }) => {
             to={'/contact'}
             label={'How you can contact me'}
             text={'Contact'}
+            onClick={testJWT}
           />
           {token && (
             <>
@@ -50,9 +51,9 @@ const Navbar = ({ open, token, logout, toggleMenu, toggleTheme }) => {
               />
               <NavLink
                 onClick={logout}
-                to={'/'}
+                to={'/login'}
                 label={'Log Out'}
-                text={'Logout'}
+                text={'Exit'}
               />
             </>
           )}

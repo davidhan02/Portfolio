@@ -5,10 +5,12 @@ import {
   SET_USER_LOADING,
   CLEAR_USER_LOADING
 } from '../actions/types';
+import setAuthToken from '../util/setAuthToken';
 import jwtDecode from 'jwt-decode';
 
 const token = localStorage.getItem('token');
 const user = token && jwtDecode(token).user;
+token && setAuthToken(token);
 
 const initialState = {
   ...(token && { token }),

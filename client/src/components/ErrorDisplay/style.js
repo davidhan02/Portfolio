@@ -7,7 +7,7 @@ export const ErrorWrapper = styled.div`
   position: fixed;
   left: 0;
   right: 0;
-  top: 20px;
+  top: 50px;
 
   z-index: 99;
   text-align: center;
