@@ -16,6 +16,8 @@ mongoose.connect(keys.mongoURI, {
 
 require('./passport');
 require('./models/user');
+require('./models/resume');
+require('./models/project');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
