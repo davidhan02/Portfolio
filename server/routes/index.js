@@ -16,8 +16,8 @@ router.param('project', project.load);
 router.get('/project/:project', project.showOne);
 router.delete('/project/:project', auth.jwt, project.destroy);
 
-router.get('/resume', resume.list);
-router.post('/resume', auth.jwt, validate.resume, resume.submit);
+router.get('/resumes', resume.listAll);
+router.post('/resumes', auth.jwt, resume.submit);
 
 router.param('resume', resume.load);
 router.get('/resume/:resume', resume.showOne);

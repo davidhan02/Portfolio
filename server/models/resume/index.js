@@ -15,7 +15,7 @@ const resumeSchema = new Schema({
     type: String,
     required: true
   },
-  date: {
+  birthday: {
     type: Date,
     default: Date.now
   },
