@@ -7,7 +7,7 @@ module.exports = function profileValidator(data) {
   data.name = !isEmpty(data.name) ? data.name : '';
   data.birthday = !isEmpty(data.birthday) ? data.birthday : '';
   data.status = !isEmpty(data.status) ? data.status : '';
-  data.skills = !isEmpty(data.skills) ? data.skills.join(', ') : '';
+  data.skills = !isEmpty(data.skills) ? data.skills : '';
   data.location = !isEmpty(data.location) ? data.location : '';
   data.bio = !isEmpty(data.bio) ? data.bio : '';
 
