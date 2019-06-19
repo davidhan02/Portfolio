@@ -4,32 +4,65 @@ const isEmpty = require('./isEmpty');
 module.exports = function socialValidator(data) {
   let errors = {};
 
-  data.username = !isEmpty(data.username) ? data.username : '';
-  data.password = !isEmpty(data.password) ? data.password : '';
-  data.password2 = !isEmpty(data.password2) ? data.password2 : '';
+  data.linkedin = !isEmpty(data.linkedin) ? data.linkedin : '';
+  data.instagram = !isEmpty(data.instagram) ? data.instagram : '';
+  data.github = !isEmpty(data.github) ? data.github : '';
+  data.glitch = !isEmpty(data.glitch) ? data.glitch : '';
+  data.codepen = !isEmpty(data.codepen) ? data.codepen : '';
 
-  if (Validator.isEmpty(data.username)) {
-    errors.message = 'Username field is required';
+  if (
+    !Validator.isEmpty(data.linkedin) &&
+    !Validator.contains(data.linkedin, 'linkedin')
+  ) {
+    errors.message = 'Given linkedin must be a valid linkedin URL';
   }
 
-  if (!Validator.isLength(data.username, { min: 2, max: 25 })) {
-    errors.message = 'Username must be between 2 and 25 characters';
+  if (!Validator.isEmpty(data.linkedin) && !Validator.isURL(data.linkedin)) {
+    errors.message = 'Given linkedin must be a valid linkedin URL';
   }
 
-  if (Validator.isEmpty(data.password)) {
-    errors.message = 'Password field is required';
+  if (
+    !Validator.isEmpty(data.instagram) &&
+    !Validator.contains(data.instagram, 'instagram')
+  ) {
+    errors.message = 'Given instagram must be a valid instagram URL';
   }
 
-  if (!Validator.isLength(data.password, { min: 6, max: 32 })) {
-    errors.message = 'Password must be between 6 and 32 characters';
+  if (!Validator.isEmpty(data.instagram) && !Validator.isURL(data.instagram)) {
+    errors.message = 'Given instagram must be a valid instagram URL';
   }
 
-  if (Validator.isEmpty(data.password2)) {
-    errors.message = 'Matching password field is required';
+  if (
+    !Validator.isEmpty(data.github) &&
+    !Validator.contains(data.github, 'github')
+  ) {
+    errors.message = 'Given github must be a valid github URL';
   }
 
-  if (!Validator.equals(data.password, data.password2)) {
-    errors.message = 'Password fields must match';
+  if (!Validator.isEmpty(data.github) && !Validator.isURL(data.github)) {
+    errors.message = 'Given github must be a valid github URL';
+  }
+
+  if (
+    !Validator.isEmpty(data.glitch) &&
+    !Validator.contains(data.glitch, 'glitch')
+  ) {
+    errors.message = 'Given glitch must be a valid glitch URL';
+  }
+
+  if (!Validator.isEmpty(data.glitch) && !Validator.isURL(data.glitch)) {
+    errors.message = 'Given glitch must be a valid glitch URL';
+  }
+
+  if (
+    !Validator.isEmpty(data.codepen) &&
+    !Validator.contains(data.codepen, 'codepen')
+  ) {
+    errors.message = 'Given codepen must be a valid codepen URL';
+  }
+
+  if (!Validator.isEmpty(data.codepen) && !Validator.isURL(data.codepen)) {
+    errors.message = 'Given codepen must be a valid codepen URL';
   }
 
   return {
