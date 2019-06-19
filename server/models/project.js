@@ -59,6 +59,11 @@ projectSchema.post('save', function(doc, next) {
     .then(() => next());
 });
 
+projectSchema.methods.update = function(body) {
+  this.set(body);
+  return this.save();
+};
+
 const Project = mongoose.model('Project', projectSchema);
 
 module.exports = Project;

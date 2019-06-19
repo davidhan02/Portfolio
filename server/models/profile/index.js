@@ -67,6 +67,11 @@ profileSchema.post('save', function(doc, next) {
     .then(() => next());
 });
 
+profileSchema.methods.update = function(body) {
+  this.set(body);
+  return this.save();
+};
+
 profileSchema.methods.addEdu = function(body) {
   this.education.unshift({ ...body });
   return this.save();
@@ -110,7 +115,7 @@ profileSchema.methods.setSocial = function(body) {
   return this.save();
 };
 
-profileSchema.methods.clearSocial = function(body) {
+profileSchema.methods.clearSocial = function() {
   this.social = {};
   return this.save();
 };

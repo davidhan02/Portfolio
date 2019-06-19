@@ -33,12 +33,7 @@ exports.update = async (req, res, next) => {
         .map(x => x.trim())
         .filter(x => x !== '')
     };
-    await Profile.findByIdAndUpdate(
-      req.profile.id,
-      { $set: profileFields },
-      { upsert: true }
-    );
-    const profile = await Profile.findById(req.profile.id);
+    const profile = await req.profile.update(profileFields);
     res.status(201).json(profile);
   } catch (err) {
     next(err);

@@ -53,13 +53,8 @@ exports.update = async (req, res, next) => {
         .map(x => x.trim())
         .filter(x => x !== '')
     };
-    await Project.findByIdAndUpdate(
-      req.project.id,
-      { $set: projectFields },
-      { upsert: true }
-    );
-    const project = await Project.findById(req.project.id);
-    res.status(201).json(project);
+    const profile = await req.profile.update(projectFields);
+    res.status(201).json(profile);
   } catch (err) {
     next(err);
   }
