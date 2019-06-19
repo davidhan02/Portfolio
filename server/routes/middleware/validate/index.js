@@ -6,7 +6,7 @@ const eduValidator = require('./education');
 const expValidator = require('./experience');
 const socialValidator = require('./social');
 
-const lyst = [
+const forms = [
   'login',
   'register',
   'project',
@@ -16,9 +16,9 @@ const lyst = [
   'social'
 ];
 
-lyst.forEach(item => {
-  exports[item] = (req, res, next) => {
-    const { errors, isValid } = eval(`${item}Validator(req.body)`);
+forms.forEach(form => {
+  exports[form] = (req, res, next) => {
+    const { errors, isValid } = eval(`${form}Validator(req.body)`);
     if (!isValid) {
       return res.status(400).json(errors);
     }
