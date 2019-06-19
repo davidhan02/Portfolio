@@ -1,5 +1,4 @@
 const Validator = require('validator');
-const User = require('../../../models/user');
 const isEmpty = require('./isEmpty');
 
 module.exports = function registerValidator(data) {
@@ -8,11 +7,6 @@ module.exports = function registerValidator(data) {
   data.username = !isEmpty(data.username) ? data.username : '';
   data.password = !isEmpty(data.password) ? data.password : '';
   data.password2 = !isEmpty(data.password2) ? data.password2 : '';
-
-  const found = User.find({ username: data.username });
-  if (found) {
-    errors.message = 'Username is already taken';
-  }
 
   if (Validator.isEmpty(data.username)) {
     errors.message = 'Username field is required';

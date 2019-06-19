@@ -21,6 +21,10 @@ exports.login = (req, res, next) => {
 exports.register = async (req, res, next) => {
   try {
     const { username, password } = req.body;
+    const existingUser = await User.findOne({ username });
+    if (existingUser) {
+      return res.status(422).json({ message: 'Username already taken' });
+    }
     const user = await User.create({ username, password });
     const token = this.createAuthToken(user);
     res.status(201).json({ token });
