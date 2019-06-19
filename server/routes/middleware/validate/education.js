@@ -22,7 +22,7 @@ module.exports = function eduValidator(data) {
     errors.message = 'Degree field is required';
   }
 
-  if (!Validator.isLength(data.degree, { min: 3, max: 30 })) {
+  if (!Validator.isLength(data.degree, { min: 3, max: 50 })) {
     errors.message = 'Degree must be between 3 and 30 characters';
   }
 
@@ -30,7 +30,7 @@ module.exports = function eduValidator(data) {
     errors.message = 'Major field is required';
   }
 
-  if (!Validator.isLength(data.major, { min: 3, max: 40 })) {
+  if (!Validator.isLength(data.major, { min: 3, max: 50 })) {
     errors.message = 'Major must be between 3 and 40 characters';
   }
 

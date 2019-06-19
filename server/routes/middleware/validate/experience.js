@@ -1,35 +1,53 @@
 const Validator = require('validator');
 const isEmpty = require('./isEmpty');
 
-module.exports = function expValidator(data) {
+module.exports = function eduValidator(data) {
   let errors = {};
 
-  data.username = !isEmpty(data.username) ? data.username : '';
-  data.password = !isEmpty(data.password) ? data.password : '';
-  data.password2 = !isEmpty(data.password2) ? data.password2 : '';
+  data.title = !isEmpty(data.title) ? data.title : '';
+  data.company = !isEmpty(data.company) ? data.company : '';
+  data.location = !isEmpty(data.location) ? data.location : '';
+  data.from = !isEmpty(data.from) ? data.from : '';
+  data.description = !isEmpty(data.description) ? data.description : '';
 
-  if (Validator.isEmpty(data.username)) {
-    errors.message = 'Username field is required';
+  if (Validator.isEmpty(data.title)) {
+    errors.message = 'Title field is required';
   }
 
-  if (!Validator.isLength(data.username, { min: 2, max: 25 })) {
-    errors.message = 'Username must be between 2 and 25 characters';
+  if (!Validator.isLength(data.title, { min: 3, max: 30 })) {
+    errors.message = 'Title must be between 3 and 50 characters';
   }
 
-  if (Validator.isEmpty(data.password)) {
-    errors.message = 'Password field is required';
+  if (Validator.isEmpty(data.company)) {
+    errors.message = 'Company field is required';
   }
 
-  if (!Validator.isLength(data.password, { min: 6, max: 32 })) {
-    errors.message = 'Password must be between 6 and 32 characters';
+  if (!Validator.isLength(data.company, { min: 3, max: 60 })) {
+    errors.message = 'Company must be between 3 and 60 characters';
   }
 
-  if (Validator.isEmpty(data.password2)) {
-    errors.message = 'Matching password field is required';
+  if (Validator.isEmpty(data.location)) {
+    errors.message = 'Location field is required';
   }
 
-  if (!Validator.equals(data.password, data.password2)) {
-    errors.message = 'Password fields must match';
+  if (!Validator.isLength(data.location, { min: 3, max: 50 })) {
+    errors.message = 'Location must be between 3 and 50 characters';
+  }
+
+  if (Validator.isEmpty(data.from)) {
+    errors.message = 'From date field is required';
+  }
+
+  if (Validator.toDate(data.from)) {
+    errors.message = 'From date must be a date';
+  }
+
+  if (Validator.isEmpty(data.description)) {
+    errors.message = 'Description field is required';
+  }
+
+  if (!Validator.isLength(data.description, { min: 3, max: 500 })) {
+    errors.message = 'Description must be between 3 and 500 characters';
   }
 
   return {
