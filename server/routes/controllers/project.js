@@ -53,8 +53,8 @@ exports.update = async (req, res, next) => {
         .map(x => x.trim())
         .filter(x => x !== '')
     };
-    const profile = await req.profile.update(projectFields);
-    res.status(201).json(profile);
+    const project = await req.project.update(projectFields);
+    res.status(201).json(project);
   } catch (err) {
     next(err);
   }

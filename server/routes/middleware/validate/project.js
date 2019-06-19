@@ -14,7 +14,7 @@ module.exports = function projectValidator(data) {
     errors.message = 'Given link field is required';
   }
 
-  if (!Validator.equals('Offline') && !Validator.isURL(data.url)) {
+  if (!Validator.equals(data.url, 'Offline') && !Validator.isURL(data.url)) {
     errors.message = 'Given link must be a valid URL or Offline';
   }
 
