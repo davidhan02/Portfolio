@@ -10,7 +10,7 @@ module.exports = function eduValidator(data) {
     data[field] = !isEmpty(data[field]) ? data[field] : '';
 
     if (Validator.isEmpty(data[field])) {
-      errors.message = `${field} entry is required`;
+      errors.message = `${field} is required`;
     }
   });
 

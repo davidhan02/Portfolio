@@ -4,32 +4,26 @@ const isEmpty = require('./isEmpty');
 module.exports = function registerValidator(data) {
   let errors = {};
 
-  data.username = !isEmpty(data.username) ? data.username : '';
-  data.password = !isEmpty(data.password) ? data.password : '';
-  data.password2 = !isEmpty(data.password2) ? data.password2 : '';
+  const required = ['username', 'password', 'password2'];
 
-  if (Validator.isEmpty(data.username)) {
-    errors.message = 'Username field is required';
-  }
+  required.forEach(field => {
+    data[field] = !isEmpty(data[field]) ? data[field] : '';
+
+    if (Validator.isEmpty(data[field])) {
+      errors.message = `${field} is required`;
+    }
+  });
 
   if (!Validator.isLength(data.username, { min: 2, max: 25 })) {
-    errors.message = 'Username must be between 2 and 25 characters';
-  }
-
-  if (Validator.isEmpty(data.password)) {
-    errors.message = 'Password field is required';
+    errors.message = 'username must be between 2 and 25 characters';
   }
 
   if (!Validator.isLength(data.password, { min: 6, max: 32 })) {
-    errors.message = 'Password must be between 6 and 32 characters';
-  }
-
-  if (Validator.isEmpty(data.password2)) {
-    errors.message = 'Matching password field is required';
+    errors.message = 'password must be between 6 and 32 characters';
   }
 
   if (!Validator.equals(data.password, data.password2)) {
-    errors.message = 'Password fields must match';
+    errors.message = 'password fields must match';
   }
 
   return {

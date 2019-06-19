@@ -10,12 +10,12 @@ module.exports = function loginValidator(data) {
     data[field] = !isEmpty(data[field]) ? data[field] : '';
 
     if (Validator.isEmpty(data[field])) {
-      errors.message = `${field} entry is required`;
+      errors.message = `${field} is required`;
     }
   });
 
   if (!Validator.isLength(data.password, { min: 6, max: 32 })) {
-    errors.message = 'Password must be between 6 and 32 characters';
+    errors.message = 'password must be between 6 and 32 characters';
   }
 
   return {
