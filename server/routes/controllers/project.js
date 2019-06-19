@@ -9,23 +9,35 @@ exports.listAll = async (req, res) => {
 };
 
 exports.listByCategory = async (req, res) => {
-  const category = req.params.category;
-  const list = await Project.find({ categories: category }).sort('-created');
-  res.json(list);
+  try {
+    const category = req.params.category;
+    const list = await Project.find({ categories: category }).sort('-created');
+    res.json(list);
+  } catch ({ message }) {
+    res.status(500).json({ message });
+  }
 };
 
 exports.showOne = async (req, res) => {
-  const project = await Project.findByIdAndUpdate(
-    req.project.id,
-    { $inc: { views: 1 } },
-    { new: true }
-  );
-  res.status(201).json(project);
+  try {
+    const project = await Project.findByIdAndUpdate(
+      req.project.id,
+      { $inc: { views: 1 } },
+      { new: true }
+    );
+    res.status(201).json(project);
+  } catch ({ message }) {
+    res.status(500).json({ message });
+  }
 };
 
 exports.destroy = async (req, res) => {
-  await req.project.remove();
-  res.status(201).json({ message: 'Successfully deleted' });
+  try {
+    await req.project.remove();
+    res.status(201).json({ message: 'Successfully deleted' });
+  } catch ({ message }) {
+    res.status(500).json({ message });
+  }
 };
 
 exports.submit = async (req, res, next) => {
@@ -39,8 +51,8 @@ exports.submit = async (req, res, next) => {
         .filter(x => x !== '')
     });
     res.status(201).json(project);
-  } catch (err) {
-    next(err);
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 };
 
@@ -55,8 +67,8 @@ exports.update = async (req, res, next) => {
     };
     const project = await req.project.update(projectFields);
     res.status(201).json(project);
-  } catch (err) {
-    next(err);
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 };
 

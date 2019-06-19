@@ -19,8 +19,8 @@ exports.submit = async (req, res, next) => {
         .filter(x => x !== '')
     });
     res.status(201).json(profile);
-  } catch (err) {
-    next(err);
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 };
 
@@ -35,8 +35,8 @@ exports.update = async (req, res, next) => {
     };
     const profile = await req.profile.update(profileFields);
     res.status(201).json(profile);
-  } catch (err) {
-    next(err);
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 };
 
@@ -48,8 +48,8 @@ exports.destroy = async (req, res) => {
   try {
     await req.profile.remove();
     res.status(201).json({ message: 'Successfully deleted' });
-  } catch (err) {
-    next(err);
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 };
 
@@ -57,8 +57,8 @@ exports.addEdu = async (req, res, next) => {
   try {
     const profile = await req.profile.addEdu(req.body);
     res.status(201).json(profile);
-  } catch (err) {
-    next(err);
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 };
 
@@ -67,8 +67,8 @@ exports.updateEdu = async (req, res, next) => {
     const { eduId } = req.params;
     const profile = await req.profile.updateEdu(eduId, req.body);
     res.status(201).json(profile);
-  } catch (err) {
-    next(err);
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 };
 
@@ -76,8 +76,8 @@ exports.removeEdu = async (req, res, next) => {
   try {
     const profile = await req.profile.removeEdu(req.params.eduId);
     res.status(201).json(profile);
-  } catch (err) {
-    next(err);
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 };
 
@@ -85,8 +85,8 @@ exports.addExp = async (req, res, next) => {
   try {
     const profile = await req.profile.addExp(req.body);
     res.status(201).json(profile);
-  } catch (err) {
-    next(err);
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 };
 
@@ -95,8 +95,8 @@ exports.updateExp = async (req, res, next) => {
     const { expId } = req.params;
     const profile = await req.profile.updateExp(expId, req.body);
     res.status(201).json(profile);
-  } catch (err) {
-    next(err);
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 };
 
@@ -104,8 +104,8 @@ exports.removeExp = async (req, res, next) => {
   try {
     const profile = await req.profile.removeExp(req.params.expId);
     res.status(201).json(profile);
-  } catch (err) {
-    next(err);
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 };
 
@@ -113,8 +113,8 @@ exports.setSocial = async (req, res, next) => {
   try {
     const profile = await req.profile.setSocial(req.body);
     res.status(201).json(profile);
-  } catch (err) {
-    next(err);
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 };
 
@@ -122,8 +122,8 @@ exports.clearSocial = async (req, res, next) => {
   try {
     const profile = await req.profile.clearSocial();
     res.status(201).json(profile);
-  } catch (err) {
-    next(err);
+  } catch ({ message }) {
+    res.status(500).json({ message });
   }
 };
 
