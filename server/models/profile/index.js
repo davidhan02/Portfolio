@@ -72,18 +72,10 @@ profileSchema.methods.addEdu = function(body) {
   return this.save();
 };
 
-profileSchema.methods.addExp = function(body) {
-  this.experience.unshift({ ...body });
-  return this.save();
-};
-
-profileSchema.methods.setSocial = function(body) {
-  this.social = { ...body };
-  return this.save();
-};
-
-profileSchema.methods.clearSocial = function(body) {
-  this.social = {};
+profileSchema.methods.updateEdu = function(eduId, body) {
+  const edu = this.education.id(eduId);
+  if (!edu) throw new Error('No education matches that ID');
+  exp.set(body);
   return this.save();
 };
 
@@ -94,10 +86,32 @@ profileSchema.methods.removeEdu = function(eduId) {
   return this.save();
 };
 
+profileSchema.methods.addExp = function(body) {
+  this.experience.unshift({ ...body });
+  return this.save();
+};
+
+profileSchema.methods.updateExp = function(expId, body) {
+  const exp = this.experience.id(expId);
+  if (!exp) throw new Error('No experience matches that ID');
+  exp.set(body);
+  return this.save();
+};
+
 profileSchema.methods.removeExp = function(expId) {
   const exp = this.experience.id(expId);
   if (!exp) throw new Error('No experience matches that ID');
   exp.remove();
+  return this.save();
+};
+
+profileSchema.methods.setSocial = function(body) {
+  this.social = { ...body };
+  return this.save();
+};
+
+profileSchema.methods.clearSocial = function(body) {
+  this.social = {};
   return this.save();
 };
 

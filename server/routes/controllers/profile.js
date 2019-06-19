@@ -58,6 +58,34 @@ exports.destroy = async (req, res) => {
   }
 };
 
+exports.addEdu = async (req, res, next) => {
+  try {
+    const profile = await req.profile.addEdu(req.body);
+    res.status(201).json(profile);
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.updateEdu = async (req, res, next) => {
+  try {
+    const { eduId } = req.params;
+    const profile = await req.profile.updateEdu(eduId, req.body);
+    res.status(201).json(profile);
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.removeEdu = async (req, res, next) => {
+  try {
+    const profile = await req.profile.removeEdu(req.params.eduId);
+    res.status(201).json(profile);
+  } catch (err) {
+    next(err);
+  }
+};
+
 exports.addExp = async (req, res, next) => {
   try {
     const profile = await req.profile.addExp(req.body);
@@ -67,9 +95,19 @@ exports.addExp = async (req, res, next) => {
   }
 };
 
-exports.addEdu = async (req, res, next) => {
+exports.updateExp = async (req, res, next) => {
   try {
-    const profile = await req.profile.addEdu(req.body);
+    const { expId } = req.params;
+    const profile = await req.profile.updateExp(expId, req.body);
+    res.status(201).json(profile);
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.removeExp = async (req, res, next) => {
+  try {
+    const profile = await req.profile.removeExp(req.params.expId);
     res.status(201).json(profile);
   } catch (err) {
     next(err);
@@ -88,24 +126,6 @@ exports.setSocial = async (req, res, next) => {
 exports.clearSocial = async (req, res, next) => {
   try {
     const profile = await req.profile.clearSocial();
-    res.status(201).json(profile);
-  } catch (err) {
-    next(err);
-  }
-};
-
-exports.removeExp = async (req, res, next) => {
-  try {
-    const profile = await req.profile.removeExp(req.params.expId);
-    res.status(201).json(profile);
-  } catch (err) {
-    next(err);
-  }
-};
-
-exports.removeEdu = async (req, res, next) => {
-  try {
-    const profile = await req.profile.removeEdu(req.params.eduId);
     res.status(201).json(profile);
   } catch (err) {
     next(err);

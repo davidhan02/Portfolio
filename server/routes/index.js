@@ -26,9 +26,11 @@ router.put('/profile/:profile', auth.jwt, validate.profile, profile.update);
 router.delete('/profile/:profile', auth.jwt, profile.destroy);
 
 router.post('/exp/:profile', auth.jwt, validate.exp, profile.addExp);
+router.put('/exp/:profile/:expId', auth.jwt, validate.exp, profile.updateExp);
 router.delete('/exp/:profile/:expId', auth.jwt, profile.removeExp);
 
 router.post('/edu/:profile', auth.jwt, validate.edu, profile.addEdu);
+router.put('/edu/:profile/:eduId', auth.jwt, validate.edu, profile.updateEdu);
 router.delete('/edu/:profile/:eduId', auth.jwt, profile.removeEdu);
 
 router.post('/social/:profile', auth.jwt, validate.social, profile.setSocial);
