@@ -12,56 +12,41 @@ module.exports = function socialValidator(data) {
 
   if (
     !Validator.isEmpty(data.linkedin) &&
-    !Validator.contains(data.linkedin, 'linkedin')
+    (!Validator.contains(data.linkedin, 'linkedin') ||
+      !Validator.isURL(data.linkedin))
   ) {
-    errors.message = 'Given linkedin must be a valid linkedin URL';
-  }
-
-  if (!Validator.isEmpty(data.linkedin) && !Validator.isURL(data.linkedin)) {
     errors.message = 'Given linkedin must be a valid linkedin URL';
   }
 
   if (
     !Validator.isEmpty(data.instagram) &&
-    !Validator.contains(data.instagram, 'instagram')
+    (!Validator.contains(data.instagram, 'instagram') ||
+      !Validator.isURL(data.instagram))
   ) {
-    errors.message = 'Given instagram must be a valid instagram URL';
-  }
-
-  if (!Validator.isEmpty(data.instagram) && !Validator.isURL(data.instagram)) {
     errors.message = 'Given instagram must be a valid instagram URL';
   }
 
   if (
     !Validator.isEmpty(data.github) &&
-    !Validator.contains(data.github, 'github')
+    (!Validator.contains(data.github, 'github') ||
+      !Validator.isURL(data.github))
   ) {
-    errors.message = 'Given github must be a valid github URL';
-  }
-
-  if (!Validator.isEmpty(data.github) && !Validator.isURL(data.github)) {
     errors.message = 'Given github must be a valid github URL';
   }
 
   if (
     !Validator.isEmpty(data.glitch) &&
-    !Validator.contains(data.glitch, 'glitch')
+    (!Validator.contains(data.glitch, 'glitch') ||
+      !Validator.isURL(data.glitch))
   ) {
-    errors.message = 'Given glitch must be a valid glitch URL';
-  }
-
-  if (!Validator.isEmpty(data.glitch) && !Validator.isURL(data.glitch)) {
     errors.message = 'Given glitch must be a valid glitch URL';
   }
 
   if (
     !Validator.isEmpty(data.codepen) &&
-    !Validator.contains(data.codepen, 'codepen')
+    (!Validator.contains(data.codepen, 'codepen') ||
+      !Validator.isURL(data.codepen))
   ) {
-    errors.message = 'Given codepen must be a valid codepen URL';
-  }
-
-  if (!Validator.isEmpty(data.codepen) && !Validator.isURL(data.codepen)) {
     errors.message = 'Given codepen must be a valid codepen URL';
   }
 
