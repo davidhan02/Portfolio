@@ -38,7 +38,7 @@ module.exports = function eduValidator(data) {
     errors.message = 'From date field is required';
   }
 
-  if (Validator.toDate(data.from)) {
+  if (!Validator.toDate(data.from)) {
     errors.message = 'From date must be a date';
   }
 

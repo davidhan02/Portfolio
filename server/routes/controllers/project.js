@@ -1,14 +1,17 @@
 const Project = require('../../models/project');
 
 exports.listAll = async (req, res) => {
-  const posts = await Project.find().sort('-created');
-  res.json(posts);
+  const list = await Project.find().sort('-created');
+  if (list.length < 1) {
+    return res.status(500).json({ message: 'No projects found' });
+  }
+  res.json(list);
 };
 
 exports.listByCategory = async (req, res) => {
   const category = req.params.category;
-  const posts = await Project.find({ categories: category }).sort('-created');
-  res.json(posts);
+  const list = await Project.find({ categories: category }).sort('-created');
+  res.json(list);
 };
 
 exports.showOne = async (req, res) => {
@@ -35,6 +38,27 @@ exports.submit = async (req, res, next) => {
         .map(x => x.trim())
         .filter(x => x !== '')
     });
+    res.status(201).json(project);
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.update = async (req, res, next) => {
+  try {
+    const projectFields = {
+      ...req.body,
+      categories: req.body.categories
+        .split(',')
+        .map(x => x.trim())
+        .filter(x => x !== '')
+    };
+    await Project.findByIdAndUpdate(
+      req.project.id,
+      { $set: projectFields },
+      { upsert: true }
+    );
+    const project = await Project.findById(req.project.id);
     res.status(201).json(project);
   } catch (err) {
     next(err);

@@ -24,13 +24,38 @@ exports.submit = async (req, res, next) => {
   }
 };
 
+exports.update = async (req, res, next) => {
+  try {
+    const profileFields = {
+      ...req.body,
+      skills: req.body.skills
+        .split(',')
+        .map(x => x.trim())
+        .filter(x => x !== '')
+    };
+    await Profile.findByIdAndUpdate(
+      req.profile.id,
+      { $set: profileFields },
+      { upsert: true }
+    );
+    const profile = await Profile.findById(req.profile.id);
+    res.status(201).json(profile);
+  } catch (err) {
+    next(err);
+  }
+};
+
 exports.showOne = async (req, res) => {
   res.status(201).json(req.profile);
 };
 
 exports.destroy = async (req, res) => {
-  await req.profile.remove();
-  res.status(201).json({ message: 'Successfully deleted' });
+  try {
+    await req.profile.remove();
+    res.status(201).json({ message: 'Successfully deleted' });
+  } catch (err) {
+    next(err);
+  }
 };
 
 exports.addExp = async (req, res, next) => {

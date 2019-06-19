@@ -23,7 +23,7 @@ module.exports = function profileValidator(data) {
     errors.message = 'Birthday field is required';
   }
 
-  if (Validator.toDate(data.birthday)) {
+  if (!Validator.toDate(data.birthday)) {
     errors.message = 'Birthday field must be a date';
   }
 
@@ -31,7 +31,7 @@ module.exports = function profileValidator(data) {
     errors.message = 'Status field is required';
   }
 
-  if (Validator.isLength(data.status, { min: 2, max: 30 })) {
+  if (!Validator.isLength(data.status, { min: 2, max: 30 })) {
     errors.message = 'Status field must be between 2 and 30 characters';
   }
 
@@ -39,7 +39,7 @@ module.exports = function profileValidator(data) {
     errors.message = 'Skills field is required';
   }
 
-  if (Validator.isLength(data.skills, { min: 5, max: undefined })) {
+  if (!Validator.isLength(data.skills, { min: 5, max: undefined })) {
     errors.message = 'Skills field must be at least 5 characters';
   }
 
@@ -47,7 +47,7 @@ module.exports = function profileValidator(data) {
     errors.message = 'Location field is required';
   }
 
-  if (Validator.isLength(data.location, { min: 2, max: 50 })) {
+  if (!Validator.isLength(data.location, { min: 2, max: 50 })) {
     errors.message = 'Location field must be between 2 and 50 characters';
   }
 
@@ -55,7 +55,7 @@ module.exports = function profileValidator(data) {
     errors.message = 'Bio field is required';
   }
 
-  if (Validator.isLength(data.bio, { min: 15, max: undefined })) {
+  if (!Validator.isLength(data.bio, { min: 15, max: undefined })) {
     errors.message = 'Bio field must be at least 15 characters';
   }
 
