@@ -31,7 +31,8 @@ const eduSchema = new Schema({
     default: false
   },
   description: {
-    type: String
+    type: String,
+    required: true
   }
 });
 
