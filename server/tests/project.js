@@ -20,8 +20,6 @@ describe('Project route testing', () => {
         .send(user)
         .end((err, res) => {
           res.should.have.status(201);
-          res.body.should.be.a('object');
-          res.body.token.should.be.a('string');
           jwtToken = res.body.token;
           testUser = jwtDecode(jwtToken).user;
           done();
@@ -114,6 +112,49 @@ describe('Project route testing', () => {
         });
     });
   });
+  describe('PUT /api/project/:project', () => {
+    it('Fails with invalid project ID', done => {
+      chai
+        .request(server)
+        .put('/api/project/invalidID')
+        .send({ ...project, title: 'Modified Title' })
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.should.be.a('object');
+          res.body.message.should.be.eql('Project not found');
+          done();
+        });
+    });
+    it('Fails without valid http header', done => {
+      chai
+        .request(server)
+        .put(`/api/project/${testProject.id}`)
+        .send({ ...project, title: 'Modified Title' })
+        .end((err, res) => {
+          res.should.have.status(401);
+          res.body.should.be.a('object');
+          res.body.message.should.be.eql('Unauthorized');
+          done();
+        });
+    });
+    it('Succeeds with valid http header and project ID', done => {
+      chai
+        .request(server)
+        .put(`/api/project/${testProject.id}`)
+        .set('Authorization', `Bearer ${jwtToken}`)
+        .send({ ...project, title: 'Modified Title' })
+        .end((err, res) => {
+          res.should.have.status(201);
+          res.body.should.be.a('object');
+          res.body.should.be.eql({
+            ...testProject,
+            title: 'Modified Title',
+            views: testProject.views + 1
+          });
+          done();
+        });
+    });
+  });
   describe('DELETE /api/project/:project', () => {
     it('Fails without valid http header', done => {
       chai
@@ -159,7 +200,6 @@ describe('Project route testing', () => {
         .set('Authorization', `Bearer ${jwtToken}`)
         .end((err, res) => {
           res.should.have.status(201);
-          res.body.should.be.a('object');
           res.body.message.should.be.eql('Successfully deleted');
           done();
         });
