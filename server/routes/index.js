@@ -7,6 +7,7 @@ const profile = require('./controllers/profile');
 
 router.post('/login', validate.login, user.login);
 router.post('/register', validate.register, user.register);
+router.delete('/user/:userId', auth.jwt, user.destroy);
 
 router.get('/project', project.listAll);
 router.get('/project/cat/:category', project.listByCategory);

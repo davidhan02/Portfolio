@@ -9,6 +9,19 @@ exports.createAuthToken = user => {
   });
 };
 
+exports.destroy = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    if (!user) {
+      return res.status(500).json({ message: 'Invalid user ID' });
+    }
+    user.remove();
+    res.status(201).json({ message: 'Successfully deleted' });
+  } catch (err) {
+    next(err);
+  }
+};
+
 exports.login = (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
     if (err) return next(err);
@@ -20,8 +33,12 @@ exports.login = (req, res, next) => {
 
 exports.register = async (req, res, next) => {
   try {
-    const { username, password } = req.body;
-    const user = await User.create({ username, password });
+    const { username, password, adminkey } = req.body;
+    const user = await User.create({
+      username,
+      password,
+      admin: adminkey === keys.adminkey
+    });
     const token = this.createAuthToken(user);
     res.status(201).json({ token });
   } catch (err) {
