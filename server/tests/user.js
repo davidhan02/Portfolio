@@ -4,11 +4,11 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const jwtDecode = require('jwt-decode');
 const server = require('../index');
-const user = require('../config/testuser');
+const user = require('../config/chai').user;
 const should = chai.should();
 chai.use(chaiHttp);
 
-let jwtUser, jwtToken;
+let testUser, jwtToken;
 
 describe('User route testing', () => {
   describe('POST /api/register', () => {
@@ -84,7 +84,7 @@ describe('User route testing', () => {
           res.body.should.be.a('object');
           res.body.token.should.be.a('string');
           jwtToken = res.body.token;
-          jwtUser = jwtDecode(jwtToken).user;
+          testUser = jwtDecode(jwtToken).user;
           done();
         });
     });
@@ -116,7 +116,7 @@ describe('User route testing', () => {
     it('Succeeds with valid http header and user ID', done => {
       chai
         .request(server)
-        .delete(`/api/user/${jwtUser.id}`)
+        .delete(`/api/user/${testUser.id}`)
         .set('Authorization', `Bearer ${jwtToken}`)
         .end((err, res) => {
           res.should.have.status(201);
