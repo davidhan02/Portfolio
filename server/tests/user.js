@@ -4,17 +4,10 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const jwtDecode = require('jwt-decode');
 const server = require('../index');
-const keys = require('../config/keys');
-const User = require('../models/user');
+const user = require('../config/testuser');
 const should = chai.should();
 chai.use(chaiHttp);
 
-const user = {
-  username: 'johndoe',
-  password: 'password',
-  password2: 'password',
-  adminKey: keys.adminKey
-};
 let jwtUser, jwtToken;
 
 describe('User route testing', () => {
@@ -25,7 +18,7 @@ describe('User route testing', () => {
         .post('/api/register')
         .send({ ...user, password2: '123456' })
         .end((err, res) => {
-          res.should.have.status(400); // MAKE 401
+          res.should.have.status(400);
           res.body.should.be.a('object');
           res.body.message.should.be.eql('password fields must match');
           done();
