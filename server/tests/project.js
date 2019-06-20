@@ -155,6 +155,36 @@ describe('Project route testing', () => {
         });
     });
   });
+  describe('GET /api/project/cat/:category', () => {
+    it('Fails without valid category', done => {
+      const category = 'invalidCategory';
+      chai
+        .request(server)
+        .get(`/api/project/cat/${category}`)
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.body.should.be.a('object');
+          res.body.message.should.be.eql('Category not found');
+          done();
+        });
+    });
+    it('Succeeds with valid category', done => {
+      const category = testProject.categories[0];
+      chai
+        .request(server)
+        .get(`/api/project/cat/${category}`)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('array');
+          res.body[0].should.be.eql({
+            ...testProject,
+            title: 'Modified Title',
+            views: testProject.views + 1
+          });
+          done();
+        });
+    });
+  });
   describe('DELETE /api/project/:project', () => {
     it('Fails without valid http header', done => {
       chai

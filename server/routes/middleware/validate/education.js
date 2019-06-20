@@ -19,7 +19,7 @@ module.exports = function eduValidator(data) {
   }
 
   if (!Validator.isLength(data.degree, { min: 3, max: 50 })) {
-    errors.message = 'degree must be between 3 and 30 characters';
+    errors.message = 'degree must be between 3 and 50 characters';
   }
 
   if (!Validator.isLength(data.major, { min: 3, max: 50 })) {

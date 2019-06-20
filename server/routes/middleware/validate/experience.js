@@ -15,7 +15,7 @@ module.exports = function eduValidator(data) {
   });
 
   if (!Validator.isLength(data.title, { min: 3, max: 30 })) {
-    errors.message = 'title must be between 3 and 50 characters';
+    errors.message = 'title must be between 3 and 30 characters';
   }
 
   if (!Validator.isLength(data.company, { min: 3, max: 60 })) {

@@ -12,6 +12,9 @@ exports.getByCategory = async (req, res) => {
   try {
     const category = req.params.category;
     const list = await Project.find({ categories: category }).sort('-created');
+    if (list.length < 1) {
+      return res.status(400).json({ message: 'Category not found' });
+    }
     res.json(list);
   } catch ({ message }) {
     res.status(500).json({ message });
