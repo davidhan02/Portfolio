@@ -1,6 +1,6 @@
 const Project = require('../../models/project');
 
-exports.listAll = async (req, res) => {
+exports.getAll = async (req, res) => {
   const list = await Project.find().sort('-created');
   if (list.length < 1) {
     return res.status(500).json({ message: 'No projects found' });
@@ -8,7 +8,7 @@ exports.listAll = async (req, res) => {
   res.json(list);
 };
 
-exports.listByCategory = async (req, res) => {
+exports.getByCategory = async (req, res) => {
   try {
     const category = req.params.category;
     const list = await Project.find({ categories: category }).sort('-created');
@@ -18,7 +18,7 @@ exports.listByCategory = async (req, res) => {
   }
 };
 
-exports.showOne = async (req, res) => {
+exports.getOne = async (req, res) => {
   try {
     const project = await Project.findByIdAndUpdate(
       req.project.id,
@@ -31,7 +31,7 @@ exports.showOne = async (req, res) => {
   }
 };
 
-exports.destroy = async (req, res) => {
+exports.delete = async (req, res) => {
   try {
     await req.project.remove();
     res.status(201).json({ message: 'Successfully deleted' });
@@ -40,7 +40,7 @@ exports.destroy = async (req, res) => {
   }
 };
 
-exports.submit = async (req, res, next) => {
+exports.post = async (req, res, next) => {
   try {
     const project = await Project.create({
       ...req.body,

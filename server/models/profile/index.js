@@ -72,7 +72,7 @@ profileSchema.methods.update = function(body) {
   return this.save();
 };
 
-profileSchema.methods.addEdu = function(body) {
+profileSchema.methods.postEdu = function(body) {
   this.education.unshift({ ...body });
   return this.save();
 };
@@ -84,14 +84,14 @@ profileSchema.methods.updateEdu = function(eduId, body) {
   return this.save();
 };
 
-profileSchema.methods.removeEdu = function(eduId) {
+profileSchema.methods.deleteEdu = function(eduId) {
   const edu = this.education.id(eduId);
   if (!edu) throw new Error('No education matches that ID');
   edu.remove();
   return this.save();
 };
 
-profileSchema.methods.addExp = function(body) {
+profileSchema.methods.postExp = function(body) {
   this.experience.unshift({ ...body });
   return this.save();
 };
@@ -103,19 +103,19 @@ profileSchema.methods.updateExp = function(expId, body) {
   return this.save();
 };
 
-profileSchema.methods.removeExp = function(expId) {
+profileSchema.methods.deleteExp = function(expId) {
   const exp = this.experience.id(expId);
   if (!exp) throw new Error('No experience matches that ID');
   exp.remove();
   return this.save();
 };
 
-profileSchema.methods.setSocial = function(body) {
+profileSchema.methods.postSocial = function(body) {
   this.social = { ...body };
   return this.save();
 };
 
-profileSchema.methods.clearSocial = function() {
+profileSchema.methods.deleteSocial = function() {
   this.social = {};
   return this.save();
 };

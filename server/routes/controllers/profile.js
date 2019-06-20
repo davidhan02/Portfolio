@@ -1,6 +1,6 @@
 const Profile = require('../../models/profile');
 
-exports.listAll = async (req, res) => {
+exports.getAll = async (req, res) => {
   const profiles = await Profile.find();
   if (profiles.length < 1) {
     return res.status(500).json({ message: 'No profiles found' });
@@ -8,7 +8,7 @@ exports.listAll = async (req, res) => {
   res.json(profiles);
 };
 
-exports.submit = async (req, res, next) => {
+exports.post = async (req, res, next) => {
   try {
     const profile = await Profile.create({
       ...req.body,
@@ -40,11 +40,11 @@ exports.update = async (req, res, next) => {
   }
 };
 
-exports.showOne = async (req, res) => {
+exports.getOne = async (req, res) => {
   res.status(201).json(req.profile);
 };
 
-exports.destroy = async (req, res) => {
+exports.delete = async (req, res) => {
   try {
     await req.profile.remove();
     res.status(201).json({ message: 'Successfully deleted' });
@@ -53,9 +53,9 @@ exports.destroy = async (req, res) => {
   }
 };
 
-exports.addEdu = async (req, res, next) => {
+exports.postEdu = async (req, res, next) => {
   try {
-    const profile = await req.profile.addEdu(req.body);
+    const profile = await req.profile.postEdu(req.body);
     res.status(201).json(profile);
   } catch ({ message }) {
     res.status(500).json({ message });
@@ -72,18 +72,18 @@ exports.updateEdu = async (req, res, next) => {
   }
 };
 
-exports.removeEdu = async (req, res, next) => {
+exports.deleteEdu = async (req, res, next) => {
   try {
-    const profile = await req.profile.removeEdu(req.params.eduId);
+    const profile = await req.profile.deleteEdu(req.params.eduId);
     res.status(201).json(profile);
   } catch ({ message }) {
     res.status(500).json({ message });
   }
 };
 
-exports.addExp = async (req, res, next) => {
+exports.postExp = async (req, res, next) => {
   try {
-    const profile = await req.profile.addExp(req.body);
+    const profile = await req.profile.postExp(req.body);
     res.status(201).json(profile);
   } catch ({ message }) {
     res.status(500).json({ message });
@@ -100,27 +100,27 @@ exports.updateExp = async (req, res, next) => {
   }
 };
 
-exports.removeExp = async (req, res, next) => {
+exports.deleteExp = async (req, res, next) => {
   try {
-    const profile = await req.profile.removeExp(req.params.expId);
+    const profile = await req.profile.deleteExp(req.params.expId);
     res.status(201).json(profile);
   } catch ({ message }) {
     res.status(500).json({ message });
   }
 };
 
-exports.setSocial = async (req, res, next) => {
+exports.postSocial = async (req, res, next) => {
   try {
-    const profile = await req.profile.setSocial(req.body);
+    const profile = await req.profile.postSocial(req.body);
     res.status(201).json(profile);
   } catch ({ message }) {
     res.status(500).json({ message });
   }
 };
 
-exports.clearSocial = async (req, res, next) => {
+exports.deleteSocial = async (req, res, next) => {
   try {
-    const profile = await req.profile.clearSocial();
+    const profile = await req.profile.deleteSocial();
     res.status(201).json(profile);
   } catch ({ message }) {
     res.status(500).json({ message });
