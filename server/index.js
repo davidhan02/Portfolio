@@ -23,8 +23,10 @@ require('./models/project');
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(morgan('common'));
 app.use(passport.initialize());
+if (process.env.NODE_ENV !== 'test') {
+  app.use(morgan('common'));
+}
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
@@ -32,3 +34,5 @@ passport.use(jwtStrategy);
 require('./routes')(app);
 
 app.listen(process.env.PORT || 5000);
+
+module.exports = app;

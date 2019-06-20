@@ -8,17 +8,17 @@ const profile = require('./controllers/profile');
 router.post('/login', validate.login, user.login);
 router.post('/register', validate.register, user.register);
 
-router.get('/projects', project.listAll);
-router.get('/projects/:category', project.listByCategory);
-router.post('/projects', auth.jwt, validate.project, project.submit);
+router.get('/project', project.listAll);
+router.get('/project/cat/:category', project.listByCategory);
+router.post('/project', auth.jwt, validate.project, project.submit);
 
 router.param('project', project.load);
 router.get('/project/:project', project.showOne);
 router.put('/project/:project', auth.jwt, validate.project, project.update);
 router.delete('/project/:project', auth.jwt, project.destroy);
 
-router.get('/profiles', profile.listAll);
-router.post('/profiles', auth.jwt, validate.profile, profile.submit);
+router.get('/profile', profile.listAll);
+router.post('/profile', auth.jwt, validate.profile, profile.submit);
 
 router.param('profile', profile.load);
 router.get('/profile/:profile', profile.showOne);
