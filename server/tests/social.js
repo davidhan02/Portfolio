@@ -38,6 +38,17 @@ describe('Social route testing', () => {
     });
   });
   describe('GET /api/profile/:profile/social', () => {
+    it('Fails with invalid profile ID', done => {
+      chai
+        .request(server)
+        .get('/api/profile/invalidID/social')
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.should.be.a('object');
+          res.body.message.should.be.eql('Profile not found');
+          done();
+        });
+    });
     it('Fails without any social in profile', done => {
       chai
         .request(server)
