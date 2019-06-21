@@ -1,4 +1,5 @@
 const Profile = require('../../models/profile');
+const isEmpty = require('../middleware/validate/isEmpty');
 
 exports.getAll = async (req, res) => {
   const profiles = await Profile.find();
@@ -8,7 +9,7 @@ exports.getAll = async (req, res) => {
   res.json(profiles);
 };
 
-exports.post = async (req, res, next) => {
+exports.post = async (req, res) => {
   try {
     const profile = await Profile.create({
       ...req.body,
@@ -24,7 +25,7 @@ exports.post = async (req, res, next) => {
   }
 };
 
-exports.update = async (req, res, next) => {
+exports.update = async (req, res) => {
   try {
     const profileFields = {
       ...req.body,
@@ -53,7 +54,22 @@ exports.delete = async (req, res) => {
   }
 };
 
-exports.postEdu = async (req, res, next) => {
+exports.getOneEdu = async (req, res) => {
+  const edu = await req.profile.education.id(req.params.edu);
+  if (!edu) {
+    return res.status(500).json({ message: 'No education found' });
+  }
+  res.status(201).json(edu);
+};
+
+exports.getAllEdu = async (req, res) => {
+  if (req.profile.education.length < 1) {
+    return res.status(500).json({ message: 'No education found' });
+  }
+  res.status(201).json(req.profile.education);
+};
+
+exports.postEdu = async (req, res) => {
   try {
     const profile = await req.profile.postEdu(req.body);
     res.status(201).json(profile);
@@ -62,26 +78,41 @@ exports.postEdu = async (req, res, next) => {
   }
 };
 
-exports.updateEdu = async (req, res, next) => {
+exports.updateEdu = async (req, res) => {
   try {
-    const { eduId } = req.params;
-    const profile = await req.profile.updateEdu(eduId, req.body);
+    const { edu } = req.params;
+    const profile = await req.profile.updateEdu(edu, req.body);
     res.status(201).json(profile);
   } catch ({ message }) {
     res.status(500).json({ message });
   }
 };
 
-exports.deleteEdu = async (req, res, next) => {
+exports.deleteEdu = async (req, res) => {
   try {
-    const profile = await req.profile.deleteEdu(req.params.eduId);
+    const profile = await req.profile.deleteEdu(req.params.edu);
     res.status(201).json(profile);
   } catch ({ message }) {
     res.status(500).json({ message });
   }
 };
 
-exports.postExp = async (req, res, next) => {
+exports.getOneExp = async (req, res) => {
+  const exp = await req.profile.experience.id(req.params.exp);
+  if (!exp) {
+    return res.status(500).json({ message: 'No experience found' });
+  }
+  res.status(201).json(exp);
+};
+
+exports.getAllExp = async (req, res) => {
+  if (req.profile.experience.length < 1) {
+    return res.status(500).json({ message: 'No experience found' });
+  }
+  res.status(201).json(req.profile.experience);
+};
+
+exports.postExp = async (req, res) => {
   try {
     const profile = await req.profile.postExp(req.body);
     res.status(201).json(profile);
@@ -90,26 +121,32 @@ exports.postExp = async (req, res, next) => {
   }
 };
 
-exports.updateExp = async (req, res, next) => {
+exports.updateExp = async (req, res) => {
   try {
-    const { expId } = req.params;
-    const profile = await req.profile.updateExp(expId, req.body);
+    const { exp } = req.params;
+    const profile = await req.profile.updateExp(exp, req.body);
     res.status(201).json(profile);
   } catch ({ message }) {
     res.status(500).json({ message });
   }
 };
 
-exports.deleteExp = async (req, res, next) => {
+exports.deleteExp = async (req, res) => {
   try {
-    const profile = await req.profile.deleteExp(req.params.expId);
+    const profile = await req.profile.deleteExp(req.params.exp);
     res.status(201).json(profile);
   } catch ({ message }) {
     res.status(500).json({ message });
   }
 };
 
-exports.postSocial = async (req, res, next) => {
+exports.getSocial = async (req, res) => {
+  const social = req.profile.social;
+  console.log(Object.values(social).length);
+  res.status(201).json(social);
+};
+
+exports.postSocial = async (req, res) => {
   try {
     const profile = await req.profile.postSocial(req.body);
     res.status(201).json(profile);
@@ -118,7 +155,16 @@ exports.postSocial = async (req, res, next) => {
   }
 };
 
-exports.deleteSocial = async (req, res, next) => {
+exports.editSocial = async (req, res) => {
+  try {
+    const profile = await req.profile.updateSocial(req.body);
+    res.status(201).json(profile);
+  } catch ({ message }) {
+    res.status(500).json({ message });
+  }
+};
+
+exports.deleteSocial = async (req, res) => {
   try {
     const profile = await req.profile.deleteSocial();
     res.status(201).json(profile);
@@ -130,8 +176,7 @@ exports.deleteSocial = async (req, res, next) => {
 exports.load = async (req, res, next, profileId) => {
   try {
     req.profile = await Profile.findById(profileId);
-    if (!req.profile)
-      return res.status(404).json({ message: 'Profile not found' });
+    if (!req.profile) return res.status(404).json({ message: 'Profile not found' });
   } catch (err) {
     if (err.name === 'CastError') {
       return res.status(400).json({ message: 'Invalid resume ID' });

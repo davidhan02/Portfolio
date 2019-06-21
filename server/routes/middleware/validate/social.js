@@ -11,10 +11,13 @@ module.exports = function socialValidator(data) {
 
     if (
       !Validator.isEmpty(data[field]) &&
-      (!Validator.contains(data[field], `${field}`) ||
-        !Validator.isURL(data[field]))
+      (!Validator.contains(data[field], `${field}`) || !Validator.isURL(data[field]))
     ) {
       errors.message = `${field} must be a valid ${field} URL`;
+    }
+
+    if (Validator.isEmpty(data[field])) {
+      delete data[field];
     }
   });
 

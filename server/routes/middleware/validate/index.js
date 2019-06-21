@@ -6,15 +6,7 @@ const eduValidator = require('./education');
 const expValidator = require('./experience');
 const socialValidator = require('./social');
 
-const forms = [
-  'login',
-  'register',
-  'project',
-  'profile',
-  'edu',
-  'exp',
-  'social'
-];
+const forms = ['login', 'register', 'project', 'profile', 'edu', 'exp', 'social'];
 
 forms.forEach(form => {
   exports[form] = (req, res, next) => {

@@ -10,13 +10,14 @@ router.post('/register', valid.register, user.register);
 router.delete('/user/:userId', auth.jwt, user.destroy);
 
 router.get('/project', project.getAll);
-router.get('/project/cat/:category', project.getByCategory);
 router.post('/project', auth.jwt, valid.project, project.post);
 
 router.param('project', project.load);
 router.get('/project/:project', project.getOne);
 router.put('/project/:project', auth.jwt, valid.project, project.update);
 router.delete('/project/:project', auth.jwt, project.delete);
+
+router.get('/project/cat/:category', project.getByCategory);
 
 router.get('/profile', profile.getAll);
 router.post('/profile', auth.jwt, valid.profile, profile.post);
@@ -26,16 +27,24 @@ router.get('/profile/:profile', profile.getOne);
 router.put('/profile/:profile', auth.jwt, valid.profile, profile.update);
 router.delete('/profile/:profile', auth.jwt, profile.delete);
 
-router.post('/exp/:profile', auth.jwt, valid.exp, profile.postExp);
-router.put('/exp/:profile/:expId', auth.jwt, valid.exp, profile.updateExp);
-router.delete('/exp/:profile/:expId', auth.jwt, profile.deleteExp);
+router.get('/profile/:profile/exp', profile.getAllExp);
+router.post('/profile/:profile/exp', auth.jwt, valid.exp, profile.postExp);
 
-router.post('/edu/:profile', auth.jwt, valid.edu, profile.postEdu);
-router.put('/edu/:profile/:eduId', auth.jwt, valid.edu, profile.updateEdu);
-router.delete('/edu/:profile/:eduId', auth.jwt, profile.deleteEdu);
+router.get('/profile/:profile/exp/:exp', profile.getOneExp);
+router.put('/profile/:profile/exp/:exp', auth.jwt, valid.exp, profile.updateExp);
+router.delete('/profile/:profile/exp/:exp', auth.jwt, profile.deleteExp);
 
-router.post('/social/:profile', auth.jwt, valid.social, profile.postSocial);
-router.delete('/social/:profile', auth.jwt, profile.deleteSocial);
+router.get('/profile/:profile/edu', profile.getAllEdu);
+router.post('/profile/:profile/edu', auth.jwt, valid.edu, profile.postEdu);
+
+router.get('/profile/:profile/edu/:edu', profile.getOneEdu);
+router.put('/profile/:profile/edu/:edu', auth.jwt, valid.edu, profile.updateEdu);
+router.delete('/profile/:profile/edu/:edu', auth.jwt, profile.deleteEdu);
+
+router.get('/profile/:profile/social', profile.getSocial);
+router.post('/profile/:profile/social', auth.jwt, valid.social, profile.postSocial);
+router.patch('/profile/:profile/social', auth.jwt, valid.social, profile.editSocial);
+router.delete('/profile/:profile/social', auth.jwt, profile.deleteSocial);
 
 module.exports = app => {
   app.use('/api', router);

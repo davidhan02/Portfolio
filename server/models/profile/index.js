@@ -115,6 +115,11 @@ profileSchema.methods.postSocial = function(body) {
   return this.save();
 };
 
+profileSchema.methods.updateSocial = function(body) {
+  this.social.set(body);
+  return this.save();
+};
+
 profileSchema.methods.deleteSocial = function() {
   this.social = {};
   return this.save();
