@@ -38,6 +38,17 @@ describe('Experience route testing', () => {
     });
   });
   describe('GET /api/profile/:profile/exp', () => {
+    it('Fails with invalid profile ID', done => {
+      chai
+        .request(server)
+        .get('/api/profile/invalidID/exp')
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.should.be.a('object');
+          res.body.message.should.be.eql('Profile not found');
+          done();
+        });
+    });
     it('Fails without any experience in profile', done => {
       chai
         .request(server)

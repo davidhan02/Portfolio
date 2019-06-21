@@ -38,6 +38,17 @@ describe('Education route testing', () => {
     });
   });
   describe('GET /api/profile/:profile/edu', () => {
+    it('Fails with invalid profile ID', done => {
+      chai
+        .request(server)
+        .get('/api/profile/invalidID/edu')
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.should.be.a('object');
+          res.body.message.should.be.eql('Profile not found');
+          done();
+        });
+    });
     it('Fails without any education in profile', done => {
       chai
         .request(server)
