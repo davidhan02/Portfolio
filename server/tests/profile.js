@@ -4,8 +4,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const jwtDecode = require('jwt-decode');
 const server = require('../index');
-const user = require('../config/chai').user;
-const profile = require('../config/chai').profile;
+const { user, profile } = require('../config/chai');
 const should = chai.should();
 chai.use(chaiHttp);
 

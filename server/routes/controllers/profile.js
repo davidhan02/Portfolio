@@ -1,5 +1,4 @@
 const Profile = require('../../models/profile');
-const isEmpty = require('../middleware/validate/isEmpty');
 
 exports.getAll = async (req, res) => {
   const profiles = await Profile.find();
