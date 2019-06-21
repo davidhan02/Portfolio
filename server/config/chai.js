@@ -40,7 +40,7 @@ exports.experience = {
   company: 'Google',
   location: 'Mountain View, CA',
   from: '01/01/2019',
-  current: true,
+  current: 'true',
   description: 'A test experience description'
 };
 
