@@ -83,6 +83,17 @@ describe('Experience route testing', () => {
     });
   });
   describe('GET /api/profile/:profile/exp', () => {
+    it('Fails with invalid profile ID', done => {
+      chai
+        .request(server)
+        .get('/api/profile/invalidID/exp')
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.should.be.a('object');
+          res.body.message.should.be.eql('Profile not found');
+          done();
+        });
+    });
     it('Succeeds with experience in profile', done => {
       chai
         .request(server)
@@ -96,6 +107,17 @@ describe('Experience route testing', () => {
     });
   });
   describe('GET /api/profile/:profile/exp/:exp', () => {
+    it('Fails with invalid profile ID', done => {
+      chai
+        .request(server)
+        .get(`/api/profile/invalidID/exp/${testExp.id}`)
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.should.be.a('object');
+          res.body.message.should.be.eql('Profile not found');
+          done();
+        });
+    });
     it('Fails with invalid experience ID', done => {
       chai
         .request(server)
@@ -107,7 +129,7 @@ describe('Experience route testing', () => {
           done();
         });
     });
-    it('Succeeds with valid profile ID', done => {
+    it('Succeeds with valid profile and experience ID', done => {
       chai
         .request(server)
         .get(`/api/profile/${testProfile.id}/exp/${testExp.id}`)
@@ -120,7 +142,7 @@ describe('Experience route testing', () => {
     });
   });
   describe('PATCH /api/profile/:profile/exp/:exp', () => {
-    it('Fails with invalid project ID', done => {
+    it('Fails with invalid profile ID', done => {
       chai
         .request(server)
         .patch(`/api/profile/invalidID/exp/${testExp.id}`)

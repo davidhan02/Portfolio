@@ -83,20 +83,31 @@ describe('Social route testing', () => {
     });
   });
   describe('GET /api/profile/:profile/social', () => {
+    it('Fails with invalid profile ID', done => {
+      chai
+        .request(server)
+        .get('/api/profile/invalidID/social')
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.should.be.a('object');
+          res.body.message.should.be.eql('Profile not found');
+          done();
+        });
+    });
     it('Succeeds with social in profile', done => {
       chai
         .request(server)
         .get(`/api/profile/${testProfile.id}/social`)
         .end((err, res) => {
           res.should.have.status(201);
-          res.body.should.be.a('array');
+          res.body.should.be.a('object');
           res.body.should.be.eql(testSocial);
           done();
         });
     });
   });
   describe('PATCH /api/profile/:profile/social', () => {
-    it('Fails with invalid project ID', done => {
+    it('Fails with invalid profile ID', done => {
       chai
         .request(server)
         .patch(`/api/profile/invalidID/social`)
@@ -125,7 +136,7 @@ describe('Social route testing', () => {
         .request(server)
         .patch(`/api/profile/${testProfile.id}/social`)
         .set('Authorization', `Bearer ${jwtToken}`)
-        .send({ company: 'Boston Dynamics' })
+        .send({ github: 'https://github.com/johndoe' })
         .end((err, res) => {
           res.should.have.status(201);
           res.body.should.be.a('object');
@@ -158,18 +169,6 @@ describe('Social route testing', () => {
           res.should.have.status(404);
           res.body.should.be.a('object');
           res.body.message.should.be.eql('Profile not found');
-          done();
-        });
-    });
-    it('Fails with invalid social ID', done => {
-      chai
-        .request(server)
-        .delete(`/api/profile/${testProfile.id}/social`)
-        .set('Authorization', `Bearer ${jwtToken}`)
-        .end((err, res) => {
-          res.should.have.status(500);
-          res.body.should.be.a('object');
-          res.body.message.should.be.eql('No social matches that ID');
           done();
         });
     });

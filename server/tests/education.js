@@ -83,7 +83,18 @@ describe('Education route testing', () => {
     });
   });
   describe('GET /api/profile/:profile/edu', () => {
-    it('Succeeds with education in profile', done => {
+    it('Fails with invalid profile ID', done => {
+      chai
+        .request(server)
+        .get('/api/profile/invalidID/edu')
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.should.be.a('object');
+          res.body.message.should.be.eql('Profile not found');
+          done();
+        });
+    });
+    it('Succeeds with valid profile and existing education', done => {
       chai
         .request(server)
         .get(`/api/profile/${testProfile.id}/edu`)
@@ -96,6 +107,17 @@ describe('Education route testing', () => {
     });
   });
   describe('GET /api/profile/:profile/edu/:edu', () => {
+    it('Fails with invalid profile ID', done => {
+      chai
+        .request(server)
+        .get(`/api/profile/invalidID/edu/${testEdu.id}`)
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.should.be.a('object');
+          res.body.message.should.be.eql('Profile not found');
+          done();
+        });
+    });
     it('Fails with invalid education ID', done => {
       chai
         .request(server)
@@ -107,7 +129,7 @@ describe('Education route testing', () => {
           done();
         });
     });
-    it('Succeeds with valid profile ID', done => {
+    it('Succeeds with valid profile and education ID', done => {
       chai
         .request(server)
         .get(`/api/profile/${testProfile.id}/edu/${testEdu.id}`)
@@ -120,7 +142,7 @@ describe('Education route testing', () => {
     });
   });
   describe('PATCH /api/profile/:profile/edu/:edu', () => {
-    it('Fails with invalid project ID', done => {
+    it('Fails with invalid profile ID', done => {
       chai
         .request(server)
         .patch(`/api/profile/invalidID/edu/${testEdu.id}`)
