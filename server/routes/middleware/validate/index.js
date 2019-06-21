@@ -12,7 +12,7 @@ forms.forEach(form => {
   exports[form] = (req, res, next) => {
     const { errors, isValid } = eval(`${form}Validator(req.body, req.method)`);
     if (!isValid) {
-      return res.status(400).json(errors);
+      return res.status(422).json(errors);
     }
     return next();
   };

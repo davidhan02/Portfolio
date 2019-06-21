@@ -18,7 +18,7 @@ describe('User route testing', () => {
         .post('/api/register')
         .send({ ...user, password2: '123456' })
         .end((err, res) => {
-          res.should.have.status(400);
+          res.should.have.status(422);
           res.body.should.be.a('object');
           res.body.message.should.be.eql('password fields must match');
           done();
