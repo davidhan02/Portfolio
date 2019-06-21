@@ -85,6 +85,7 @@ describe('User route testing', () => {
           res.body.token.should.be.a('string');
           jwtToken = res.body.token;
           testUser = jwtDecode(jwtToken).user;
+          testUser.username.should.be.eql(user.username);
           done();
         });
     });
