@@ -78,7 +78,7 @@ profileSchema.methods.postEdu = function(body) {
 profileSchema.methods.updateEdu = function(eduId, body) {
   const edu = this.education.id(eduId);
   if (!edu) throw new Error('No education matches that ID');
-  exp.set(body);
+  edu.set(body);
   return this.save();
 };
 
