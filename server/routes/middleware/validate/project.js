@@ -1,36 +1,44 @@
 const Validator = require('validator');
 const isEmpty = require('./isEmpty');
 
-module.exports = function project(data) {
+module.exports = function project(data, method) {
   let errors = {};
 
-  const required = ['url', 'code', 'text', 'title', 'categories'];
+  if (method === 'POST') {
+    const required = ['text', 'title', 'categories', 'created'];
 
-  required.forEach(field => {
-    data[field] = !isEmpty(data[field]) ? data[field] : '';
+    required.forEach(field => {
+      data[field] = !isEmpty(data[field]) ? data[field] : '';
 
-    if (Validator.isEmpty(data[field])) {
-      errors.message = `${field} is required`;
-    }
-  });
+      if (Validator.isEmpty(data[field])) {
+        errors.message = `${field} is required`;
+      }
+    });
+  }
 
-  if (!Validator.equals(data.url, 'offline') && !Validator.isURL(data.url)) {
+  const { title, url, code, categories, text, created } = data;
+
+  if (url && !Validator.equals(url, 'offline') && !Validator.isURL(url)) {
     errors.message = 'link must be a valid URL or "offline"';
   }
 
-  if (!Validator.isLength(data.title, { min: 3, max: 50 })) {
+  if (title && !Validator.isLength(title, { min: 3, max: 50 })) {
     errors.message = 'title must be between 3 and 50 characters';
   }
 
-  if (!Validator.isLength(data.text, { min: 10, max: undefined })) {
+  if (text && !Validator.isLength(text, { min: 10, max: undefined })) {
     errors.message = 'text must be at least 10 characters';
   }
 
-  if (!Validator.isLength(data.categories, { min: 8, max: undefined })) {
+  if (categories && !Validator.isLength(categories, { min: 8, max: undefined })) {
     errors.message = 'categories must be at least 8 characters';
   }
 
-  if (!Validator.isURL(data.code)) {
+  if (created && !Validator.toDate(created)) {
+    errors.message = 'created must be a date';
+  }
+
+  if (code && !Validator.isURL(code)) {
     errors.message = 'code must be a valid URL';
   }
 

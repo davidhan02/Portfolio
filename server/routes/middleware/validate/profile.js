@@ -1,40 +1,48 @@
 const Validator = require('validator');
 const isEmpty = require('./isEmpty');
 
-module.exports = function profileValidator(data) {
+module.exports = function profileValidator(data, method) {
   let errors = {};
 
-  const required = ['name', 'birthday', 'status', 'skills', 'location', 'bio'];
+  if (method === 'POST') {
+    const required = ['name', 'birthday', 'status', 'skills'];
 
-  required.forEach(field => {
-    data[field] = !isEmpty(data[field]) ? data[field] : '';
+    required.forEach(field => {
+      data[field] = !isEmpty(data[field]) ? data[field] : '';
 
-    if (Validator.isEmpty(data[field])) {
-      errors.message = `${field} is required`;
-    }
-  });
+      if (Validator.isEmpty(data[field])) {
+        errors.message = `${field} is required`;
+      }
+    });
+  }
 
-  if (!Validator.isLength(data.name, { min: 2, max: 30 })) {
+  const { name, birthday, status, skills, company, location, bio } = data;
+
+  if (name && !Validator.isLength(name, { min: 2, max: 30 })) {
     errors.message = 'name must be between 2 and 30 characters';
   }
 
-  if (!Validator.isLength(data.status, { min: 2, max: 30 })) {
+  if (status && !Validator.isLength(status, { min: 2, max: 30 })) {
     errors.message = 'status must be between 2 and 30 characters';
   }
 
-  if (!Validator.isLength(data.location, { min: 2, max: 50 })) {
+  if (location && !Validator.isLength(location, { min: 2, max: 50 })) {
     errors.message = 'location must be between 2 and 50 characters';
   }
 
-  if (!Validator.isLength(data.skills, { min: 5, max: undefined })) {
+  if (skills && !Validator.isLength(skills, { min: 5, max: undefined })) {
     errors.message = 'skills must be at least 5 characters';
   }
 
-  if (!Validator.isLength(data.bio, { min: 15, max: undefined })) {
+  if (company && !Validator.isLength(company, { min: 2, max: 30 })) {
+    errors.message = 'company must be between 2 and 30 characters';
+  }
+
+  if (bio && !Validator.isLength(bio, { min: 15, max: undefined })) {
     errors.message = 'bio must be at least 15 characters';
   }
 
-  if (!Validator.toDate(data.birthday)) {
+  if (birthday && !Validator.toDate(birthday)) {
     errors.message = 'birthday must be a date';
   }
 

@@ -36,12 +36,10 @@ const profileSchema = new Schema({
     type: String
   },
   location: {
-    type: String,
-    required: true
+    type: String
   },
   bio: {
-    type: String,
-    required: true
+    type: String
   },
   experience: [expSchema],
   education: [eduSchema],
