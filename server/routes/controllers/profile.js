@@ -27,13 +27,13 @@ exports.post = async (req, res) => {
 
 exports.update = async (req, res) => {
   try {
-    const profileFields = {
-      ...req.body,
-      skills: req.body.skills
-        .split(',')
-        .map(x => x.trim())
-        .filter(x => x !== '')
-    };
+    const skills = req.body.skills
+      ? req.body.skills
+          .split(',')
+          .map(x => x.trim())
+          .filter(x => x !== '')
+      : req.profile.skills;
+    const profileFields = { ...req.body, skills };
     const profile = await req.profile.update(profileFields);
     res.status(201).json(profile);
   } catch ({ message }) {

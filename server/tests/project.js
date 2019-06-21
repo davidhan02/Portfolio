@@ -112,12 +112,12 @@ describe('Project route testing', () => {
         });
     });
   });
-  describe('PUT /api/project/:project', () => {
+  describe('PATCH /api/project/:project', () => {
     it('Fails with invalid project ID', done => {
       chai
         .request(server)
-        .put('/api/project/invalidID')
-        .send({ ...project, title: 'Modified Title' })
+        .patch('/api/project/invalidID')
+        .send({ title: 'Modified Title' })
         .end((err, res) => {
           res.should.have.status(404);
           res.body.should.be.a('object');
@@ -128,8 +128,8 @@ describe('Project route testing', () => {
     it('Fails without valid http header', done => {
       chai
         .request(server)
-        .put(`/api/project/${testProject.id}`)
-        .send({ ...project, title: 'Modified Title' })
+        .patch(`/api/project/${testProject.id}`)
+        .send({ title: 'Modified Title' })
         .end((err, res) => {
           res.should.have.status(401);
           res.body.should.be.a('object');
@@ -140,9 +140,9 @@ describe('Project route testing', () => {
     it('Succeeds with valid http header and project ID', done => {
       chai
         .request(server)
-        .put(`/api/project/${testProject.id}`)
+        .patch(`/api/project/${testProject.id}`)
         .set('Authorization', `Bearer ${jwtToken}`)
-        .send({ ...project, title: 'Modified Title' })
+        .send({ title: 'Modified Title' })
         .end((err, res) => {
           res.should.have.status(201);
           res.body.should.be.a('object');

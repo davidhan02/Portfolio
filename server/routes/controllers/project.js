@@ -61,13 +61,13 @@ exports.post = async (req, res, next) => {
 
 exports.update = async (req, res, next) => {
   try {
-    const projectFields = {
-      ...req.body,
-      categories: req.body.categories
-        .split(',')
-        .map(x => x.trim())
-        .filter(x => x !== '')
-    };
+    const categories = req.body.categories
+      ? req.body.categories
+          .split(',')
+          .map(x => x.trim())
+          .filter(x => x !== '')
+      : req.project.categories;
+    const projectFields = { ...req.body, categories };
     const project = await req.project.update(projectFields);
     res.status(201).json(project);
   } catch ({ message }) {
@@ -78,8 +78,7 @@ exports.update = async (req, res, next) => {
 exports.load = async (req, res, next, projectId) => {
   try {
     req.project = await Project.findById(projectId);
-    if (!req.project)
-      return res.status(404).json({ message: 'Project not found' });
+    if (!req.project) return res.status(404).json({ message: 'Project not found' });
   } catch (err) {
     if (err.name === 'CastError') {
       return res.status(400).json({ message: 'Invalid project ID' });

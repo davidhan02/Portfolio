@@ -1,7 +1,7 @@
 const Validator = require('validator');
 const isEmpty = require('./isEmpty');
 
-module.exports = function socialValidator(data) {
+module.exports = function socialValidator(data, method) {
   let errors = {};
 
   const socials = ['linkedin', 'instagram', 'github', 'glitch', 'codepen'];

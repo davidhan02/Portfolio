@@ -110,11 +110,11 @@ describe('Profile route testing', () => {
         });
     });
   });
-  describe('PUT /api/profile/:profile', () => {
+  describe('PATCH /api/profile/:profile', () => {
     it('Fails with invalid profile ID', done => {
       chai
         .request(server)
-        .put('/api/profile/invalidID')
+        .patch('/api/profile/invalidID')
         .send({ ...profile, name: 'James Dent' })
         .end((err, res) => {
           res.should.have.status(404);
@@ -126,7 +126,7 @@ describe('Profile route testing', () => {
     it('Fails without valid http header', done => {
       chai
         .request(server)
-        .put(`/api/profile/${testProfile.id}`)
+        .patch(`/api/profile/${testProfile.id}`)
         .send({ ...profile, name: 'James Dent' })
         .end((err, res) => {
           res.should.have.status(401);
@@ -138,7 +138,7 @@ describe('Profile route testing', () => {
     it('Succeeds with valid http header and profile ID', done => {
       chai
         .request(server)
-        .put(`/api/profile/${testProfile.id}`)
+        .patch(`/api/profile/${testProfile.id}`)
         .set('Authorization', `Bearer ${jwtToken}`)
         .send({ ...profile, name: 'James Dent' })
         .end((err, res) => {

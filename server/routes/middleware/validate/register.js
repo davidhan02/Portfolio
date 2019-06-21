@@ -1,7 +1,7 @@
 const Validator = require('validator');
 const isEmpty = require('./isEmpty');
 
-module.exports = function registerValidator(data) {
+module.exports = function registerValidator(data, method) {
   let errors = {};
 
   const required = ['username', 'password', 'password2'];
