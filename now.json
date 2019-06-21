@@ -1,8 +1,10 @@
 {
   "version": 2,
+  "name": "portfolio",
   "env": {
     "MONGO_URI": "@mongo-uri",
-    "JWT_SECRET": "@jwt-secret"
+    "JWT_SECRET": "@jwt-secret",
+    "ADMIN_KEY": "@admin-key"
   },
   "builds": [
     { "src": "client/package.json", "use": "@now/static-build" },
