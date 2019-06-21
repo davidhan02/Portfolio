@@ -141,7 +141,16 @@ exports.deleteExp = async (req, res) => {
 
 exports.getSocial = async (req, res) => {
   const social = req.profile.social;
-  console.log(Object.values(social).length);
+  if (
+    !social ||
+    (!social.linkedin &&
+      !social.github &&
+      !social.instagram &&
+      !social.glitch &&
+      !social.codepen)
+  ) {
+    return res.status(500).json({ message: 'No social found' });
+  }
   res.status(201).json(social);
 };
 
