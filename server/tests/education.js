@@ -103,7 +103,7 @@ describe('Education route testing', () => {
         .end((err, res) => {
           res.should.have.status(500);
           res.body.should.be.a('object');
-          res.body.message.should.be.eql('No education found');
+          res.body.message.should.be.eql('No education matches that ID');
           done();
         });
     });

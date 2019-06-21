@@ -56,7 +56,7 @@ exports.delete = async (req, res) => {
 exports.getOneEdu = async (req, res) => {
   const edu = await req.profile.education.id(req.params.edu);
   if (!edu) {
-    return res.status(500).json({ message: 'No education found' });
+    return res.status(500).json({ message: 'No education matches that ID' });
   }
   res.status(201).json(edu);
 };
@@ -99,7 +99,7 @@ exports.deleteEdu = async (req, res) => {
 exports.getOneExp = async (req, res) => {
   const exp = await req.profile.experience.id(req.params.exp);
   if (!exp) {
-    return res.status(500).json({ message: 'No experience found' });
+    return res.status(500).json({ message: 'No experience matches that ID' });
   }
   res.status(201).json(exp);
 };
