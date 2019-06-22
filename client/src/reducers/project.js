@@ -6,8 +6,8 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  project: null,
-  projects: [],
+  list: [],
+  single: null,
   loading: false
 };
 
@@ -16,13 +16,13 @@ export default (state = initialState, action) => {
     case SET_PROJECT:
       return {
         ...state,
-        project: action.payload,
+        single: action.payload,
         loading: false
       };
     case SET_PROJECT_LIST:
       return {
         ...state,
-        projects: action.payload,
+        list: action.payload,
         loading: false
       };
     case SET_PROJECT_LOADING:
@@ -37,8 +37,8 @@ export default (state = initialState, action) => {
       };
     case CLEAR_PROJECT:
       return {
-        project: null,
-        projects: [],
+        list: [],
+        single: null,
         loading: false
       };
     default:
