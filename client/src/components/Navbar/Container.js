@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import Navbar from './Component';
 
 const mapStateToProps = ({ menu: { open }, auth: { token } }) => ({
-  token,
-  open
+  open,
+  token
 });
 
 const mapDispatchToProps = { toggleMenu, toggleTheme, logout };

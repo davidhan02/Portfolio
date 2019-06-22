@@ -16,43 +16,19 @@ const Navbar = ({ open, token, logout, toggleMenu, toggleTheme }) => {
         <NavBrand text={'David Han'} />
         <NavDarkButton onClick={toggleTheme} />
         <NavList token={token} open={open} onClick={toggleCheck}>
-          <NavLink
-            to={'/'}
-            label={'Return back to landing page'}
-            text={'Home'}
-          />
-          <NavLink
-            to={'/resume'}
-            label={'Read over my resume'}
-            text={'Resume'}
-          />
-          <NavLink
-            to={'/projects'}
-            label={'Check out my projects'}
-            text={'Projects'}
-          />
-          <NavLink
-            to={'/promise'}
-            label={'Here is my promise'}
-            text={'Promise'}
-          />
-          <NavLink
-            to={'/contact'}
-            label={'How you can contact me'}
-            text={'Contact'}
-          />
+          <NavLink to={'/'} label={'Return back to landing page'} text={'Home'} />
+          <NavLink to={'/resume'} label={'Read over my resume'} text={'Resume'} />
+          <NavLink to={'/projects'} label={'Check out my work'} text={'Projects'} />
+          <NavLink to={'/promise'} label={'Here is my promise'} text={'Promise'} />
+          <NavLink to={'/contact'} label={'How to contact me'} text={'Contact'} />
           {token && (
             <>
+              <NavLink to={'/dashboard'} label={'Admin Dashboard'} text={'Admin'} />
               <NavLink
-                to={'/dashboard'}
-                label={'Admin Dashboard'}
-                text={'Admin'}
-              />
-              <NavLink
-                onClick={logout}
                 to={'/login'}
                 label={'Log Out'}
                 text={'Exit'}
+                onClick={logout}
               />
             </>
           )}
