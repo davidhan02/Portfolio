@@ -18,6 +18,7 @@ export const ListContainer = styled.div`
     position: absolute;
     top: 65px;
     background: ${props => props.theme.foreground};
+    box-shadow: 2px 8px 10px ${props => props.theme.shadow};
 
     width: 80%;
     left: 10%;

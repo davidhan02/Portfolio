@@ -8,6 +8,7 @@ export const NavWrapper = styled.nav`
   position: sticky;
   top: 0;
   border-bottom: 1px solid ${props => props.theme.border};
+  box-shadow: 0 4px 12px ${props => props.theme.shadow};
   width: 100%;
   z-index: 10;
 `;
