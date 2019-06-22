@@ -62,3 +62,19 @@ export const getProject = projectId => async dispatch => {
     });
   }
 };
+
+export const submitProject = formValues => async dispatch => {
+  dispatch(setProjectLoading());
+  try {
+    const response = await axios.post('/api/project', formValues);
+    dispatch({
+      type: SET_PROJECT,
+      payload: response.data
+    });
+  } catch (err) {
+    dispatch({
+      type: SET_ERROR,
+      payload: err.response.data
+    });
+  }
+};

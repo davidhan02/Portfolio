@@ -15,5 +15,4 @@ export const CLEAR_ERROR = 'CLEAR_ERROR';
 export const SET_PROJECT = 'SET_PROJECT';
 export const SET_PROJECT_LIST = 'SET_PROJECT_LIST';
 export const SET_PROJECT_LOADING = 'SET_PROJECT_LOADING';
-
 export const CLEAR_PROJECT = 'CLEAR_PROJECT';

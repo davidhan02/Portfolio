@@ -35,6 +35,12 @@ export default (state = initialState, action) => {
         ...state,
         loading: false
       };
+    case CLEAR_PROJECT:
+      return {
+        project: null,
+        projects: [],
+        loading: false
+      };
     default:
       return state;
   }
