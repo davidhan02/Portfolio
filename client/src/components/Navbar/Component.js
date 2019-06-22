@@ -30,11 +30,6 @@ const Navbar = ({ open, token, logout, toggleMenu, toggleTheme }) => {
             text={'Projects'}
           />
           <NavLinkContainer
-            to={'/promise'}
-            label={'Here is my promise'}
-            text={'Promise'}
-          />
-          <NavLinkContainer
             to={'/contact'}
             label={'How to contact me'}
             text={'Contact'}
