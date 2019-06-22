@@ -1,6 +1,7 @@
 import {
   SET_ERROR,
   SET_PROJECT,
+  CLEAR_PROJECT,
   SET_PROJECT_LIST,
   SET_PROJECT_LOADING
 } from '../actions/types';

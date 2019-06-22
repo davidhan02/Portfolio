@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import { submitRegister, clearError } from '../../actions/auth';
+import { submitRegister } from '../../actions/auth';
+import { clearError } from '../../actions/error';
 import Register from './Component';
 import validate from './validate';
 
