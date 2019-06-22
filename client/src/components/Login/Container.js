@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import { submitLogin, clearError } from '../../actions/auth';
+import { submitLogin } from '../../actions/auth';
+import { clearError } from '../../actions/error';
 import Login from './Component';
 
 class LoginContainer extends Component {
@@ -12,6 +13,10 @@ class LoginContainer extends Component {
 
   componentDidUpdate() {
     this.redirectIfLoggedIn();
+  }
+
+  componentWillUnmount() {
+    this.props.clearError();
   }
 
   redirectIfLoggedIn() {

@@ -1,9 +1,9 @@
 import { SHOW_ERROR, CLEAR_ERROR } from './types';
 
-const clearError = () => ({ type: CLEAR_ERROR });
-const showError = error => ({ type: SHOW_ERROR, payload: error });
-
 let timeout;
+
+const showError = error => ({ type: SHOW_ERROR, payload: error });
+export const clearError = () => ({ type: CLEAR_ERROR });
 
 export const showErrorWithTimeout = error => dispatch => {
   dispatch(showError(error));
