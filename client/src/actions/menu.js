@@ -1,13 +1,13 @@
 import { CLOSE_MENU, TOGGLE_MENU } from './types';
 
-export const toggleMenu = () => {
+export const toggleMenu = () => dispatch => {
   if (window.innerWidth < 800) {
-    return { type: TOGGLE_MENU };
+    dispatch({ type: TOGGLE_MENU });
   }
 };
 
-export const closeMenu = () => {
+export const closeMenu = () => dispatch => {
   if (window.innerWidth < 800) {
-    return { type: CLOSE_MENU };
+    dispatch({ type: CLOSE_MENU });
   }
 };

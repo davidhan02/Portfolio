@@ -1,30 +1,52 @@
 import React from 'react';
 import NavBrand from './Brand';
 import NavList from './List';
-import NavLink from './Link';
 import NavButton from './Button';
 import NavDarkButton from './DarkButton';
+import NavLinkContainer from './Link/Container';
 import { NavWrapper, NavContainer } from './style';
 
 const Navbar = ({ open, token, logout, toggleMenu, toggleTheme }) => {
-  const toggleCheck = () => {
-    if (window.innerWidth < 800) toggleMenu();
-  };
   return (
     <NavWrapper>
       <NavContainer>
         <NavBrand text={'David Han'} />
         <NavDarkButton onClick={toggleTheme} />
-        <NavList token={token} open={open} onClick={toggleCheck}>
-          <NavLink to={'/'} label={'Return back to landing page'} text={'Home'} />
-          <NavLink to={'/resume'} label={'Read over my resume'} text={'Resume'} />
-          <NavLink to={'/projects'} label={'Check out my work'} text={'Projects'} />
-          <NavLink to={'/promise'} label={'Here is my promise'} text={'Promise'} />
-          <NavLink to={'/contact'} label={'How to contact me'} text={'Contact'} />
+        <NavButton open={open} onClick={toggleMenu} />
+        <NavList open={open} token={token}>
+          <NavLinkContainer
+            to={'/'}
+            label={'Return back to landing page'}
+            text={'Home'}
+          />
+          <NavLinkContainer
+            to={'/resume'}
+            label={'Read over my resume'}
+            text={'Resume'}
+          />
+          <NavLinkContainer
+            to={'/projects'}
+            label={'Check out my work'}
+            text={'Projects'}
+          />
+          <NavLinkContainer
+            to={'/promise'}
+            label={'Here is my promise'}
+            text={'Promise'}
+          />
+          <NavLinkContainer
+            to={'/contact'}
+            label={'How to contact me'}
+            text={'Contact'}
+          />
           {token && (
             <>
-              <NavLink to={'/dashboard'} label={'Admin Dashboard'} text={'Admin'} />
-              <NavLink
+              <NavLinkContainer
+                to={'/dashboard'}
+                label={'Admin Dashboard'}
+                text={'Admin'}
+              />
+              <NavLinkContainer
                 to={'/login'}
                 label={'Log Out'}
                 text={'Exit'}
@@ -33,7 +55,6 @@ const Navbar = ({ open, token, logout, toggleMenu, toggleTheme }) => {
             </>
           )}
         </NavList>
-        <NavButton open={open} onClick={toggleCheck} />
       </NavContainer>
     </NavWrapper>
   );

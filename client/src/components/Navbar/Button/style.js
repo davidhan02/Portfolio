@@ -20,6 +20,7 @@ export const Button = styled.button`
   color: ${props => props.theme.mutedText};
   transition: transform 0.5s ease;
   border-radius: 50%;
+  cursor: pointer;
 
   :focus {
     outline: none;

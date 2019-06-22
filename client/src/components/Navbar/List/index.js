@@ -1,9 +1,9 @@
 import React from 'react';
 import { List, ListContainer } from './style';
 
-const NavList = ({ open, token, onClick, children }) => (
+const NavList = ({ open, token, children }) => (
   <ListContainer id="nav-list" open={open} token={token}>
-    <List onClick={onClick}>{children}</List>
+    <List>{children}</List>
   </ListContainer>
 );
 
