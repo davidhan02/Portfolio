@@ -1,44 +1,6 @@
 import styled from 'styled-components/macro';
 import { NavLink as RouterNavLink } from 'react-router-dom';
-import { trueCenter, transition, headerItem } from '../shared/helpers';
-
-export const MenuIcon = styled.svg`
-  width: 13px;
-  height: 13px;
-
-  & path {
-    ${transition('fill')};
-    fill: ${props => props.theme.mutedText};
-  }
-`;
-
-export const DarkIcon = styled.svg`
-  width: 20px;
-  height: 20px;
-
-  & path {
-    ${transition('fill')};
-    fill: ${props => props.theme.mutedText};
-  }
-
-  @media (max-width: 425px) {
-    width: 18px;
-    height: 18px;
-  }
-`;
-
-export const DarkButton = styled.span`
-  ${headerItem};
-
-  padding: 0 8px;
-  cursor: pointer;
-
-  @media (hover: hover) {
-    :hover path {
-      fill: ${props => props.theme.accent};
-    }
-  }
-`;
+import { trueCenter } from '../shared/helpers';
 
 export const NavWrapper = styled.nav`
   background: ${props => props.theme.foreground};
@@ -59,36 +21,6 @@ export const NavContainer = styled.div`
   width: 1150px;
   height: 65px;
   padding: 0 10px;
-`;
-
-export const Brand = styled.div`
-  margin-right: auto;
-  ${trueCenter};
-  transition: transform 0.1s linear;
-  :hover,
-  :focus,
-  :active {
-    transform: skew(-10deg);
-  }
-`;
-
-export const BrandLink = styled.a`
-  text-decoration: none;
-  ${trueCenter};
-  color: #000;
-`;
-
-export const BrandLogo = styled.img`
-  height: 45px;
-  width: auto;
-  ${props => props.theme.imageFilter}
-`;
-
-export const BrandText = styled.h1`
-  font-size: 2rem;
-  font-weight: 300;
-  text-transform: uppercase;
-  color: ${props => props.theme.normalText};
 `;
 
 export const List = styled.ul`
@@ -160,25 +92,6 @@ export const ListLink = styled(RouterNavLink).attrs({ activeClassName })`
     font-weight: 300;
     width: 75%;
   }
-`;
-
-export const Button = styled.button`
-  display: none;
-  padding: 12px 12px 8px;
-  margin-left: 10px;
-  background: ${props => props.theme.foreground};
-  border: 1px solid ${props => props.theme.mutedText};
-  color: ${props => props.theme.mutedText};
-  transition: transform 0.5s ease;
-  border-radius: 50%;
-
-  :focus {
-    outline: none;
-  }
-  @media (max-width: 800px) {
-    display: inline;
-  }
-  ${props => props.active && 'transform: rotate(-180deg);'}
 `;
 
 export const ListContainer = styled.div`

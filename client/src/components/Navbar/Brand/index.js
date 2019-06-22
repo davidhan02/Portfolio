@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from './Logo.png';
-import { Brand, BrandLink, BrandLogo, BrandText } from '../style';
+import { Brand, BrandLink, BrandLogo, BrandText } from './style';
 
 const NavBrand = ({ text }) => (
   <Brand>

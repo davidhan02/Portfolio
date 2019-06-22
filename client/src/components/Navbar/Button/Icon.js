@@ -1,5 +1,5 @@
 import React from 'react';
-import { MenuIcon } from '../style';
+import { MenuIcon } from './style';
 
 const ButtonIcon = () => (
   <MenuIcon viewBox="0 0 292.362 292.362" aria-labelledby="menu-icon">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { DarkIcon } from '../style';
+import { DarkIcon } from './style';
 
 const NavDarkButtonIcon = () => (
   <DarkIcon viewBox="0 0 24 24" aria-labelledby="themeIcon">
