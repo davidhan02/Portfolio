@@ -32,7 +32,7 @@ const mapStateToProps = ({ project }) => ({
 const mapDispatchToProps = { submitProject, clearError };
 
 const enhance = compose(
-  reduxForm({ form: 'project' }),
+  reduxForm({ form: 'project', validate }),
   connect(
     mapStateToProps,
     mapDispatchToProps
