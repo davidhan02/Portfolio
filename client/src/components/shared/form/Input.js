@@ -17,6 +17,7 @@ const Input = styled.input`
   width: 100%;
   padding: 8px;
   font-size: 15px;
+  font-family: Roboto;
   resize: vertical;
   border-radius: 3px;
   outline: none;

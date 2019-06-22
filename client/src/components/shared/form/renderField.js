@@ -43,7 +43,7 @@ const VariableField = field => {
             as="textarea"
             rows="6"
             error={field.meta.touched && !!field.meta.error}
-            placeholder={field.label}
+            placeholder={field.placeholder || field.label}
           />
         </InputWrapper>
       );
@@ -58,9 +58,10 @@ const VariableField = field => {
           <Input
             id={field.label}
             {...field.input}
-            error={field.meta.touched && !!field.meta.error}
             type={field.type}
-            placeholder={field.label}
+            error={field.meta.touched && !!field.meta.error}
+            placeholder={field.placeholder || field.label}
+            style={{ resize: 'none' }}
             autoComplete="off"
           />
         </InputWrapper>
