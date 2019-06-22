@@ -33,7 +33,7 @@ export const ListContainer = styled.div`
       props.open &&
       `
       border-top: 1px solid ${props.theme.foreground};
-      height: ${props.token ? '385px' : '280px'}; 
+      height: ${props.token ? '335px' : '230px'}; 
       `}
   }
 `;
