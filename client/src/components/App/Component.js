@@ -9,6 +9,7 @@ import NavbarContainer from '../Navbar/Container';
 import LoginContainer from '../Login/Container';
 import history from '../../util/history';
 import theme from '../../styles/theme';
+import Body from '../Body';
 import React from 'react';
 
 import styled from 'styled-components/macro';
@@ -17,12 +18,7 @@ const Placeholder = styled.h2`
   text-align: center;
   color: ${props => props.theme.normalText};
 `;
-
 const Dashboard = () => <Placeholder>Dashboard</Placeholder>;
-const Profile = () => <Placeholder>Profile</Placeholder>;
-const Landing = () => <Placeholder>Landing</Placeholder>;
-const Projects = () => <Placeholder>Projects</Placeholder>;
-const Contact = () => <Placeholder>Contact</Placeholder>;
 const NotFound = () => <Placeholder>404: Not Found</Placeholder>;
 
 const App = ({ dark }) => (
@@ -37,10 +33,7 @@ const App = ({ dark }) => (
           <Route path="/register" component={RegisterContainer} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/form/project" component={ProjectFormContainer} />
-          <Route exact path="/" component={Landing} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/projects" component={Projects} />
-          <Route path="/contact" component={Contact} />
+          <Route path="/" component={Body} />
           <Route component={NotFound} />
         </Switch>
       </>
