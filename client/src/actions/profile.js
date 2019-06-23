@@ -58,3 +58,19 @@ export const submitProfile = formValues => async dispatch => {
     });
   }
 };
+
+export const updateProfile = (formValues, profileId) => async dispatch => {
+  dispatch(setProfileLoading());
+  try {
+    const response = await axios.patch(`/api/profile/${profileId}`, formValues);
+    dispatch({
+      type: SET_PROFILE,
+      payload: response.data
+    });
+  } catch (err) {
+    dispatch({
+      type: SET_ERROR,
+      payload: err.response.data
+    });
+  }
+};
