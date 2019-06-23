@@ -12,7 +12,6 @@ export const BodyWrapper = styled.div`
 
   @media (max-width: 768px) {
     display: block;
-    padding: 0;
   }
 `;
 
