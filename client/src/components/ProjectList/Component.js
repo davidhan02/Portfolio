@@ -5,10 +5,9 @@ const ProjectList = ({ list, token }) => {
   return (
     <>
       {token && <Link to="/form/project">Add New Project</Link>}
-      <br />
-      <br />
       {list.map(project => (
         <div key={project.id}>
+          <br />
           <Link to={`/projects/${project.id}`}>{project.title}</Link>
           <br />
           {project.categories.join(', ')}
