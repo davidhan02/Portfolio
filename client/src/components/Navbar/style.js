@@ -5,6 +5,7 @@ export const NavWrapper = styled.nav`
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  user-select: none;
   position: sticky;
   top: 0;
   border-bottom: 1px solid ${props => props.theme.border};

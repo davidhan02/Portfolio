@@ -20,9 +20,9 @@ const Navbar = ({ open, token, logout, toggleMenu, toggleTheme }) => {
             text={'Home'}
           />
           <NavLinkContainer
-            to={'/resume'}
-            label={'Read over my resume'}
-            text={'Resume'}
+            to={'/profile'}
+            label={'Read over my profile'}
+            text={'Profile'}
           />
           <NavLinkContainer
             to={'/projects'}

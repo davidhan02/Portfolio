@@ -19,8 +19,10 @@ const Placeholder = styled.h2`
 `;
 
 const Dashboard = () => <Placeholder>Dashboard</Placeholder>;
-const Resume = () => <Placeholder>Resume</Placeholder>;
+const Profile = () => <Placeholder>Profile</Placeholder>;
 const Landing = () => <Placeholder>Landing</Placeholder>;
+const Projects = () => <Placeholder>Projects</Placeholder>;
+const Contact = () => <Placeholder>Contact</Placeholder>;
 const NotFound = () => <Placeholder>404: Not Found</Placeholder>;
 
 const App = ({ dark }) => (
@@ -36,7 +38,9 @@ const App = ({ dark }) => (
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/form/project" component={ProjectFormContainer} />
           <Route exact path="/" component={Landing} />
-          <Route path="/resume" component={Resume} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/projects" component={Projects} />
+          <Route path="/contact" component={Contact} />
           <Route component={NotFound} />
         </Switch>
       </>
