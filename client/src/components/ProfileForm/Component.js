@@ -14,17 +14,16 @@ const ProfileForm = ({ loading, handleSubmit }) => (
       component={renderField}
     />
     <Field
-      type="text"
-      name="status"
-      label="current status"
-      placeholder="Developer, Student, Manager, etc..."
+      type="date"
+      name="birthday"
+      label="date of birth"
       component={renderField}
     />
     <Field
       type="text"
-      name="skills"
-      label="skills"
-      placeholder="HTML, CSS, JavaScript, etc..."
+      name="status"
+      label="current status"
+      placeholder="Developer, Student, Manager, etc..."
       component={renderField}
     />
     <Field
@@ -42,15 +41,16 @@ const ProfileForm = ({ loading, handleSubmit }) => (
       component={renderField}
     />
     <Field
-      type="date"
-      name="birthday"
-      label="date of birth"
+      type="text"
+      name="skills"
+      label="skills"
+      placeholder="HTML, CSS, JavaScript, etc..."
       component={renderField}
     />
     <Field
       type="textarea"
       name="bio"
-      label="about"
+      label="description"
       placeholder="Write information about yourself here"
       component={renderField}
     />

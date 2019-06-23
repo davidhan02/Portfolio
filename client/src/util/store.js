@@ -7,6 +7,7 @@ import menu from '../reducers/menu';
 import error from '../reducers/error';
 import theme from '../reducers/theme';
 import project from '../reducers/project';
+import profile from '../reducers/profile';
 import themeMiddleware from '../middleware/theme';
 import errorMiddleware from '../middleware/error';
 import authMiddleware from '../middleware/auth';
@@ -14,7 +15,7 @@ import authMiddleware from '../middleware/auth';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-  combineReducers({ auth, menu, theme, form, error, project }),
+  combineReducers({ auth, menu, theme, form, error, project, profile }),
   composeEnhancers(
     applyMiddleware(thunk, themeMiddleware, errorMiddleware, authMiddleware)
   )
