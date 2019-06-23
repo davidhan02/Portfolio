@@ -1,9 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ProjectList = ({ list }) =>
   list.map(project => (
     <div key={project.id}>
-      {project.title}
+      <Link to={`/projects/${project.id}`}>{project.title}</Link>
+      <br />
+      {project.categories.join(', ')}
+      <br />
+      ID: {project.id}
       <br />
       {project.url}
       <br />
@@ -12,8 +17,6 @@ const ProjectList = ({ list }) =>
       {project.created}
       <br />
       {project.text}
-      <br />
-      {project.categories.join(', ')}
       <br />
       <br />
     </div>
