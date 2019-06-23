@@ -10,7 +10,7 @@ export const setProfileLoading = () => ({
   type: SET_PROFILE_LOADING
 });
 
-export const getProfileList = () => async dispatch => {
+export const getFirstProfile = () => async dispatch => {
   dispatch(setProfileLoading());
   try {
     const response = await axios.get('/api/profile');
