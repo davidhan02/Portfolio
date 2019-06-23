@@ -2,24 +2,26 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
+import { clearError } from '../../actions/error';
+import ProfileForm from './Component';
 import {
   getFirstProfile,
   submitProfile,
   updateProfile
 } from '../../actions/profile';
-import { clearError } from '../../actions/error';
-import ProfileForm from './Component';
 
 class ProfileFormContainer extends Component {
   state = { editMode: false };
 
   componentDidMount = async () => {
     await this.props.getFirstProfile();
-    if (this.props.profile) {
-      console.log(this.props.profile);
+    const myProfile = this.props.profile;
+    if (myProfile) {
       this.setState({ editMode: true });
       this.props.initialize({
-        ...this.props.profile
+        ...myProfile,
+        birthday: myProfile.birthday.split('T')[0],
+        skills: myProfile.skills.join(', ')
       });
     }
   };
@@ -29,7 +31,11 @@ class ProfileFormContainer extends Component {
   }
 
   onSubmit = formValues => {
-    this.props.submitProfile(formValues);
+    const { user, submitProfile, updateProfile } = this.props;
+    if (this.state.editMode) {
+      return updateProfile({ ...formValues, user }, this.props.profile.id);
+    }
+    submitProfile(formValues);
   };
 
   render() {
@@ -40,7 +46,8 @@ class ProfileFormContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ profile }) => ({
+const mapStateToProps = ({ auth, profile }) => ({
+  user: auth.user.id,
   profile: profile.single,
   loading: profile.loading
 });
