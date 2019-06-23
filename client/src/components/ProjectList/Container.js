@@ -25,14 +25,15 @@ class ProjectListContainer extends Component {
   }
 
   render() {
-    const { loading, list } = this.props;
+    const { loading, token, list } = this.props;
     if (loading) return <Loading />;
     if (!list) return <NotFound />;
-    return <ProjectList list={list} />;
+    return <ProjectList list={list} token={token} />;
   }
 }
 
-const mapStateToProps = ({ project }) => ({
+const mapStateToProps = ({ auth, project }) => ({
+  token: auth.token,
   list: project.list,
   loading: project.loading
 });
