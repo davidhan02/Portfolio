@@ -1,9 +1,10 @@
 import React from 'react';
 import Loading from '../shared/Loading';
+import NotFound from '../shared/NotFound';
 
 const Project = ({ loading, project }) => {
   if (loading) return <Loading />;
-  if (!project) return <h2>Not Found</h2>;
+  if (!project) return <NotFound />;
   return (
     <>
       {project.title}

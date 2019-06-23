@@ -19,7 +19,6 @@ const Placeholder = styled.h2`
   color: ${props => props.theme.normalText};
 `;
 const Dashboard = () => <Placeholder>Dashboard</Placeholder>;
-const NotFound = () => <Placeholder>404: Not Found</Placeholder>;
 
 const App = ({ dark }) => (
   <Theme theme={theme(dark)}>
@@ -34,7 +33,6 @@ const App = ({ dark }) => (
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/form/project" component={ProjectFormContainer} />
           <Route path="/" component={Body} />
-          <Route component={NotFound} />
         </Switch>
       </>
     </Router>
