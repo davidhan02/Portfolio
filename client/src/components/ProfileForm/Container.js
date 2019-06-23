@@ -2,11 +2,28 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import { submitProfile } from '../../actions/profile';
+import {
+  getFirstProfile,
+  submitProfile,
+  updateProfile
+} from '../../actions/profile';
 import { clearError } from '../../actions/error';
 import ProfileForm from './Component';
 
 class ProfileFormContainer extends Component {
+  state = { editMode: false };
+
+  componentDidMount = async () => {
+    await this.props.getFirstProfile();
+    if (this.props.profile) {
+      console.log(this.props.profile);
+      this.setState({ editMode: true });
+      this.props.initialize({
+        ...this.props.profile
+      });
+    }
+  };
+
   componentWillUnmount() {
     this.props.clearError();
   }
@@ -28,7 +45,12 @@ const mapStateToProps = ({ profile }) => ({
   loading: profile.loading
 });
 
-const mapDispatchToProps = { submitProfile, clearError };
+const mapDispatchToProps = {
+  getFirstProfile,
+  submitProfile,
+  updateProfile,
+  clearError
+};
 
 const enhance = compose(
   reduxForm({ form: 'profile' }),
