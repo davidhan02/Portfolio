@@ -3,9 +3,9 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { getProject, clearProject } from '../../actions/project';
 import { clearError } from '../../actions/error';
-import Project from './Component';
+import FullProject from './Component';
 
-class ProjectContainer extends Component {
+class FullProjectContainer extends Component {
   componentDidMount() {
     const { project, projectId, getProject } = this.props;
     if (!project) {
@@ -20,7 +20,7 @@ class ProjectContainer extends Component {
 
   render() {
     const { loading, project } = this.props;
-    return <Project loading={loading} project={project} />;
+    return <FullProject loading={loading} project={project} />;
   }
 }
 
@@ -38,4 +38,4 @@ const enhance = compose(
   )
 );
 
-export default enhance(ProjectContainer);
+export default enhance(FullProjectContainer);
