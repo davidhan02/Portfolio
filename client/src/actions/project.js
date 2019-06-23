@@ -72,7 +72,7 @@ export const submitProject = formValues => async dispatch => {
       type: SET_PROJECT,
       payload: response.data
     });
-    history.push(`/project/${response.data.id}`);
+    history.push(`/projects/${response.data.id}`);
   } catch (err) {
     dispatch({
       type: SET_ERROR,

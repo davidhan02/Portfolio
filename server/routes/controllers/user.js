@@ -33,11 +33,12 @@ exports.login = (req, res, next) => {
 
 exports.register = async (req, res, next) => {
   try {
-    const { username, password, adminkey } = req.body;
+    const { username, password, adminKey } = req.body;
+    const key = adminKey ? adminKey : '';
     const user = await User.create({
       username,
       password,
-      admin: adminkey === keys.adminkey
+      admin: key === keys.adminKey
     });
     const token = this.createAuthToken(user);
     res.status(201).json({ token });
