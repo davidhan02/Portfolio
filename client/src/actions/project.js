@@ -1,4 +1,5 @@
 import axios from 'axios';
+import history from '../util/history';
 import {
   SET_ERROR,
   SET_PROJECT,
@@ -71,6 +72,7 @@ export const submitProject = formValues => async dispatch => {
       type: SET_PROJECT,
       payload: response.data
     });
+    history.push(`/project/${response.data.id}`);
   } catch (err) {
     dispatch({
       type: SET_ERROR,

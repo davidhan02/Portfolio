@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 export const checkIfTrimmed = value =>
   value.trim() === value ? undefined : 'Cannot start/end with space';
 
@@ -22,11 +20,6 @@ export const urlValidator = value => {
   } catch (error) {
     return 'Must be a valid url';
   }
-};
-
-export const dateValidator = value => {
-  if (moment(value, 'MM/DD/YYYY', true).isValid()) return undefined;
-  return 'Must be a valid date';
 };
 
 const trimmed = value => checkIfTrimmed(value);

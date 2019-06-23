@@ -1,6 +1,5 @@
 import {
   urlValidator,
-  dateValidator,
   projectCatValidator,
   projectTextValidator,
   projectTitleValidator
@@ -16,7 +15,6 @@ const validate = fields => {
   errors.title = projectTitleValidator(title);
   errors.categories = projectCatValidator(categories);
   if (fields.url && fields.url !== 'offline') errors.url = urlValidator(fields.url);
-  if (fields.created) errors.created = dateValidator(fields.created);
   if (fields.code) errors.code = urlValidator(fields.code);
 
   return errors;
