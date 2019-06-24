@@ -44,11 +44,7 @@ export const getProfile = profileId => async dispatch => {
 export const submitProfile = formValues => async dispatch => {
   dispatch(setProfileLoading());
   try {
-    const response = await axios.post('/api/profile', formValues);
-    dispatch({
-      type: SET_PROFILE,
-      payload: response.data
-    });
+    await axios.post('/api/profile', formValues);
     history.push('/profile');
   } catch (err) {
     dispatch(setError(err));
@@ -58,11 +54,7 @@ export const submitProfile = formValues => async dispatch => {
 export const updateProfile = (formValues, profileId) => async dispatch => {
   dispatch(setProfileLoading());
   try {
-    const response = await axios.patch(`/api/profile/${profileId}`, formValues);
-    dispatch({
-      type: SET_PROFILE,
-      payload: response.data
-    });
+    await axios.patch(`/api/profile/${profileId}`, formValues);
     history.push('/profile');
   } catch (err) {
     dispatch(setError(err));

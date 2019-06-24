@@ -7,7 +7,8 @@ import ProfileForm from './Component';
 import {
   getFirstProfile,
   submitProfile,
-  updateProfile
+  updateProfile,
+  clearProfile
 } from '../../actions/profile';
 
 class ProfileFormContainer extends Component {
@@ -28,6 +29,7 @@ class ProfileFormContainer extends Component {
 
   componentWillUnmount() {
     this.props.clearError();
+    this.props.clearProfile();
   }
 
   onSubmit = formValues => {
@@ -56,6 +58,7 @@ const mapDispatchToProps = {
   getFirstProfile,
   submitProfile,
   updateProfile,
+  clearProfile,
   clearError
 };
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import NotFound from '../shared/NotFound';
 import { Route, Switch } from 'react-router-dom';
+import Dashboard from '../Dashboard';
+import PrivateRoute from '../shared/PrivateRoute';
 import ProfileContainer from '../Profile/Container';
 import FullProjectContainer from '../FullProject/Container';
 import ProjectListContainer from '../ProjectList/Container';
@@ -16,6 +18,7 @@ const Body = () => (
         <Route exact path="/" component={Landing} />
         <Route path="/contact" component={Contact} />
         <Route path="/profile" component={ProfileContainer} />
+        <PrivateRoute path="/dashboard" component={Dashboard} />
         <Route exact path="/projects" component={ProjectListContainer} />
         <Route
           exact

@@ -13,14 +13,6 @@ import theme from '../../styles/theme';
 import Body from '../Body';
 import React from 'react';
 
-import styled from 'styled-components/macro';
-
-const Placeholder = styled.h2`
-  text-align: center;
-  color: ${props => props.theme.normalText};
-`;
-const Dashboard = () => <Placeholder>Dashboard</Placeholder>;
-
 const App = ({ dark }) => (
   <Theme theme={theme(dark)}>
     <Router history={history}>
@@ -31,8 +23,6 @@ const App = ({ dark }) => (
         <Switch>
           <Route path="/login" component={LoginContainer} />
           <Route path="/register" component={RegisterContainer} />
-          <PrivateRoute path="/dashboard" component={Dashboard} />
-          <PrivateRoute path="/profile/form" component={ProfileFormContainer} />
           <PrivateRoute
             exact
             path="/projects/form"
@@ -42,6 +32,11 @@ const App = ({ dark }) => (
             exact
             path="/projects/form/:projectId"
             component={ProjectFormContainer}
+          />
+          <PrivateRoute
+            exact
+            path="/profile/form"
+            component={ProfileFormContainer}
           />
           <Route path="/" component={Body} />
         </Switch>

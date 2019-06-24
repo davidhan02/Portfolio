@@ -10,7 +10,7 @@ import { getFirstProfile, clearProfile } from '../../actions/profile';
 
 class ProfileContainer extends Component {
   componentDidMount() {
-    if (!this.props.profile) this.props.getFirstProfile();
+    this.props.getFirstProfile();
   }
 
   componentWillUnmount() {
