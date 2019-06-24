@@ -33,7 +33,16 @@ const App = ({ dark }) => (
           <Route path="/register" component={RegisterContainer} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/profile/form" component={ProfileFormContainer} />
-          <PrivateRoute path="/projects/form" component={ProjectFormContainer} />
+          <PrivateRoute
+            exact
+            path="/projects/form"
+            component={ProjectFormContainer}
+          />
+          <PrivateRoute
+            exact
+            path="/projects/form/:projectId"
+            component={ProjectFormContainer}
+          />
           <Route path="/" component={Body} />
         </Switch>
       </>

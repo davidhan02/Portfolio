@@ -15,13 +15,13 @@ class ProfileFormContainer extends Component {
 
   componentDidMount = async () => {
     await this.props.getFirstProfile();
-    const myProfile = this.props.profile;
-    if (myProfile) {
+    if (this.props.profile) {
       this.setState({ editMode: true });
-      this.props.initialize({
-        ...myProfile,
-        birthday: myProfile.birthday.split('T')[0],
-        skills: myProfile.skills.join(', ')
+      const { profile } = this.props;
+      await this.props.initialize({
+        ...profile,
+        birthday: profile.birthday.split('T')[0],
+        skills: profile.skills.join(', ')
       });
     }
   };

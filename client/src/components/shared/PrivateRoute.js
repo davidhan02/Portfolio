@@ -5,9 +5,7 @@ import { Route, Redirect } from 'react-router-dom';
 const PrivateRoute = ({ component: Component, token, ...rest }) => (
   <Route
     {...rest}
-    render={props =>
-      token ? <Component {...props} /> : <Redirect to="/login" />
-    }
+    render={props => (token ? <Component {...props} /> : <Redirect to="/login" />)}
   />
 );
 
