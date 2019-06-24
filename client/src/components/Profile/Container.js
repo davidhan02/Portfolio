@@ -4,6 +4,7 @@ import Profile from './Component';
 import { connect } from 'react-redux';
 import Loading from '../shared/Loading';
 import NotFound from '../shared/NotFound';
+import { Link } from 'react-router-dom';
 import { clearError } from '../../actions/error';
 import { getFirstProfile, clearProfile } from '../../actions/profile';
 
@@ -18,14 +19,21 @@ class ProfileContainer extends Component {
   }
 
   render() {
-    const { loading, profile } = this.props;
+    const { loading, profile, token } = this.props;
     if (loading) return <Loading />;
     if (!profile) return <NotFound />;
-    return <Profile loading={loading} profile={profile} />;
+    return (
+      <>
+        {token && <Link to="/form/profile">Edit Profile</Link>}
+        <br />
+        <Profile profile={profile} />
+      </>
+    );
   }
 }
 
-const mapStateToProps = ({ profile }) => ({
+const mapStateToProps = ({ auth, profile }) => ({
+  token: auth.token,
   profile: profile.single,
   loading: profile.loading
 });

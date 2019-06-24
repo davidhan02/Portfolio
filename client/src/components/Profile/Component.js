@@ -3,9 +3,10 @@ import React from 'react';
 const Profile = ({ profile }) => {
   return (
     <>
+      <br />
       {profile.name}
       <br />
-      {profile.birthday}
+      {profile.birthday.split('T')[0]}
       <br />
       {profile.status}
       <br />
@@ -17,7 +18,6 @@ const Profile = ({ profile }) => {
       <br />
       {profile.bio}
       <br />
-      {profile.education.length > 1 && <div eduList={profile.education} />}
     </>
   );
 };
