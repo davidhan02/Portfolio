@@ -24,7 +24,7 @@ class ProfileContainer extends Component {
     if (!profile) return <NotFound />;
     return (
       <>
-        {token && <Link to="/form/profile">Edit Profile</Link>}
+        {token && <Link to="/profile/form">Edit Profile</Link>}
         <br />
         <Profile profile={profile} />
       </>

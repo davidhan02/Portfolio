@@ -1,9 +1,9 @@
 import React from 'react';
 import { ListItem, ListLink } from './style';
 
-const NavLink = ({ to, label, text, onClick, closeMenu }) => (
+const NavLink = ({ to, exact, label, text, onClick, closeMenu }) => (
   <ListItem onClick={onClick}>
-    <ListLink exact to={to} aria-label={label} onClick={closeMenu}>
+    <ListLink to={to} exact={exact} aria-label={label} onClick={closeMenu}>
       {text}
     </ListLink>
   </ListItem>

@@ -15,6 +15,7 @@ const Navbar = ({ open, token, logout, toggleMenu, toggleTheme }) => {
         <NavButton open={open} onClick={toggleMenu} />
         <NavList open={open} token={token}>
           <NavLinkContainer
+            exact
             to={'/'}
             label={'Return back to landing page'}
             text={'Home'}

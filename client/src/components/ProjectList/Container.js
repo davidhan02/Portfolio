@@ -31,7 +31,7 @@ class ProjectListContainer extends Component {
     if (!list) return <NotFound />;
     return (
       <>
-        {token && <Link to="/form/project">Add New Project</Link>}
+        {token && <Link to="/projects/form">Add New Project</Link>}
         <ProjectList list={list} />
       </>
     );
