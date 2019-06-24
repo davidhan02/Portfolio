@@ -16,6 +16,11 @@ export const setProjectLoading = () => ({
   type: SET_PROJECT_LOADING
 });
 
+export const setError = err => ({
+  type: SET_ERROR,
+  payload: err.response.data
+});
+
 export const getProjectList = () => async dispatch => {
   dispatch(setProjectLoading());
   try {
@@ -25,10 +30,7 @@ export const getProjectList = () => async dispatch => {
       payload: response.data
     });
   } catch (err) {
-    dispatch({
-      type: SET_ERROR,
-      payload: err.response.data
-    });
+    dispatch(setError(err));
   }
 };
 
@@ -41,10 +43,7 @@ export const getProjectsByCat = category => async dispatch => {
       payload: response.data
     });
   } catch (err) {
-    dispatch({
-      type: SET_ERROR,
-      payload: err.response.data
-    });
+    dispatch(setError(err));
   }
 };
 
@@ -57,10 +56,7 @@ export const getProject = projectId => async dispatch => {
       payload: response.data
     });
   } catch (err) {
-    dispatch({
-      type: SET_ERROR,
-      payload: err.response.data
-    });
+    dispatch(setError(err));
   }
 };
 
@@ -74,10 +70,7 @@ export const submitProject = formValues => async dispatch => {
     });
     history.push(`/projects/${response.data.id}`);
   } catch (err) {
-    dispatch({
-      type: SET_ERROR,
-      payload: err.response.data
-    });
+    dispatch(setError(err));
   }
 };
 
@@ -91,10 +84,7 @@ export const updateProject = (formValues, projectId) => async dispatch => {
     });
     history.push(`/projects/${response.data.id}`);
   } catch (err) {
-    dispatch({
-      type: SET_ERROR,
-      payload: err.response.data
-    });
+    dispatch(setError(err));
   }
 };
 
@@ -104,9 +94,6 @@ export const deleteProject = projectId => async dispatch => {
     await axios.delete(`/api/project/${projectId}`);
     history.push('/dashboard');
   } catch (err) {
-    dispatch({
-      type: SET_ERROR,
-      payload: err.response.data
-    });
+    dispatch(setError(err));
   }
 };

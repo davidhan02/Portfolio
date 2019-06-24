@@ -1,11 +1,18 @@
 import axios from 'axios';
 import { SET_USER, SET_ERROR, SET_USER_LOADING, LOGOUT_USER } from './types';
 
+export const logout = () => ({
+  type: LOGOUT_USER
+});
+
 export const setUserLoading = () => ({
   type: SET_USER_LOADING
 });
 
-export const logout = () => ({ type: LOGOUT_USER });
+export const setError = err => ({
+  type: SET_ERROR,
+  payload: err.response.data
+});
 
 export const submitLogin = formValues => async dispatch => {
   dispatch(setUserLoading());
@@ -16,10 +23,7 @@ export const submitLogin = formValues => async dispatch => {
       payload: login.data.token
     });
   } catch (err) {
-    dispatch({
-      type: SET_ERROR,
-      payload: err.response.data
-    });
+    dispatch(setError(err));
   }
 };
 
@@ -32,9 +36,6 @@ export const submitRegister = formValues => async dispatch => {
       payload: register.data.token
     });
   } catch (err) {
-    dispatch({
-      type: SET_ERROR,
-      payload: err.response.data
-    });
+    dispatch(setError(err));
   }
 };

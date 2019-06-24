@@ -10,6 +10,11 @@ export const setProfileLoading = () => ({
   type: SET_PROFILE_LOADING
 });
 
+export const setError = err => ({
+  type: SET_ERROR,
+  payload: err.response.data
+});
+
 export const getFirstProfile = () => async dispatch => {
   dispatch(setProfileLoading());
   try {
@@ -19,10 +24,7 @@ export const getFirstProfile = () => async dispatch => {
       payload: response.data[0]
     });
   } catch (err) {
-    dispatch({
-      type: SET_ERROR,
-      payload: err.response.data
-    });
+    dispatch(setError(err));
   }
 };
 
@@ -35,10 +37,7 @@ export const getProfile = profileId => async dispatch => {
       payload: response.data
     });
   } catch (err) {
-    dispatch({
-      type: SET_ERROR,
-      payload: err.response.data
-    });
+    dispatch(setError(err));
   }
 };
 
@@ -52,10 +51,7 @@ export const submitProfile = formValues => async dispatch => {
     });
     history.push('/profile');
   } catch (err) {
-    dispatch({
-      type: SET_ERROR,
-      payload: err.response.data
-    });
+    dispatch(setError(err));
   }
 };
 
@@ -69,10 +65,7 @@ export const updateProfile = (formValues, profileId) => async dispatch => {
     });
     history.push('/profile');
   } catch (err) {
-    dispatch({
-      type: SET_ERROR,
-      payload: err.response.data
-    });
+    dispatch(setError(err));
   }
 };
 
@@ -82,9 +75,47 @@ export const deleteProfile = profileId => async dispatch => {
     await axios.delete(`/api/profile/${profileId}`);
     history.push('/dashboard');
   } catch (err) {
+    dispatch(setError(err));
+  }
+};
+
+export const submitEdu = (formValues, profileId) => async dispatch => {
+  dispatch(setProfileLoading());
+  try {
+    const response = await axios.post(`/api/profile/${profileId}/edu`, formValues);
     dispatch({
-      type: SET_ERROR,
-      payload: err.response.data
+      type: SET_PROFILE,
+      payload: response.data
     });
+    history.push('/profile');
+  } catch (err) {
+    dispatch(setError(err));
+  }
+};
+
+export const updateEdu = (formValues, profileId, eduId) => async dispatch => {
+  dispatch(setProfileLoading());
+  try {
+    const response = await axios.patch(
+      `/api/profile/${profileId}/edu/${eduId}`,
+      formValues
+    );
+    dispatch({
+      type: SET_PROFILE,
+      payload: response.data
+    });
+    history.push('/profile');
+  } catch (err) {
+    dispatch(setError(err));
+  }
+};
+
+export const deleteEdu = (profileId, eduId) => async dispatch => {
+  dispatch(setProfileLoading());
+  try {
+    await axios.delete(`/api/profile/${profileId}/edu/${eduId}`);
+    dispatch(getFirstProfile);
+  } catch (err) {
+    dispatch(setError(err));
   }
 };
