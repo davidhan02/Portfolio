@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import { getProject, submitProject, updateProject } from '../../actions/project';
 import { clearError } from '../../actions/error';
 import ProjectForm from './Component';
 import validate from './validate';
+import {
+  getProject,
+  submitProject,
+  updateProject,
+  clearProject
+} from '../../actions/project';
 
 class ProjectFormContainer extends Component {
   state = { editMode: false };
@@ -28,6 +33,7 @@ class ProjectFormContainer extends Component {
 
   componentWillUnmount() {
     this.props.clearError();
+    this.props.clearProject();
   }
 
   onSubmit = formValues => {
@@ -52,7 +58,13 @@ const mapStateToProps = ({ auth, project }) => ({
   loading: project.loading
 });
 
-const mapDispatchToProps = { getProject, submitProject, updateProject, clearError };
+const mapDispatchToProps = {
+  getProject,
+  submitProject,
+  updateProject,
+  clearError,
+  clearProject
+};
 
 const enhance = compose(
   reduxForm({ form: 'project', validate }),

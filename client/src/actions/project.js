@@ -64,10 +64,6 @@ export const submitProject = formValues => async dispatch => {
   dispatch(setProjectLoading());
   try {
     const response = await axios.post('/api/project', formValues);
-    dispatch({
-      type: SET_PROJECT,
-      payload: response.data
-    });
     history.push(`/projects/${response.data.id}`);
   } catch (err) {
     dispatch(setError(err));
@@ -78,10 +74,6 @@ export const updateProject = (formValues, projectId) => async dispatch => {
   dispatch(setProjectLoading());
   try {
     const response = await axios.patch(`/api/project/${projectId}`, formValues);
-    dispatch({
-      type: SET_PROJECT,
-      payload: response.data
-    });
     history.push(`/projects/${response.data.id}`);
   } catch (err) {
     dispatch(setError(err));

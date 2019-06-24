@@ -9,10 +9,8 @@ import FullProject from './Component';
 
 class FullProjectContainer extends Component {
   componentDidMount() {
-    const { project, projectId, getProject } = this.props;
-    if (!project) {
-      getProject(projectId);
-    }
+    const { getProject, projectId } = this.props;
+    getProject(projectId);
   }
 
   componentWillUnmount() {
