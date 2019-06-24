@@ -75,3 +75,16 @@ export const updateProfile = (formValues, profileId) => async dispatch => {
     });
   }
 };
+
+export const deleteProfile = profileId => async dispatch => {
+  dispatch(setProfileLoading());
+  try {
+    await axios.delete(`/api/profile/${profileId}`);
+    history.push('/dashboard');
+  } catch (err) {
+    dispatch({
+      type: SET_ERROR,
+      payload: err.response.data
+    });
+  }
+};

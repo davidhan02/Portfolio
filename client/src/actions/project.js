@@ -80,3 +80,33 @@ export const submitProject = formValues => async dispatch => {
     });
   }
 };
+
+export const updateProject = (formValues, projectId) => async dispatch => {
+  dispatch(setProjectLoading());
+  try {
+    const response = await axios.patch(`/api/project/${projectId}`, formValues);
+    dispatch({
+      type: SET_PROJECT,
+      payload: response.data
+    });
+    history.push(`/projects/${response.data.id}`);
+  } catch (err) {
+    dispatch({
+      type: SET_ERROR,
+      payload: err.response.data
+    });
+  }
+};
+
+export const deleteProject = projectId => async dispatch => {
+  dispatch(setProjectLoading());
+  try {
+    await axios.delete(`/api/project/${projectId}`);
+    history.push('/dashboard');
+  } catch (err) {
+    dispatch({
+      type: SET_ERROR,
+      payload: err.response.data
+    });
+  }
+};
