@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import Loading from '../shared/Loading';
+import NotFound from '../shared/NotFound';
 import { getProject, clearProject } from '../../actions/project';
 import { clearError } from '../../actions/error';
 import FullProject from './Component';
@@ -20,7 +22,9 @@ class FullProjectContainer extends Component {
 
   render() {
     const { loading, project } = this.props;
-    return <FullProject loading={loading} project={project} />;
+    if (loading) return <Loading />;
+    if (!project) return <NotFound />;
+    return <FullProject project={project} />;
   }
 }
 

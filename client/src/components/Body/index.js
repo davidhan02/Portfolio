@@ -1,11 +1,11 @@
 import React from 'react';
 import NotFound from '../shared/NotFound';
 import { Route, Switch } from 'react-router-dom';
+import ProfileContainer from '../Profile/Container';
 import FullProjectContainer from '../FullProject/Container';
 import ProjectListContainer from '../ProjectList/Container';
 import { BodyWrapper, MainSection, Placeholder } from './style';
 
-const Profile = () => <Placeholder>Profile</Placeholder>;
 const Landing = () => <Placeholder>Landing</Placeholder>;
 const Contact = () => <Placeholder>Contact</Placeholder>;
 
@@ -14,8 +14,8 @@ const Body = () => (
     <MainSection>
       <Switch>
         <Route exact path="/" component={Landing} />
-        <Route path="/profile" component={Profile} />
         <Route path="/contact" component={Contact} />
+        <Route path="/profile" component={ProfileContainer} />
         <Route exact path="/projects" component={ProjectListContainer} />
         <Route
           exact

@@ -50,7 +50,7 @@ export const submitProfile = formValues => async dispatch => {
       type: SET_PROFILE,
       payload: response.data
     });
-    history.push(`/profile/${response.data.id}`);
+    history.push('/profile');
   } catch (err) {
     dispatch({
       type: SET_ERROR,
@@ -67,6 +67,7 @@ export const updateProfile = (formValues, profileId) => async dispatch => {
       type: SET_PROFILE,
       payload: response.data
     });
+    history.push('/profile');
   } catch (err) {
     dispatch({
       type: SET_ERROR,
