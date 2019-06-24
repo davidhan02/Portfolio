@@ -5,7 +5,7 @@ import ButtonIcon from './Icon';
 const NavButton = ({ open, onClick }) => (
   <Button
     active={open}
-    aria-expanded="false"
+    aria-expanded={open}
     aria-controls="nav-list"
     aria-label="Toggle navigation"
     onClick={onClick}
