@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ProjectHeaderContainer from './Header/Container';
 
 const Project = ({ project }) => (
@@ -6,7 +7,11 @@ const Project = ({ project }) => (
     <br />
     <ProjectHeaderContainer project={project} />
     <br />
-    {project.categories.join(', ')}
+    {project.categories.map(category => (
+      <Link key={category + project.id} to={`/projects/cat/${category}`}>
+        {category}
+      </Link>
+    ))}
     <br />
     ID: {project.id}
     <br />

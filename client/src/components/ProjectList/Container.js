@@ -14,15 +14,15 @@ import {
 
 class ProjectListContainer extends Component {
   componentDidMount() {
-    const { list, category, getProjectList, getProjectsByCat } = this.props;
-    if (list.length < 1) {
-      category ? getProjectsByCat(category) : getProjectList();
-    }
+    const { category, getProjectList, getProjectsByCat } = this.props;
+    if (category) return getProjectsByCat(category);
+    getProjectList();
   }
 
   componentDidUpdate(prevProps) {
-    const { category, getProjectList } = this.props;
-    if (category !== prevProps.category) getProjectList();
+    const { category, getProjectList, getProjectsByCat } = this.props;
+    if (prevProps.category && !category) getProjectList();
+    if (category && category !== prevProps.category) getProjectsByCat(category);
   }
 
   componentWillUnmount() {
@@ -31,12 +31,14 @@ class ProjectListContainer extends Component {
   }
 
   render() {
-    const { loading, token, list } = this.props;
+    const { loading, category, token, list } = this.props;
     if (loading) return <Loading />;
     if (!list) return <NotFound />;
     return (
       <>
         {token && <Link to="/projects/form">Add New Project</Link>}
+        <br />
+        {category && <h3>Category: {category}</h3>}
         <br />
         <ProjectList list={list} />
       </>
