@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import ProjectHeaderContainer from './Header/Container';
 
 const Project = ({ project }) => (
   <>
     <br />
-    <Link to={`/projects/${project.id}`}>{project.title}</Link>
+    <ProjectHeaderContainer project={project} />
     <br />
     {project.categories.join(', ')}
     <br />

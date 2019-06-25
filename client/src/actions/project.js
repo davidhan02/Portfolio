@@ -81,11 +81,13 @@ export const updateProject = (formValues, projectId) => async dispatch => {
 };
 
 export const deleteProject = projectId => async dispatch => {
-  dispatch(setProjectLoading());
-  try {
-    await axios.delete(`/api/project/${projectId}`);
-    history.push('/dashboard');
-  } catch (err) {
-    dispatch(setError(err));
+  if (window.confirm('Are you sure you want to delete this project?')) {
+    dispatch(setProjectLoading());
+    try {
+      await axios.delete(`/api/project/${projectId}`);
+      history.push('/dashboard');
+    } catch (err) {
+      dispatch(setError(err));
+    }
   }
 };
