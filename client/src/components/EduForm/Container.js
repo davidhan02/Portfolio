@@ -41,12 +41,19 @@ class EduFormContainer extends Component {
   };
 
   render() {
-    const { handleSubmit, loading } = this.props;
-    return <EduForm loading={loading} handleSubmit={handleSubmit(this.onSubmit)} />;
+    const { handleSubmit, loading, form } = this.props;
+    return (
+      <EduForm
+        form={form}
+        loading={loading}
+        handleSubmit={handleSubmit(this.onSubmit)}
+      />
+    );
   }
 }
 
-const mapStateToProps = ({ profile }) => ({
+const mapStateToProps = ({ profile, form }) => ({
+  form: form.edu,
   profile: profile.single,
   loading: profile.loading
 });
@@ -60,7 +67,7 @@ const mapDispatchToProps = {
 };
 
 const enhance = compose(
-  reduxForm({ form: 'edu' }),
+  reduxForm({ form: 'edu', initialValues: { current: 'false' } }),
   connect(
     mapStateToProps,
     mapDispatchToProps

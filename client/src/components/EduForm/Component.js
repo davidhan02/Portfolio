@@ -6,17 +6,24 @@ import SubmitButton from '../shared/form/SubmitButton';
 
 const currentOpts = [
   {
-    label: 'yes',
+    label: 'current',
     value: 'true'
   },
   {
-    label: 'no',
+    label: 'past',
     value: 'false'
   }
 ];
 
-const EduForm = ({ loading, handleSubmit }) => (
+const EduForm = ({ form, loading, handleSubmit }) => (
   <Form loading={loading} onSubmit={handleSubmit} wide>
+    <Field
+      type="radiogroup"
+      name="current"
+      label="current"
+      component={renderField}
+      options={currentOpts}
+    />
     <Field
       type="text"
       name="school"
@@ -24,6 +31,10 @@ const EduForm = ({ loading, handleSubmit }) => (
       placeholder="Santa Clara University"
       component={renderField}
     />
+    <Field type="date" name="from" label="from" component={renderField} />
+    {form.values.current === 'false' && (
+      <Field type="date" name="to" label="to" component={renderField} />
+    )}
     <Field
       type="text"
       name="degree"
@@ -44,15 +55,6 @@ const EduForm = ({ loading, handleSubmit }) => (
       label="categories"
       placeholder="HTML, CSS, JavaScript, etc..."
       component={renderField}
-    />
-    <Field type="date" name="from" label="from" component={renderField} />
-    <Field type="date" name="to" label="to" component={renderField} />
-    <Field
-      type="radiogroup"
-      name="current"
-      label="current"
-      component={renderField}
-      options={currentOpts}
     />
     <Field
       type="textarea"

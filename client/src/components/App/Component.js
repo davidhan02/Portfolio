@@ -3,6 +3,7 @@ import { ThemeProvider as Theme } from 'styled-components';
 import ErrorDisplayContainer from '../ErrorDisplay/Container';
 import ProjectFormContainer from '../ProjectForm/Container';
 import ProfileFormContainer from '../ProfileForm/Container';
+import EduFormContainer from '../EduForm/Container';
 import RegisterContainer from '../Register/Container';
 import GlobalStyle from '../../styles/globalStyle';
 import PrivateRoute from '../shared/PrivateRoute';
@@ -37,6 +38,12 @@ const App = ({ dark }) => (
             exact
             path="/profile/form"
             component={ProfileFormContainer}
+          />
+          <PrivateRoute exact path="/profile/eduform" component={EduFormContainer} />
+          <PrivateRoute
+            exact
+            path="/profile/eduform/:eduId"
+            component={EduFormContainer}
           />
           <Route path="/" component={Body} />
         </Switch>
