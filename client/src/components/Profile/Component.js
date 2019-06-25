@@ -18,8 +18,6 @@ const Profile = ({ profile }) => {
       <br />
       {profile.bio}
       <br />
-      {profile.education.length}
-      <br />
     </>
   );
 };

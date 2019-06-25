@@ -14,7 +14,7 @@ class EduFormContainer extends Component {
     await this.props.getFirstProfile();
     const { profile, match } = this.props;
     if (match.params.eduId) {
-      const lyst = profile.education.filter(each => each.id === match.params.eduId);
+      const lyst = profile.education.filter(edu => edu.id === match.params.eduId);
       if (lyst.length === 1) {
         this.setState({ editMode: true });
         const edu = lyst[0];

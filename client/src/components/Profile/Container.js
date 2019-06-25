@@ -4,9 +4,10 @@ import Profile from './Component';
 import { connect } from 'react-redux';
 import Loading from '../shared/Loading';
 import NotFound from '../shared/NotFound';
-import { Link } from 'react-router-dom';
+import ProfileEduList from './EduList';
 import { clearError } from '../../actions/error';
 import { getFirstProfile, clearProfile } from '../../actions/profile';
+import ProfileAuthLinks from './AuthLinks';
 
 class ProfileContainer extends Component {
   componentDidMount() {
@@ -24,9 +25,11 @@ class ProfileContainer extends Component {
     if (!profile) return <NotFound />;
     return (
       <>
-        {token && <Link to="/profile/form">Edit Profile</Link>}
-        <br />
+        {token && <ProfileAuthLinks />}
         <Profile profile={profile} />
+        {profile.education.length > 1 && (
+          <ProfileEduList education={profile.education} />
+        )}
       </>
     );
   }
