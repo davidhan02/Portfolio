@@ -14,7 +14,7 @@ const Project = ({ project }) => (
     <br />
     {project.code}
     <br />
-    {project.created}
+    {project.created.split('T')[0]}
     <br />
     {project.text}
     <br />
