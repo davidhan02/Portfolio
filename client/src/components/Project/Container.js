@@ -7,7 +7,7 @@ import { getProject, clearProject } from '../../actions/project';
 import { clearError } from '../../actions/error';
 import FullProject from './Component';
 
-class FullProjectContainer extends Component {
+class ProjectContainer extends Component {
   componentDidMount() {
     const { getProject, projectId } = this.props;
     getProject(projectId);
@@ -40,4 +40,4 @@ const enhance = compose(
   )
 );
 
-export default enhance(FullProjectContainer);
+export default enhance(ProjectContainer);

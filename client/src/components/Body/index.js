@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Dashboard from '../Dashboard';
 import PrivateRoute from '../shared/PrivateRoute';
 import ProfileContainer from '../Profile/Container';
-import FullProjectContainer from '../FullProject/Container';
+import ProjectContainer from '../Project/Container';
 import ProjectListContainer from '../ProjectList/Container';
 import { BodyWrapper, MainSection, Placeholder } from './style';
 
@@ -31,7 +31,7 @@ const Body = () => (
           exact
           path="/projects/:projectId"
           render={({ match }) => (
-            <FullProjectContainer projectId={match.params.projectId} />
+            <ProjectContainer projectId={match.params.projectId} />
           )}
         />
         <Route component={NotFound} />
