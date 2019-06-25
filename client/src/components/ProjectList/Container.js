@@ -20,6 +20,11 @@ class ProjectListContainer extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const { category, getProjectList } = this.props;
+    if (category !== prevProps.category) getProjectList();
+  }
+
   componentWillUnmount() {
     this.props.clearError();
     this.props.clearProject();
