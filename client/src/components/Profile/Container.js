@@ -7,7 +7,7 @@ import NotFound from '../shared/NotFound';
 import ProfileEduList from './EduList';
 import { clearError } from '../../actions/error';
 import { getFirstProfile, clearProfile } from '../../actions/profile';
-import ProfileAuthLinks from './AuthLinks';
+import AuthLinksContainer from './AuthLinks/Container';
 
 class ProfileContainer extends Component {
   componentDidMount() {
@@ -25,7 +25,7 @@ class ProfileContainer extends Component {
     if (!profile) return <NotFound />;
     return (
       <>
-        {token && <ProfileAuthLinks />}
+        {token && <AuthLinksContainer id={profile.id} />}
         <Profile profile={profile} />
         {profile.education.length > 0 && (
           <ProfileEduList education={profile.education} />
