@@ -14,12 +14,13 @@ class EduFormContainer extends Component {
     await this.props.getFirstProfile();
     const { profile, match } = this.props;
     if (match.params.eduId) {
-      const lyst = profile.education.filter(each => each.id !== match.params.eduId);
+      const lyst = profile.education.filter(each => each.id === match.params.eduId);
       if (lyst.length === 1) {
         this.setState({ editMode: true });
         const edu = lyst[0];
         await this.props.initialize({
           ...edu,
+          current: edu.current.toString(),
           from: edu.from.split('T')[0],
           to: edu.to ? edu.to.split('T')[0] : ''
         });

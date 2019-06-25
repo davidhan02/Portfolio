@@ -39,7 +39,11 @@ const App = ({ dark }) => (
             path="/profile/form"
             component={ProfileFormContainer}
           />
-          <PrivateRoute exact path="/profile/eduform" component={EduFormContainer} />
+          <PrivateRoute
+            exact
+            path="/profile/eduform/"
+            component={EduFormContainer}
+          />
           <PrivateRoute
             exact
             path="/profile/eduform/:eduId"

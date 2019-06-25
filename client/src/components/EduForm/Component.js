@@ -28,7 +28,7 @@ const EduForm = ({ form, loading, handleSubmit }) => (
       type="text"
       name="school"
       label="school"
-      placeholder="Santa Clara University"
+      placeholder="School name"
       component={renderField}
     />
     <Field type="date" name="from" label="from" component={renderField} />
@@ -47,13 +47,6 @@ const EduForm = ({ form, loading, handleSubmit }) => (
       name="major"
       label="major"
       placeholder="Biology, Computer Science, etc..."
-      component={renderField}
-    />
-    <Field
-      type="text"
-      name="categories"
-      label="categories"
-      placeholder="HTML, CSS, JavaScript, etc..."
       component={renderField}
     />
     <Field
