@@ -50,7 +50,11 @@ export const deleteSocial = profileId => async dispatch => {
   dispatch(setProfileLoading());
   try {
     await axios.delete(`/api/profile/${profileId}/social`);
-    dispatch(getFirstProfile);
+    const response = await axios.get(`/api/profile/${profileId}`);
+    dispatch({
+      type: SET_PROFILE,
+      payload: response.data
+    });
   } catch (err) {
     dispatch(setError(err));
   }

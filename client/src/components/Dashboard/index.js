@@ -9,6 +9,10 @@ const Dashboard = () => (
     <br />
     <Link to="/projects">Edit Existing Project</Link>
     <br />
+    <Link to="/profile/eduform">Add New Education</Link>
+    <br />
+    <Link to="/profile">Edit Existing Education</Link>
+    <br />
   </>
 );
 

@@ -44,11 +44,16 @@ export const updateEdu = (formValues, profileId, eduId) => async dispatch => {
 };
 
 export const deleteEdu = (profileId, eduId) => async dispatch => {
-  dispatch(setProfileLoading());
-  try {
-    await axios.delete(`/api/profile/${profileId}/edu/${eduId}`);
-    dispatch(getFirstProfile);
-  } catch (err) {
-    dispatch(setError(err));
+  if (window.confirm('Are you sure you want to delete this education?')) {
+    try {
+      await axios.delete(`/api/profile/${profileId}/edu/${eduId}`);
+      const response = await axios.get(`/api/profile/${profileId}`);
+      dispatch({
+        type: SET_PROFILE,
+        payload: response.data
+      });
+    } catch (err) {
+      dispatch(setError(err));
+    }
   }
 };

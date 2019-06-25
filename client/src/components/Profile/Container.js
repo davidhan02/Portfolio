@@ -27,7 +27,7 @@ class ProfileContainer extends Component {
       <>
         {token && <ProfileAuthLinks />}
         <Profile profile={profile} />
-        {profile.education.length > 1 && (
+        {profile.education.length > 0 && (
           <ProfileEduList education={profile.education} />
         )}
       </>
