@@ -4,7 +4,7 @@ import Profile from './Component';
 import { connect } from 'react-redux';
 import Loading from '../shared/Loading';
 import NotFound from '../shared/NotFound';
-import ProfileEduList from './EduList';
+import EduItem from '../EduItem';
 import { clearError } from '../../actions/error';
 import { getFirstProfile, clearProfile } from '../../actions/profile';
 import AuthLinksContainer from './AuthLinks/Container';
@@ -27,9 +27,8 @@ class ProfileContainer extends Component {
       <>
         {token && <AuthLinksContainer id={profile.id} />}
         <Profile profile={profile} />
-        {profile.education.length > 0 && (
-          <ProfileEduList education={profile.education} />
-        )}
+        {profile.education.length > 0 &&
+          profile.education.map(edu => <EduItem key={edu.id} edu={edu} />)}
       </>
     );
   }

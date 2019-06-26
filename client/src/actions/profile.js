@@ -62,11 +62,13 @@ export const updateProfile = (formValues, profileId) => async dispatch => {
 };
 
 export const deleteProfile = profileId => async dispatch => {
-  dispatch(setProfileLoading());
-  try {
-    await axios.delete(`/api/profile/${profileId}`);
-    history.push('/dashboard');
-  } catch (err) {
-    dispatch(setError(err));
+  if (window.confirm('Are you sure you want to delete the entire profile?')) {
+    dispatch(setProfileLoading());
+    try {
+      await axios.delete(`/api/profile/${profileId}`);
+      history.push('/dashboard');
+    } catch (err) {
+      dispatch(setError(err));
+    }
   }
 };

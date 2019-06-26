@@ -1,6 +1,5 @@
 import axios from 'axios';
 import history from '../util/history';
-import { getFirstProfile } from './profile';
 import { SET_ERROR, SET_PROFILE, SET_PROFILE_LOADING } from './types';
 
 export const setProfileLoading = () => ({

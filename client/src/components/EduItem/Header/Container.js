@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import EduHeader from './Component';
+import EduItemHeader from './Component';
 import { deleteEdu } from '../../../actions/edu';
 
 const mapStateToProps = ({ auth, profile }) => ({
@@ -9,9 +9,9 @@ const mapStateToProps = ({ auth, profile }) => ({
 
 const mapDispatchToProps = { deleteEdu };
 
-const EduHeaderContainer = connect(
+const EduItemHeaderContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(EduHeader);
+)(EduItemHeader);
 
-export default EduHeaderContainer;
+export default EduItemHeaderContainer;

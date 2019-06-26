@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const EduHeader = ({ token, profile, eduId, school, deleteEdu }) => (
+const EduItemHeader = ({ token, profile, eduId, school, deleteEdu }) => (
   <>
     {school}&nbsp;
     {token && (
@@ -15,4 +15,4 @@ const EduHeader = ({ token, profile, eduId, school, deleteEdu }) => (
   </>
 );
 
-export default EduHeader;
+export default EduItemHeader;
