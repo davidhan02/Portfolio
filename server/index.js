@@ -19,6 +19,7 @@ mongoose.connect(keys.mongoURI, {
 require('./models/user');
 require('./models/profile');
 require('./models/project');
+require('./models/message');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
