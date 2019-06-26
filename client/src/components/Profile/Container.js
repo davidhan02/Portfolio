@@ -28,8 +28,14 @@ class ProfileContainer extends Component {
       <>
         {token && <AuthLinksContainer id={profile.id} />}
         <Profile profile={profile} />
+        <br />
+        Education:
+        <hr />
         {profile.education.length > 0 &&
           profile.education.map(edu => <EduItem key={edu.id} edu={edu} />)}
+        <br />
+        Experience:
+        <hr />
         {profile.experience.length > 0 &&
           profile.experience.map(exp => <ExpItem key={exp.id} exp={exp} />)}
       </>

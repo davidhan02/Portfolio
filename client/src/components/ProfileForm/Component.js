@@ -41,7 +41,8 @@ const ProfileForm = ({ loading, handleSubmit }) => (
       component={renderField}
     />
     <Field
-      type="text"
+      type="textarea"
+      rows={3}
       name="skills"
       label="skills"
       placeholder="HTML, CSS, JavaScript, etc..."

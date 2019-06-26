@@ -13,6 +13,7 @@ const ProjectForm = ({ loading, handleSubmit }) => (
       placeholder="Project Title"
       component={renderField}
     />
+    <Field type="date" name="created" label="created" component={renderField} />
     <Field
       type="text"
       name="url"
@@ -28,13 +29,13 @@ const ProjectForm = ({ loading, handleSubmit }) => (
       component={renderField}
     />
     <Field
-      type="text"
+      type="textarea"
+      rows={3}
       name="categories"
       label="categories"
       placeholder="HTML, CSS, JavaScript, etc..."
       component={renderField}
     />
-    <Field type="date" name="created" label="created" component={renderField} />
     <Field
       type="textarea"
       name="text"
