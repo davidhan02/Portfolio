@@ -1,7 +1,7 @@
 import React from 'react';
-import NotFound from '../shared/NotFound';
 import { Route, Switch } from 'react-router-dom';
 import Dashboard from '../Dashboard';
+import NotFound from '../shared/NotFound';
 import PrivateRoute from '../shared/PrivateRoute';
 import ProfileContainer from '../Profile/Container';
 import ProjectContainer from '../Project/Container';

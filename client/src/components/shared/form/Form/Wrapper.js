@@ -5,6 +5,7 @@ const FormWrapper = styled.div`
   overflow: hidden;
   margin: 0 auto;
 
+  width: 100%;
   padding: 24px;
   border-radius: 2px;
 

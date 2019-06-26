@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import DashboardLinks from './Links';
 import MessageListContainer from '../MessageList/Container';
 

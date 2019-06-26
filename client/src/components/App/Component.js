@@ -27,46 +27,23 @@ const App = ({ dark }) => (
         <Switch>
           <Route path="/login" component={LoginContainer} />
           <Route path="/register" component={RegisterContainer} />
+          <PrivateRoute path="/profile/form" component={ProfileFormContainer} />
           <PrivateRoute
             exact
-            path="/projects/form"
+            path={['/projects/form', '/projects/form/:projectId']}
             component={ProjectFormContainer}
           />
           <PrivateRoute
             exact
-            path="/projects/form/:projectId"
-            component={ProjectFormContainer}
-          />
-          <PrivateRoute
-            exact
-            path="/profile/form"
-            component={ProfileFormContainer}
-          />
-          <PrivateRoute
-            exact
-            path="/profile/eduform/"
+            path={['/profile/eduform/', '/profile/eduform/:eduId']}
             component={EduFormContainer}
           />
           <PrivateRoute
             exact
-            path="/profile/eduform/:eduId"
-            component={EduFormContainer}
-          />
-          <PrivateRoute
-            exact
-            path="/profile/expform/"
+            path={['/profile/expform/', '/profile/expform/:expId']}
             component={ExpFormContainer}
           />
-          <PrivateRoute
-            exact
-            path="/profile/expform/:expId"
-            component={ExpFormContainer}
-          />
-          <PrivateRoute
-            exact
-            path="/profile/linksform/"
-            component={LinksFormContainer}
-          />
+          <PrivateRoute path="/profile/linksform/" component={LinksFormContainer} />
           <Route path="/contact" component={ContactContainer} />
           <Route path="/" component={Body} />
         </Switch>
