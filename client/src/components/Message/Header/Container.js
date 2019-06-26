@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
-import MessageListItem from './Component';
+import MessageHeader from './Component';
 import { deleteMessage } from '../../../actions/message';
 
 const mapStateToProps = null;
 
 const mapDispatchToProps = { deleteMessage };
 
-const MessageListItemContainer = connect(
+const MessageHeaderContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(MessageListItem);
+)(MessageHeader);
 
-export default MessageListItemContainer;
+export default MessageHeaderContainer;

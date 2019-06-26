@@ -1,7 +1,7 @@
 import React from 'react';
-import MessageListItemContainer from './Item/Container';
+import MessageHeaderContainer from '../Message/Header/Container';
 
 const MessageList = ({ messages }) =>
-  messages.map(msg => <MessageListItemContainer message={msg} />);
+  messages.map(msg => <MessageHeaderContainer message={msg} />);
 
 export default MessageList;

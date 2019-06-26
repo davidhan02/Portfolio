@@ -1,10 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const MessageListItem = ({ message, deleteMessage }) => (
+const MessageHeader = ({ message, deleteMessage }) => (
   <>
     <br />
-    <Link to={`/dashboard/${message.id}`}>{message.subject}</Link>
+    <Link
+      to={`/dashboard/${message.id}`}
+      style={{ fontWeight: message.read ? '400' : '600' }}
+    >
+      {message.subject}
+    </Link>
     &nbsp; From: {message.name}
     &nbsp; Sent: {message.sent.split('T')[0]}&nbsp;
     <Link to="/dashboard" onClick={() => deleteMessage(message.id)}>
@@ -14,4 +19,4 @@ const MessageListItem = ({ message, deleteMessage }) => (
   </>
 );
 
-export default MessageListItem;
+export default MessageHeader;
