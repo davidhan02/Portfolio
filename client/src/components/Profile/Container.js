@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import Profile from './Component';
+import EduItem from '../EduItem';
+import ExpItem from '../ExpItem';
 import { connect } from 'react-redux';
 import Loading from '../shared/Loading';
 import NotFound from '../shared/NotFound';
-import EduItem from '../EduItem';
 import { clearError } from '../../actions/error';
 import { getFirstProfile, clearProfile } from '../../actions/profile';
 import AuthLinksContainer from './AuthLinks/Container';
@@ -29,6 +30,8 @@ class ProfileContainer extends Component {
         <Profile profile={profile} />
         {profile.education.length > 0 &&
           profile.education.map(edu => <EduItem key={edu.id} edu={edu} />)}
+        {profile.experience.length > 0 &&
+          profile.experience.map(exp => <ExpItem key={exp.id} exp={exp} />)}
       </>
     );
   }

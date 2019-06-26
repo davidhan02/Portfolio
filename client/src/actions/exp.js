@@ -29,7 +29,7 @@ export const updateExp = (formValues, profileId, expId) => async dispatch => {
   dispatch(setProfileLoading());
   try {
     const response = await axios.patch(
-      `/api/profile/${profileId}/edu/${expId}`,
+      `/api/profile/${profileId}/exp/${expId}`,
       formValues
     );
     dispatch({
@@ -43,15 +43,16 @@ export const updateExp = (formValues, profileId, expId) => async dispatch => {
 };
 
 export const deleteExp = (profileId, expId) => async dispatch => {
-  dispatch(setProfileLoading());
-  try {
-    await axios.delete(`/api/profile/${profileId}/edu/${expId}`);
-    const response = await axios.get(`/api/profile/${profileId}`);
-    dispatch({
-      type: SET_PROFILE,
-      payload: response.data
-    });
-  } catch (err) {
-    dispatch(setError(err));
+  if (window.confirm('Are you sure you want to delete this experience?')) {
+    try {
+      await axios.delete(`/api/profile/${profileId}/exp/${expId}`);
+      const response = await axios.get(`/api/profile/${profileId}`);
+      dispatch({
+        type: SET_PROFILE,
+        payload: response.data
+      });
+    } catch (err) {
+      dispatch(setError(err));
+    }
   }
 };
