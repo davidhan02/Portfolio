@@ -51,3 +51,10 @@ exports.social = {
   glitch: 'https://glitch.com/@davidhan02',
   codepen: 'https://codepen.io/davidhan02'
 };
+
+exports.message = {
+  name: 'John Doe',
+  email: 'johndoe@gmail.com',
+  subject: 'A test subject line',
+  body: 'A test message body placeholder'
+};

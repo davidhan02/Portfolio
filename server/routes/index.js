@@ -2,12 +2,20 @@ const router = require('express').Router();
 const auth = require('./middleware/auth');
 const valid = require('./middleware/validate');
 const user = require('./controllers/user');
+const message = require('./controllers/message');
 const project = require('./controllers/project');
 const profile = require('./controllers/profile');
 
 router.post('/login', valid.login, user.login);
 router.post('/register', valid.register, user.register);
 router.delete('/user/:userId', auth.jwt, user.destroy);
+
+router.get('/message', message.getAll);
+router.post('/message', auth.jwt, valid.message, message.post);
+
+router.param('message', message.load);
+router.get('/message/:message', message.getOne);
+router.delete('/message/:message', auth.jwt, message.delete);
 
 router.get('/project', project.getAll);
 router.post('/project', auth.jwt, valid.project, project.post);
