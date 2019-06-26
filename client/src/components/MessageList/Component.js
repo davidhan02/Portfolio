@@ -1,20 +1,7 @@
 import React from 'react';
+import MessageListItemContainer from './Item/Container';
 
 const MessageList = ({ messages }) =>
-  messages.map(msg => (
-    <>
-      <br />
-      Subject: {msg.subject}
-      <br />
-      Name: {msg.name}
-      <br />
-      Email: {msg.email}
-      <br />
-      Body: {msg.body}
-      <br />
-      Read: {msg.read.toString()}
-      <br />
-    </>
-  ));
+  messages.map(msg => <MessageListItemContainer message={msg} />);
 
 export default MessageList;
