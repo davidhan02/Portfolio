@@ -39,23 +39,10 @@ describe('Message route testing', () => {
     });
   });
   describe('POST /api/message', () => {
-    it('Fails without valid http header', done => {
+    it('Succeeds with valid fields', done => {
       chai
         .request(server)
         .post('/api/message')
-        .send({ ...message })
-        .end((err, res) => {
-          res.should.have.status(401);
-          res.body.should.be.a('object');
-          res.body.message.should.be.eql('Unauthorized');
-          done();
-        });
-    });
-    it('Succeeds with valid http header and fields', done => {
-      chai
-        .request(server)
-        .post('/api/message')
-        .set('Authorization', `Bearer ${jwtToken}`)
         .send({ ...message })
         .end((err, res) => {
           res.should.have.status(201);
@@ -96,10 +83,22 @@ describe('Message route testing', () => {
           done();
         });
     });
+    it('Fails without valid http header', done => {
+      chai
+        .request(server)
+        .get(`/api/message/${testMessage.id}`)
+        .end((err, res) => {
+          res.should.have.status(401);
+          res.body.should.be.a('object');
+          res.body.message.should.be.eql('Unauthorized');
+          done();
+        });
+    });
     it('Succeeds with valid message ID', done => {
       chai
         .request(server)
         .get(`/api/message/${testMessage.id}`)
+        .set('Authorization', `Bearer ${jwtToken}`)
         .end((err, res) => {
           res.should.have.status(201);
           res.body.should.be.a('object');

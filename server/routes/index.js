@@ -11,10 +11,10 @@ router.post('/register', valid.register, user.register);
 router.delete('/user/:userId', auth.jwt, user.destroy);
 
 router.get('/message', message.getAll);
-router.post('/message', auth.jwt, valid.message, message.post);
+router.post('/message', valid.message, message.post);
 
 router.param('message', message.load);
-router.get('/message/:message', message.getOne);
+router.get('/message/:message', auth.jwt, message.getOne);
 router.delete('/message/:message', auth.jwt, message.delete);
 
 router.get('/project', project.getAll);

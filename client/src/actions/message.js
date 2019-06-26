@@ -50,8 +50,8 @@ export const getMessage = messageId => async dispatch => {
 export const submitMessage = formValues => async dispatch => {
   dispatch(setMessageLoading());
   try {
-    const response = await axios.post('/api/message', formValues);
-    history.push(`/dashboard/${response.data.id}`);
+    await axios.post('/api/message', formValues);
+    history.push('/success');
   } catch (err) {
     dispatch(setError(err));
   }
