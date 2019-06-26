@@ -5,7 +5,7 @@ import renderField from '../shared/form/renderField';
 import SubmitButton from '../shared/form/SubmitButton';
 import currentOpts from '../../util/currentOpts';
 
-const EduForm = ({ form, loading, handleSubmit }) => (
+const ExpForm = ({ form, loading, handleSubmit }) => (
   <Form loading={loading} onSubmit={handleSubmit} wide>
     <Field
       type="radiogroup"
@@ -16,9 +16,9 @@ const EduForm = ({ form, loading, handleSubmit }) => (
     />
     <Field
       type="text"
-      name="school"
-      label="school"
-      placeholder="School name"
+      name="company"
+      label="company"
+      placeholder="Company name"
       component={renderField}
     />
     <Field type="date" name="from" label="from" component={renderField} />
@@ -27,27 +27,27 @@ const EduForm = ({ form, loading, handleSubmit }) => (
     )}
     <Field
       type="text"
-      name="degree"
-      label="degree"
-      placeholder="Bachelors, Masters, None, etc..."
+      name="title"
+      label="title"
+      placeholder="Developer, CPA, Intern, etc..."
       component={renderField}
     />
     <Field
       type="text"
-      name="major"
-      label="major"
-      placeholder="Biology, Computer Science, etc..."
+      name="location"
+      label="location"
+      placeholder="San Francisco, CA"
       component={renderField}
     />
     <Field
       type="textarea"
       name="description"
       label="description"
-      placeholder="Describe what you studied and your time here"
+      placeholder="Describe what you worked on and your time here"
       component={renderField}
     />
     <SubmitButton type="submit">Submit</SubmitButton>
   </Form>
 );
 
-export default EduForm;
+export default ExpForm;

@@ -5,9 +5,13 @@ const ProfileAuthLinks = ({ id, deleteProfile }) => (
   <>
     <Link to="/profile/form">Edit Profile</Link>
     &nbsp;
-    <button onClick={() => deleteProfile(id)}>Delete Profile</button>
-    &nbsp;
     <Link to="/profile/eduform">New Education</Link>
+    &nbsp;
+    <Link to="/profile/expform">New Experience</Link>
+    &nbsp;
+    <Link to="/profile" onClick={() => deleteProfile(id)}>
+      Delete Profile
+    </Link>
     <br />
   </>
 );

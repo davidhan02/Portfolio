@@ -4,6 +4,7 @@ import ErrorDisplayContainer from '../ErrorDisplay/Container';
 import ProjectFormContainer from '../ProjectForm/Container';
 import ProfileFormContainer from '../ProfileForm/Container';
 import EduFormContainer from '../EduForm/Container';
+import ExpFormContainer from '../ExpForm/Container';
 import RegisterContainer from '../Register/Container';
 import GlobalStyle from '../../styles/globalStyle';
 import PrivateRoute from '../shared/PrivateRoute';
@@ -48,6 +49,16 @@ const App = ({ dark }) => (
             exact
             path="/profile/eduform/:eduId"
             component={EduFormContainer}
+          />
+          <PrivateRoute
+            exact
+            path="/profile/expform/"
+            component={ExpFormContainer}
+          />
+          <PrivateRoute
+            exact
+            path="/profile/expform/:expId"
+            component={ExpFormContainer}
           />
           <Route path="/" component={Body} />
         </Switch>
