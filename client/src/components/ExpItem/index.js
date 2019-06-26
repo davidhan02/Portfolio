@@ -12,7 +12,7 @@ const ExpItem = ({ exp }) => (
     <br />
     From: {exp.from.split('T')[0]}
     <br />
-    To: {(exp.to && exp.to.split('T')[0]) || exp.current.toString()}
+    To: {(exp.current && 'current') || (exp.to && exp.to.split('T')[0])}
     <br />
     {exp.description}
     <br />

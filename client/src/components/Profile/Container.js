@@ -9,6 +9,7 @@ import NotFound from '../shared/NotFound';
 import { clearError } from '../../actions/error';
 import { getFirstProfile, clearProfile } from '../../actions/profile';
 import AuthLinksContainer from './AuthLinks/Container';
+import Links from '../Links';
 
 class ProfileContainer extends Component {
   componentDidMount() {
@@ -28,6 +29,7 @@ class ProfileContainer extends Component {
       <>
         {token && <AuthLinksContainer id={profile.id} />}
         <Profile profile={profile} />
+        {profile.social && <Links social={profile.social} />}
         <br />
         Education:
         <hr />

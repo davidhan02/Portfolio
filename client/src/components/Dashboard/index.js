@@ -15,6 +15,8 @@ const Dashboard = () => (
     <br />
     <Link to="/profile">Edit Existing Education</Link>
     <br />
+    <Link to="/profile/linksform">Edit Social Links</Link>
+    <br />
   </>
 );
 

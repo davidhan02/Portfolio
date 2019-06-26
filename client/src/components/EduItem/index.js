@@ -12,7 +12,7 @@ const EduItem = ({ edu }) => (
     <br />
     From: {edu.from.split('T')[0]}
     <br />
-    To: {(edu.to && edu.to.split('T')[0]) || edu.current.toString()}
+    To: {(edu.current && 'current') || (edu.to && edu.to.split('T')[0])}
     <br />
     {edu.description}
     <br />
