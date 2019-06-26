@@ -8,15 +8,15 @@ import ProjectContainer from '../Project/Container';
 import ProjectListContainer from '../ProjectList/Container';
 import { BodyWrapper, MainSection, Placeholder } from './style';
 
+const Success = () => <Placeholder>Success</Placeholder>;
 const Landing = () => <Placeholder>Landing</Placeholder>;
-const Contact = () => <Placeholder>Contact</Placeholder>;
 
 const Body = () => (
   <BodyWrapper>
     <MainSection>
       <Switch>
         <Route exact path="/" component={Landing} />
-        <Route path="/contact" component={Contact} />
+        <Route path="/success" component={Success} />
         <Route path="/profile" component={ProfileContainer} />
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <Route exact path="/projects" component={ProjectListContainer} />

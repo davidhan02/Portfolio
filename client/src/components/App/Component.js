@@ -4,6 +4,7 @@ import ErrorDisplayContainer from '../ErrorDisplay/Container';
 import ProjectFormContainer from '../ProjectForm/Container';
 import ProfileFormContainer from '../ProfileForm/Container';
 import LinksFormContainer from '../LinksForm/Container';
+import ContactContainer from '../Contact/Container';
 import EduFormContainer from '../EduForm/Container';
 import ExpFormContainer from '../ExpForm/Container';
 import RegisterContainer from '../Register/Container';
@@ -66,6 +67,7 @@ const App = ({ dark }) => (
             path="/profile/linksform/"
             component={LinksFormContainer}
           />
+          <Route path="/contact" component={ContactContainer} />
           <Route path="/" component={Body} />
         </Switch>
       </>
