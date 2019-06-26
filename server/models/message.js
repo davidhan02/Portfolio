@@ -26,6 +26,10 @@ const messageSchema = new Schema({
   sent: {
     type: Date,
     default: Date.now
+  },
+  read: {
+    type: Boolean,
+    default: false
   }
 });
 
