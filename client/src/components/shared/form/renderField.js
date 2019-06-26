@@ -61,6 +61,7 @@ const VariableField = field => {
             type={field.type}
             error={field.meta.touched && !!field.meta.error}
             placeholder={field.placeholder || field.label}
+            style={{ resize: 'none', height: '2.375rem' }}
             autoComplete="off"
           />
         </InputWrapper>
