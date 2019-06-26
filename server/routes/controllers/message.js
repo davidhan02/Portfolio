@@ -1,7 +1,7 @@
 const Message = require('../../models/message');
 
 exports.getAll = async (req, res) => {
-  const messages = await Message.find();
+  const messages = await Message.find().sort('-sent');
   if (messages.length < 1) {
     return res.status(500).json({ message: 'No messages found' });
   }
