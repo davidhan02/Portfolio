@@ -44,6 +44,7 @@ export const updateExp = (formValues, profileId, expId) => async dispatch => {
 
 export const deleteExp = (profileId, expId) => async dispatch => {
   if (window.confirm('Are you sure you want to delete this experience?')) {
+    dispatch(setProfileLoading());
     try {
       await axios.delete(`/api/profile/${profileId}/exp/${expId}`);
       const response = await axios.get(`/api/profile/${profileId}`);

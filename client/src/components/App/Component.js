@@ -3,6 +3,7 @@ import { ThemeProvider as Theme } from 'styled-components';
 import ErrorDisplayContainer from '../ErrorDisplay/Container';
 import ProjectFormContainer from '../ProjectForm/Container';
 import ProfileFormContainer from '../ProfileForm/Container';
+import LinksFormContainer from '../LinksForm/Container';
 import EduFormContainer from '../EduForm/Container';
 import ExpFormContainer from '../ExpForm/Container';
 import RegisterContainer from '../Register/Container';
@@ -59,6 +60,11 @@ const App = ({ dark }) => (
             exact
             path="/profile/expform/:expId"
             component={ExpFormContainer}
+          />
+          <PrivateRoute
+            exact
+            path="/profile/linksform/"
+            component={LinksFormContainer}
           />
           <Route path="/" component={Body} />
         </Switch>

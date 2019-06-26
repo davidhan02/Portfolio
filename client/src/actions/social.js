@@ -1,6 +1,5 @@
 import axios from 'axios';
 import history from '../util/history';
-import { getFirstProfile } from './profile';
 import { SET_ERROR, SET_PROFILE, SET_PROFILE_LOADING } from './types';
 
 export const setProfileLoading = () => ({
@@ -47,15 +46,17 @@ export const updateSocial = (formValues, profileId) => async dispatch => {
 };
 
 export const deleteSocial = profileId => async dispatch => {
-  dispatch(setProfileLoading());
-  try {
-    await axios.delete(`/api/profile/${profileId}/social`);
-    const response = await axios.get(`/api/profile/${profileId}`);
-    dispatch({
-      type: SET_PROFILE,
-      payload: response.data
-    });
-  } catch (err) {
-    dispatch(setError(err));
+  if (window.confirm('Are you sure you want to delete your links?')) {
+    dispatch(setProfileLoading());
+    try {
+      await axios.delete(`/api/profile/${profileId}/social`);
+      const response = await axios.get(`/api/profile/${profileId}`);
+      dispatch({
+        type: SET_PROFILE,
+        payload: response.data
+      });
+    } catch (err) {
+      dispatch(setError(err));
+    }
   }
 };

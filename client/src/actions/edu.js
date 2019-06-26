@@ -44,6 +44,7 @@ export const updateEdu = (formValues, profileId, eduId) => async dispatch => {
 
 export const deleteEdu = (profileId, eduId) => async dispatch => {
   if (window.confirm('Are you sure you want to delete this education?')) {
+    dispatch(setProfileLoading());
     try {
       await axios.delete(`/api/profile/${profileId}/edu/${eduId}`);
       const response = await axios.get(`/api/profile/${profileId}`);
