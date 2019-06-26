@@ -1,7 +1,7 @@
 const Validator = require('validator');
 const isEmpty = require('./isEmpty');
 
-module.exports = function project(data, method) {
+module.exports = function projectValidator(data, method) {
   let errors = {};
 
   if (method === 'POST') {
