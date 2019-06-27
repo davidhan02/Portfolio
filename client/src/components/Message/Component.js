@@ -8,9 +8,14 @@ const Message = ({ message }) => (
     <Link to="/dashboard">Back to Message List</Link>
     <br />
     <MessageHeaderContainer message={message} />
-    {message.email}
+    From: {message.name}
     <br />
-    {message.body}
+    Email: {message.email}
+    <br />
+    Sent: {message.sent.split('T')[0]}
+    <br />
+    Body: <br />
+    <span style={{ whiteSpace: 'pre-wrap' }}>{message.body}</span>
     <br />
   </>
 );

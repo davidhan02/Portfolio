@@ -39,7 +39,6 @@ class ProjectListContainer extends Component {
         {token && <Link to="/projects/form">Add New Project</Link>}
         <br />
         {category && <h3>Category: {category}</h3>}
-        <br />
         <ProjectList list={list} />
       </>
     );
