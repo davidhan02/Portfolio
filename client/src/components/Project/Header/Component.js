@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import { link, wideFont } from '../../shared/helpers';
+import { link } from '../../shared/helpers';
 
 import styled from 'styled-components/macro';
 
@@ -30,7 +30,8 @@ const TitleLink = styled(Link)`
   color: ${props => props.theme.normalText};
   text-decoration: none;
   &:hover {
-    text-decoration: underline !important;
+    text-decoration: underline;
+    color: ${props => props.theme.accent};
   }
 `;
 

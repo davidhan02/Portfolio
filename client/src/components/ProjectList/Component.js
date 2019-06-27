@@ -5,8 +5,8 @@ import { List, ListItem } from './style';
 const ProjectList = ({ list }) => (
   <List>
     {list.map(project => (
-      <ListItem>
-        <Project key={project.id} project={project} preview />
+      <ListItem key={project.id}>
+        <Project project={project} preview />
       </ListItem>
     ))}
   </List>
