@@ -15,17 +15,24 @@ const ProjectForm = ({ loading, handleSubmit }) => (
     />
     <Field type="date" name="created" label="created" component={renderField} />
     <Field
-      type="text"
+      type="url"
       name="url"
       label="link"
       placeholder="Link to the project"
       component={renderField}
     />
     <Field
-      type="text"
+      type="url"
       name="code"
       label="code"
       placeholder="Link to the project's code"
+      component={renderField}
+    />
+    <Field
+      type="url"
+      name="screenshot"
+      label="screenshot"
+      placeholder="Link to a project screenshot"
       component={renderField}
     />
     <Field

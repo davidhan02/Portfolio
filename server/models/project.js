@@ -37,6 +37,9 @@ const projectSchema = new Schema({
   },
   code: {
     type: String
+  },
+  screenshot: {
+    type: String
   }
 });
 
