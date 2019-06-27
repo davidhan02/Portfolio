@@ -5,17 +5,21 @@ import styled from 'styled-components/macro';
 import { link, overflow } from '../shared/helpers';
 
 const Wrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   height: auto;
   padding: 10px;
   background-color: ${props => props.theme.foreground};
+  overflow: hidden;
 `;
 
 const CategoryWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding: 0;
+  ${props => props.preview && 'display: block;'};
+  ${props => props.preview && overflow};
+  padding: 2px 0 3px;
 `;
 
 const ProjectLinks = styled.div`
@@ -49,19 +53,20 @@ const CodeLink = styled.a`
 `;
 
 const ProjectText = styled.div`
+  width: 100%;
   display: block;
   padding: 10px 0px;
+  padding-right: 20px;
   border-radius: 4px;
   white-space: pre-wrap;
   ${props => props.preview && overflow};
-  ${props => props.preview && 'max-width: 600px'};
   color: ${props => props.theme.mutedText};
 `;
 
 const Project = ({ project, preview }) => (
   <Wrapper>
     <ProjectHeaderContainer project={project} />
-    <CategoryWrapper>
+    <CategoryWrapper preview={preview}>
       {project.categories.map(category => (
         <Category key={category + project.id} category={category} />
       ))}
