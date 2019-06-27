@@ -30,9 +30,7 @@ export const fade = css`
 export const transition = (...props) => {
   let str = 'transition: ';
   props.forEach((item, index) => {
-    str = str.concat(
-      `${item} 0.1s ease${index === props.length - 1 ? ';' : ', '}`
-    );
+    str = str.concat(`${item} 0.1s ease${index === props.length - 1 ? ';' : ', '}`);
   });
   return str;
 };
