@@ -11,15 +11,17 @@ const Wrapper = styled.div`
   height: auto;
   padding: 10px;
   background-color: ${props => props.theme.foreground};
+  border 1px solid ${props => props.theme.border};
+  ${props => props.preview && 'border: none'};
   overflow: hidden;
 `;
 
 const CategoryWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  ${props => props.preview && 'display: block;'};
-  ${props => props.preview && overflow};
   padding: 2px 0 3px;
+  ${props => props.preview && 'display: block; margin-top: 3px'};
+  ${props => props.preview && overflow};
 `;
 
 const ProjectLinks = styled.div`
@@ -64,7 +66,7 @@ const ProjectText = styled.div`
 `;
 
 const Project = ({ project, preview }) => (
-  <Wrapper>
+  <Wrapper preview={preview}>
     <ProjectHeaderContainer project={project} />
     <CategoryWrapper preview={preview}>
       {project.categories.map(category => (

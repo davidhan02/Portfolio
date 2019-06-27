@@ -9,6 +9,7 @@ const Wrapper = styled.div`
 `;
 
 const Thumbnail = styled.div`
+  color: ${props => props.theme.foreground};
   padding: 5px;
   border-right: 1px solid ${props => props.theme.border};
 `;
@@ -18,7 +19,7 @@ const ProjectList = ({ list }) => (
     {list.map(project => (
       <ListItem key={project.id}>
         <Wrapper>
-          <Thumbnail>imghereadfsdf</Thumbnail>
+          <Thumbnail>imghereadfdfdsfd</Thumbnail>
           <Project project={project} preview />
         </Wrapper>
       </ListItem>
