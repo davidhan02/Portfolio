@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ProjectHeaderContainer from './Header/Container';
+import Category from '../shared/Category';
 
 const Project = ({ project }) => (
   <>
@@ -8,9 +8,7 @@ const Project = ({ project }) => (
     <ProjectHeaderContainer project={project} />
     <br />
     {project.categories.map(category => (
-      <Link key={category + project.id} to={`/projects/cat/${category}`}>
-        {category}
-      </Link>
+      <Category key={category + project.id} category={category} />
     ))}
     <br />
     ID: {project.id}
