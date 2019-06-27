@@ -39,7 +39,7 @@ class ProjectFormContainer extends Component {
   onSubmit = formValues => {
     const { user, project, submitProject, updateProject } = this.props;
     if (this.state.editMode) {
-      return updateProject({ ...formValues, user }, project.id);
+      return updateProject({ ...formValues, author: user }, project.id);
     }
     submitProject(formValues);
   };
