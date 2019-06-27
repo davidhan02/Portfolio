@@ -6,7 +6,7 @@ const activeClassName = 'active';
 
 export const CatLink = styled(NavLink).attrs({ activeClassName })`
   padding: 3px 5px;
-  border-radius: 5%;
+  border-radius: 4px;
   background: ${props => props.theme.accent};
   color: #fff;
 
