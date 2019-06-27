@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 const activeClassName = 'active';
 
 export const CatLink = styled(NavLink).attrs({ activeClassName })`
+  margin-top: 5px;
   padding: 3px 5px;
   border-radius: 4px;
   background: ${props => props.theme.accent};

@@ -6,7 +6,7 @@ const ProjectList = ({ list }) => (
   <List>
     {list.map(project => (
       <ListItem>
-        <Project key={project.id} project={project} />
+        <Project key={project.id} project={project} preview />
       </ListItem>
     ))}
   </List>

@@ -20,8 +20,8 @@ const AuthLinks = styled.span`
 
 const AuthLink = styled(Link)`
   ${link};
-  ${wideFont};
-  font-weight: 400;
+  font-size: 14px;
+  text-transform: uppercase;
   color: ${props => props.theme.normalText};
 `;
 
@@ -35,9 +35,8 @@ const TitleLink = styled(Link)`
 `;
 
 const DateInfo = styled.span`
-  ${wideFont};
-  font-weight: 400;
-  color: ${props => props.theme.normalText};
+  font-size: 14px;
+  color: ${props => props.theme.mutedText};
 `;
 
 const ProjectHeader = ({ token, project, deleteProject }) => (
@@ -45,9 +44,9 @@ const ProjectHeader = ({ token, project, deleteProject }) => (
     <TitleLink to={`/projects/${project.id}`}>{project.title}</TitleLink>
     {token ? (
       <AuthLinks>
-        <AuthLink to={`/projects/form/${project.id}`}>Edit</AuthLink>
+        <AuthLink to={`/projects/form/${project.id}`}>edit</AuthLink>
         <AuthLink to="/projects" onClick={() => deleteProject(project.id)}>
-          Delete
+          delete
         </AuthLink>
       </AuthLinks>
     ) : (

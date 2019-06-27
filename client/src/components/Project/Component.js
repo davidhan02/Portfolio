@@ -2,7 +2,7 @@ import React from 'react';
 import ProjectHeaderContainer from './Header/Container';
 import Category from '../shared/Category';
 import styled from 'styled-components/macro';
-import { link, wideFont } from '../shared/helpers';
+import { link, overflow } from '../shared/helpers';
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,8 +14,8 @@ const Wrapper = styled.div`
 
 const CategoryWrapper = styled.div`
   display: flex;
-  flex-flow: row-wrap;
-  padding: 4px 0;
+  flex-wrap: wrap;
+  padding: 0;
 `;
 
 const ProjectLinks = styled.div`
@@ -49,14 +49,16 @@ const CodeLink = styled.a`
 `;
 
 const ProjectText = styled.div`
-  display: flex;
-  padding: 5px 0 8px;
+  display: block;
+  padding: 10px 0px;
   border-radius: 4px;
+  white-space: pre-wrap;
+  ${props => props.preview && overflow};
+  ${props => props.preview && 'max-width: 600px'};
   color: ${props => props.theme.mutedText};
-  background: ${props => props.theme.pageBackground};
 `;
 
-const Project = ({ project }) => (
+const Project = ({ project, preview }) => (
   <Wrapper>
     <ProjectHeaderContainer project={project} />
     <CategoryWrapper>
@@ -64,7 +66,7 @@ const Project = ({ project }) => (
         <Category key={category + project.id} category={category} />
       ))}
     </CategoryWrapper>
-    <ProjectText preview>{project.text}</ProjectText>
+    <ProjectText preview={preview}>{project.text}</ProjectText>
     <ProjectLinks>
       <SiteLink href={project.url}>Go to Site</SiteLink>
       <CodeLink href={project.code}>View the Code</CodeLink>

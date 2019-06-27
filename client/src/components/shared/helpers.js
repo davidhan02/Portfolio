@@ -58,6 +58,6 @@ export const link = props => css`
 
 export const overflow = css`
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis !important;
   white-space: nowrap;
 `;
