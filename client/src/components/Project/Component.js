@@ -36,8 +36,10 @@ const ProjectLink = styled.a`
   padding: 10px 8px;
   border: 1px solid ${props => props.theme.border};
   border-radius: 3px;
-  margin-left: 5px;
   text-align: center;
+  :not(:first-child) {
+    margin-left: 10px;
+  }
   :hover {
     border: 1px solid ${props => props.theme.accent};
   }
@@ -46,14 +48,19 @@ const ProjectLink = styled.a`
 const ProjectText = styled.div`
   width: 100%;
   display: block;
-  padding: 10px 5px;
+  padding: 15px;
   padding-right: 20px;
+  border 1px solid ${props => props.theme.border};
   border-radius: 4px;
   white-space: pre-wrap;
   margin: 10px 0;
+  background: ${props => props.theme.pageBackground};
   color: ${props => props.theme.normalText};
   ${props =>
-    props.preview && `${overflow} color: ${props.theme.mutedText}; margin: 0`};
+    props.preview &&
+    `${overflow} color: ${
+      props.theme.mutedText
+    }; background: none; border: none; margin: 0; padding: 10px 5px`};
 `;
 
 const ProjectImage = styled.img`
