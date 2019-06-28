@@ -10,6 +10,7 @@ const HeaderWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-bottom: 2px;
+  margin: 5px 0;
 `;
 
 const AuthLinks = styled.span`
@@ -35,14 +36,33 @@ const TitleLink = styled(Link)`
   }
 `;
 
+const BigTitle = styled.h3`
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0 auto;
+  color: ${props => props.theme.normalText};
+`;
+
+const BackLink = styled(Link)`
+  ${link};
+  font-size: 14px;
+`;
+
 const DateInfo = styled.span`
   font-size: 14px;
   color: ${props => props.theme.mutedText};
 `;
 
-const ProjectHeader = ({ token, project, deleteProject }) => (
+const ProjectHeader = ({ token, preview, project, deleteProject }) => (
   <HeaderWrapper>
-    <TitleLink to={`/projects/${project.id}`}>{project.title}</TitleLink>
+    {preview ? (
+      <TitleLink to={`/projects/${project.id}`}>{project.title}</TitleLink>
+    ) : (
+      <>
+        <BackLink to="/projects">&larr; to projects</BackLink>
+        <BigTitle>{project.title}</BigTitle>
+      </>
+    )}
     {token ? (
       <AuthLinks>
         <AuthLink to={`/projects/form/${project.id}`}>edit</AuthLink>
@@ -51,7 +71,7 @@ const ProjectHeader = ({ token, project, deleteProject }) => (
         </AuthLink>
       </AuthLinks>
     ) : (
-      <DateInfo>created {moment(project.created).fromNow()}</DateInfo>
+      <DateInfo>made {moment(project.created).fromNow()}</DateInfo>
     )}
   </HeaderWrapper>
 );

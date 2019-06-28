@@ -18,6 +18,8 @@ const Wrapper = styled.div`
 
 const CategoryWrapper = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   padding: 2px 0 3px;
   ${props => props.preview && 'display: block; margin-top: 3px;'};
@@ -28,20 +30,7 @@ const ProjectLinks = styled.div`
   display: flex;
 `;
 
-const SiteLink = styled.a`
-  ${link};
-  width: 100%;
-  padding: 10px 8px;
-  border: 1px solid ${props => props.theme.border};
-  border-radius: 3px;
-  margin-right: 5px;
-  text-align: center;
-  :hover {
-    border: 1px solid ${props => props.theme.accent};
-  }
-`;
-
-const CodeLink = styled.a`
+const ProjectLink = styled.a`
   ${link};
   width: 100%;
   padding: 10px 8px;
@@ -76,7 +65,7 @@ const ProjectImage = styled.img`
 
 const Project = ({ project, preview }) => (
   <Wrapper preview={preview}>
-    <ProjectHeaderContainer project={project} />
+    <ProjectHeaderContainer project={project} preview={preview} />
     <CategoryWrapper preview={preview}>
       {project.categories.map(category => (
         <Category key={category + project.id} category={category} />
@@ -87,8 +76,12 @@ const Project = ({ project, preview }) => (
     )}
     <ProjectText preview={preview}>{project.text}</ProjectText>
     <ProjectLinks>
-      <SiteLink href={project.url}>Go to Site</SiteLink>
-      <CodeLink href={project.code}>View the Code</CodeLink>
+      <ProjectLink href={project.url} target="_blank" rel="noreferrer noopener">
+        Go to Site
+      </ProjectLink>
+      <ProjectLink href={project.code} target="_blank" rel="noreferrer noopener">
+        View the Code
+      </ProjectLink>
     </ProjectLinks>
   </Wrapper>
 );

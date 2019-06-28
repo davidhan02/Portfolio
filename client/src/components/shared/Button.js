@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { transition, wideFont } from '../shared/helpers';
+import { transition } from '../shared/helpers';
 
 const Button = styled.button`
   font-size: 14px;
