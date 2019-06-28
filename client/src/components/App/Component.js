@@ -28,7 +28,7 @@ const App = ({ dark }) => (
         <ErrorDisplayContainer />
         <Route
           exact
-          path={['/projects', '/projects/cat/:category']}
+          path={['/projects', '/projects/:projectId', '/projects/cat/:category']}
           component={CatSearchContainer}
         />
         <Switch>

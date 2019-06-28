@@ -30,6 +30,9 @@ class CatSearchContainer extends Component {
 
   onSubmit = formValues => {
     const { history } = this.props;
+    if (!formValues.category) {
+      return history.push('/projects');
+    }
     history.push(`/projects/cat/${formValues.category}`);
   };
 

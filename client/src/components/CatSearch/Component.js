@@ -1,6 +1,5 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import Form from '../shared/form/Form';
 import renderField from '../shared/form/renderField';
 import OutlineButton from '../shared/OutlineButton';
 import { link } from '../shared/helpers';
