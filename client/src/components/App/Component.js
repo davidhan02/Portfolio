@@ -17,6 +17,8 @@ import theme from '../../styles/theme';
 import Body from '../Body';
 import React from 'react';
 
+import CatSearchContainer from '../CatSearch/Container';
+
 const App = ({ dark }) => (
   <Theme theme={theme(dark)}>
     <Router history={history}>
@@ -24,6 +26,11 @@ const App = ({ dark }) => (
         <GlobalStyle />
         <NavbarContainer />
         <ErrorDisplayContainer />
+        <Route
+          exact
+          path={['/projects', '/projects/cat/:category']}
+          component={CatSearchContainer}
+        />
         <Switch>
           <Route path="/login" component={LoginContainer} />
           <Route path="/register" component={RegisterContainer} />

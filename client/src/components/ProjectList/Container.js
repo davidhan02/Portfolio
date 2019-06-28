@@ -5,7 +5,6 @@ import { clearError } from '../../actions/error';
 import Loading from '../shared/Loading';
 import NotFound from '../shared/NotFound';
 import ProjectList from './Component';
-import { Link } from 'react-router-dom';
 import {
   getProjectList,
   getProjectsByCat,
@@ -31,17 +30,10 @@ class ProjectListContainer extends Component {
   }
 
   render() {
-    const { loading, category, token, list } = this.props;
+    const { loading, list } = this.props;
     if (loading) return <Loading />;
     if (!list) return <NotFound />;
-    return (
-      <>
-        {token && <Link to="/projects/form">Add New Project</Link>}
-        <br />
-        {category && <h3>Category: {category}</h3>}
-        <ProjectList list={list} />
-      </>
-    );
+    return <ProjectList list={list} />;
   }
 }
 

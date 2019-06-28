@@ -8,6 +8,7 @@ import ProjectContainer from '../Project/Container';
 import ProjectListContainer from '../ProjectList/Container';
 import { BodyWrapper, MainSection, Placeholder } from './style';
 
+import ProjectSide from '../Project/Side';
 const Success = () => <Placeholder>Success</Placeholder>;
 const Landing = () => <Placeholder>Landing</Placeholder>;
 
@@ -37,6 +38,7 @@ const Body = () => (
         <Route component={NotFound} />
       </Switch>
     </MainSection>
+    <Route path="/projects" component={ProjectSide} />
   </BodyWrapper>
 );
 

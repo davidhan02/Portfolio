@@ -2,6 +2,7 @@ import styled from 'styled-components/macro';
 
 export const BodyWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
 
   margin: 0 auto;

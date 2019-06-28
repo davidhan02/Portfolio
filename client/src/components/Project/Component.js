@@ -20,7 +20,7 @@ const CategoryWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   padding: 2px 0 3px;
-  ${props => props.preview && 'display: block; margin-top: 3px'};
+  ${props => props.preview && 'display: block; margin-top: 3px;'};
   ${props => props.preview && overflow};
 `;
 
@@ -65,6 +65,13 @@ const ProjectText = styled.div`
   color: ${props => props.theme.mutedText};
 `;
 
+const ProjectImage = styled.img`
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: 10px;
+`;
+
 const Project = ({ project, preview }) => (
   <Wrapper preview={preview}>
     <ProjectHeaderContainer project={project} />
@@ -73,6 +80,9 @@ const Project = ({ project, preview }) => (
         <Category key={category + project.id} category={category} />
       ))}
     </CategoryWrapper>
+    {!preview && (
+      <ProjectImage src={project.screenshot} alt={`${project.title} screenshot`} />
+    )}
     <ProjectText preview={preview}>{project.text}</ProjectText>
     <ProjectLinks>
       <SiteLink href={project.url}>Go to Site</SiteLink>

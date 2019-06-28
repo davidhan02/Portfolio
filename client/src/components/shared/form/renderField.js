@@ -50,7 +50,7 @@ const VariableField = field => {
 
     default:
       return (
-        <InputWrapper>
+        <InputWrapper nobottom={field.nobottom}>
           <Label htmlFor={field.label}>{field.label}</Label>
           {field.meta.touched && field.meta.error && (
             <Error>{field.meta.error}</Error>
