@@ -9,7 +9,6 @@ const Header = styled.span`
   display: block;
   text-align: center;
   border-bottom: 1px solid ${props => props.theme.border};
-  color: ${props => props.theme.mutedText};
 `;
 
 const SideCategoryListHeader = () => <Header>categories</Header>;

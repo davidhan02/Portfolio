@@ -1,4 +1,7 @@
 import './util/moment';
+import './styles/normalize.css';
+import './styles/mini-reset.css';
+import './styles/inputfix.css';
 import './styles/style.css';
 import React from 'react';
 import ReactDOM from 'react-dom';

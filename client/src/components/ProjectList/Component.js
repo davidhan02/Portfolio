@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 const ThumbnailBox = styled(Link)`
   ${trueCenter};
   min-width: 198px;
-  padding: 5px 8px;
+  padding: 8px;
   text-align: center;
   text-decoration: none;
   color: ${props => props.theme.mutedText};

@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 const FormWrapper = styled.div`
   position: relative;
   overflow: hidden;
-  margin: 0 auto;
+  margin: 24px auto;
 
   width: 100%;
   padding: 24px;

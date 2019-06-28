@@ -2,7 +2,8 @@ import styled from 'styled-components/macro';
 import { transition, wideFont } from '../shared/helpers';
 
 const Button = styled.button`
-  ${wideFont};
+  font-size: 14px;
+  text-transform: uppercase;
   ${transition('filter', 'box-shadow')};
 
   border: none;

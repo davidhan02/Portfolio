@@ -4,7 +4,6 @@ export const NavWrapper = styled.nav`
   background: ${props => props.theme.foreground};
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
   user-select: none;
   position: sticky;
   top: 0;

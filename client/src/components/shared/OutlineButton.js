@@ -4,8 +4,7 @@ import Button from './Button';
 const OutlineButton = styled(Button)`
   width: 100%;
   text-align: center;
-  padding: 12px 30px;
-  margin-bottom: 20px;
+  padding: 10px 20px;
 
   background-color: transparent;
   color: ${props => props.theme.mutedText};

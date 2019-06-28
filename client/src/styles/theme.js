@@ -29,7 +29,7 @@ const light = {
   pageBackground: '#f4f6f8',
   iconHover: '#f2f2f2',
   foreground: '#fcfcfc',
-  activeBackground: '#ffffff',
+  activeBackground: '#efefef',
   inputBackground: '#efefef',
   shadow: 'rgba(0, 0, 0, 0.05)'
 };

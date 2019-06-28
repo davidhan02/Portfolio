@@ -59,6 +59,7 @@ const VariableField = field => {
             id={field.label}
             {...field.input}
             type={field.type}
+            bolden={field.nobottom}
             error={field.meta.touched && !!field.meta.error}
             placeholder={field.placeholder || field.label}
             style={{ resize: 'none', height: '2.375rem' }}

@@ -17,7 +17,7 @@ const mapCategories = categories =>
 const ProjectSideCategoryList = () => (
   <CategoryList>
     <SideCategoryListHeader />
-    {mapCategories(['all', ...categories])}
+    {mapCategories(['All', ...categories])}
   </CategoryList>
 );
 

@@ -57,12 +57,14 @@ const CodeLink = styled.a`
 const ProjectText = styled.div`
   width: 100%;
   display: block;
-  padding: 10px 0px;
+  padding: 10px 5px;
   padding-right: 20px;
   border-radius: 4px;
   white-space: pre-wrap;
-  ${props => props.preview && overflow};
-  color: ${props => props.theme.mutedText};
+  margin: 10px 0;
+  color: ${props => props.theme.normalText};
+  ${props =>
+    props.preview && `${overflow} color: ${props.theme.mutedText}; margin: 0`};
 `;
 
 const ProjectImage = styled.img`
@@ -80,7 +82,7 @@ const Project = ({ project, preview }) => (
         <Category key={category + project.id} category={category} />
       ))}
     </CategoryWrapper>
-    {!preview && (
+    {!preview && project.screenshot && (
       <ProjectImage src={project.screenshot} alt={`${project.title} screenshot`} />
     )}
     <ProjectText preview={preview}>{project.text}</ProjectText>

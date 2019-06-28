@@ -8,7 +8,7 @@ const Wrapper = styled.aside`
   flex-direction: column;
 
   flex-basis: 240px;
-  margin-left: 14px;
+  margin-left: 24px;
 
   border-radius: 3px;
   border: 1px solid ${props => props.theme.border};

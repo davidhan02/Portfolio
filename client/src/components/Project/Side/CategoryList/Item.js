@@ -17,7 +17,7 @@ const Item = styled(NavLink)`
 `;
 
 const SideCategoryListItem = ({ category }) => {
-  const isAll = category === 'all';
+  const isAll = category === 'All';
   return (
     <Item exact={isAll} to={isAll ? '/projects' : `/projects/cat/${category}`}>
       {category}

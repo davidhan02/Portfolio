@@ -22,6 +22,7 @@ const Input = styled.input`
   border-radius: 3px;
   outline: none;
   appearance: none;
+  ${props => props.bolden && 'font-weight: 600; font-size: 15px'};
   color: ${props => props.theme.normalText};
   background-color: ${props => props.theme.inputBackground};
 

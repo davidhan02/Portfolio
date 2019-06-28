@@ -17,7 +17,7 @@ import theme from '../../styles/theme';
 import Body from '../Body';
 import React from 'react';
 
-import CatSearchContainer from '../CatSearch/Container';
+import ProjectSearchContainer from '../Project/Search/Container';
 
 const App = ({ dark }) => (
   <Theme theme={theme(dark)}>
@@ -29,7 +29,7 @@ const App = ({ dark }) => (
         <Route
           exact
           path={['/projects', '/projects/:projectId', '/projects/cat/:category']}
-          component={CatSearchContainer}
+          component={ProjectSearchContainer}
         />
         <Switch>
           <Route path="/login" component={LoginContainer} />

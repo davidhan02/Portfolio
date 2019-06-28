@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import { clearError } from '../../actions/error';
-import CatSearch from './Component';
+import { clearError } from '../../../actions/error';
+import Search from './Component';
 
-class CatSearchContainer extends Component {
+class SearchContainer extends Component {
   componentDidMount = async () => {
     const { match } = this.props;
     if (match.params.category) {
@@ -38,7 +38,7 @@ class CatSearchContainer extends Component {
 
   render() {
     const { handleSubmit } = this.props;
-    return <CatSearch handleSubmit={handleSubmit(this.onSubmit)} />;
+    return <Search handleSubmit={handleSubmit(this.onSubmit)} />;
   }
 }
 
@@ -54,4 +54,4 @@ const enhance = compose(
   )
 );
 
-export default enhance(CatSearchContainer);
+export default enhance(SearchContainer);
