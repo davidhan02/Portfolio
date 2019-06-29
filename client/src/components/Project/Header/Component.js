@@ -9,12 +9,11 @@ const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 2px;
-  margin: 5px 0;
+  margin: 5px 0px 7px;
 `;
 
 const AuthLinks = styled.span`
-  width: 90px;
+  min-width: 90px;
   display: flex;
   justify-content: space-between;
 `;
@@ -40,11 +39,13 @@ const BigTitle = styled.h3`
   font-size: 24px;
   font-weight: 400;
   margin: 0 auto;
+  text-align: center;
   color: ${props => props.theme.normalText};
 `;
 
 const BackLink = styled(Link)`
   ${link};
+  min-width: 90px;
   font-size: 14px;
 `;
 

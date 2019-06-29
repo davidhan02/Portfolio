@@ -7,7 +7,7 @@ import { link } from '../../shared/helpers';
 import styled from 'styled-components/macro';
 
 const SearchForm = styled.form`
-  max-width: 1130px;
+  max-width: 1150px;
   display: flex;
   align-items: center;
   padding: 10px;
@@ -16,7 +16,7 @@ const SearchForm = styled.form`
 
 const SearchButton = styled(OutlineButton)`
   width: auto;
-  margin-left: 14px;
+  margin-left: 24px;
   font-size: 14px;
   font-weight: 400;
   ${link};
