@@ -3,7 +3,6 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { submitLogin } from '../../actions/auth';
-import { clearError } from '../../actions/error';
 import Login from './Component';
 
 class LoginContainer extends Component {
@@ -13,10 +12,6 @@ class LoginContainer extends Component {
 
   componentDidUpdate() {
     this.redirectIfLoggedIn();
-  }
-
-  componentWillUnmount() {
-    this.props.clearError();
   }
 
   redirectIfLoggedIn() {
@@ -39,7 +34,7 @@ const mapStateToProps = ({ auth }) => ({
   loading: auth.loading
 });
 
-const mapDispatchToProps = { submitLogin, clearError };
+const mapDispatchToProps = { submitLogin };
 
 const enhance = compose(
   reduxForm({ form: 'login' }),

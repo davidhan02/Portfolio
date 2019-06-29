@@ -6,7 +6,6 @@ import ExpItem from '../ExpItem';
 import { connect } from 'react-redux';
 import Loading from '../shared/Loading';
 import NotFound from '../shared/NotFound';
-import { clearError } from '../../actions/error';
 import { getFirstProfile, clearProfile } from '../../actions/profile';
 import AuthLinksContainer from './AuthLinks/Container';
 import Links from '../Links';
@@ -17,7 +16,6 @@ class ProfileContainer extends Component {
   }
 
   componentWillUnmount() {
-    this.props.clearError();
     this.props.clearProfile();
   }
 
@@ -51,7 +49,7 @@ const mapStateToProps = ({ auth, profile }) => ({
   loading: profile.loading
 });
 
-const mapDispatchToProps = { getFirstProfile, clearProfile, clearError };
+const mapDispatchToProps = { getFirstProfile, clearProfile };
 
 const enhance = compose(
   connect(

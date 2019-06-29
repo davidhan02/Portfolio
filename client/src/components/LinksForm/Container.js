@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import { clearError } from '../../actions/error';
 import LinksForm from './Component';
 import { submitSocial, updateSocial } from '../../actions/social';
 import { getFirstProfile, clearProfile } from '../../actions/profile';
@@ -22,7 +21,6 @@ class LinksFormContainer extends Component {
   };
 
   componentWillUnmount() {
-    this.props.clearError();
     this.props.clearProfile();
   }
 
@@ -55,7 +53,6 @@ const mapDispatchToProps = {
   getFirstProfile,
   submitSocial,
   updateSocial,
-  clearError,
   clearProfile
 };
 

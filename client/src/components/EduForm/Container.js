@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import { clearError } from '../../actions/error';
 import EduForm from './Component';
 import { submitEdu, updateEdu } from '../../actions/edu';
 import { getFirstProfile, clearProfile } from '../../actions/profile';
@@ -29,7 +28,6 @@ class EduFormContainer extends Component {
   };
 
   componentWillUnmount() {
-    this.props.clearError();
     this.props.clearProfile();
   }
 
@@ -63,7 +61,6 @@ const mapDispatchToProps = {
   getFirstProfile,
   submitEdu,
   updateEdu,
-  clearError,
   clearProfile
 };
 

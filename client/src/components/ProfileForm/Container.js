@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import { clearError } from '../../actions/error';
 import ProfileForm from './Component';
 import {
   getFirstProfile,
@@ -28,7 +27,6 @@ class ProfileFormContainer extends Component {
   };
 
   componentWillUnmount() {
-    this.props.clearError();
     this.props.clearProfile();
   }
 
@@ -58,8 +56,7 @@ const mapDispatchToProps = {
   getFirstProfile,
   submitProfile,
   updateProfile,
-  clearProfile,
-  clearError
+  clearProfile
 };
 
 const enhance = compose(

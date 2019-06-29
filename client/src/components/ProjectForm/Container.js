@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import { clearError } from '../../actions/error';
 import ProjectForm from './Component';
 import validate from './validate';
 import {
@@ -32,7 +31,6 @@ class ProjectFormContainer extends Component {
   };
 
   componentWillUnmount() {
-    this.props.clearError();
     this.props.clearProject();
   }
 
@@ -62,7 +60,6 @@ const mapDispatchToProps = {
   getProject,
   submitProject,
   updateProject,
-  clearError,
   clearProject
 };
 

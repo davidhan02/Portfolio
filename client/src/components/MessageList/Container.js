@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import MessageList from './Component';
 import Loading from '../shared/Loading';
 import NotFound from '../shared/NotFound';
-import { clearError } from '../../actions/error';
 import { getMessageList, clearMessage } from '../../actions/message';
 
 class MessageListContainer extends Component {
@@ -14,7 +13,6 @@ class MessageListContainer extends Component {
 
   componentWillUnmount() {
     this.props.clearMessage();
-    this.props.clearError();
   }
 
   render() {
@@ -30,7 +28,7 @@ const mapStateToProps = ({ message }) => ({
   loading: message.loading
 });
 
-const mapDispatchToProps = { getMessageList, clearMessage, clearError };
+const mapDispatchToProps = { getMessageList, clearMessage };
 
 const enhance = compose(
   connect(

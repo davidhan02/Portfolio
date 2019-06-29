@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { clearError } from '../../actions/error';
 import Loading from '../shared/Loading';
 import NotFound from '../shared/NotFound';
 import ProjectList from './Component';
@@ -25,7 +24,6 @@ class ProjectListContainer extends Component {
   }
 
   componentWillUnmount() {
-    this.props.clearError();
     this.props.clearProject();
   }
 
@@ -46,8 +44,7 @@ const mapStateToProps = ({ auth, project }) => ({
 const mapDispatchToProps = {
   getProjectList,
   getProjectsByCat,
-  clearProject,
-  clearError
+  clearProject
 };
 
 const enhance = compose(
