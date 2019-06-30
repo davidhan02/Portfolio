@@ -1,29 +1,9 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import renderField from '../../shared/form/renderField';
-import OutlineButton from '../../shared/OutlineButton';
-import { link } from '../../shared/helpers';
+import { SearchForm, SearchButton } from './style';
 
-import styled from 'styled-components/macro';
-
-const SearchForm = styled.form`
-  max-width: 1150px;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  margin: 14px auto;
-`;
-
-const SearchButton = styled(OutlineButton)`
-  width: auto;
-  margin-left: 24px;
-  font-size: 14px;
-  font-weight: 400;
-  ${link};
-  color: ${props => props.theme.mutedText};
-`;
-
-const Search = ({ handleSubmit }) => (
+const ProjectSearch = ({ handleSubmit }) => (
   <SearchForm onSubmit={handleSubmit}>
     <Field
       type="text"
@@ -36,4 +16,4 @@ const Search = ({ handleSubmit }) => (
   </SearchForm>
 );
 
-export default Search;
+export default ProjectSearch;

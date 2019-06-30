@@ -3,9 +3,9 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { clearError } from '../../../actions/error';
-import Search from './Component';
+import ProjectSearch from './Component';
 
-class SearchContainer extends Component {
+class ProjectSearchContainer extends Component {
   componentDidMount = async () => {
     const { match } = this.props;
     if (match.params.category) {
@@ -38,7 +38,7 @@ class SearchContainer extends Component {
 
   render() {
     const { handleSubmit } = this.props;
-    return <Search handleSubmit={handleSubmit(this.onSubmit)} />;
+    return <ProjectSearch handleSubmit={handleSubmit(this.onSubmit)} />;
   }
 }
 
@@ -54,4 +54,4 @@ const enhance = compose(
   )
 );
 
-export default enhance(SearchContainer);
+export default enhance(ProjectSearchContainer);
