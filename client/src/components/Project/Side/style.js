@@ -10,6 +10,7 @@ export const ProjectSideWrapper = styled.aside`
   border-radius: 3px;
   border: 1px solid ${props => props.theme.border};
   background-color: ${props => props.theme.foreground};
+  box-shadow: 0 4px 12px ${props => props.theme.shadow};
 
   @media (max-width: 768px) {
     display: none;

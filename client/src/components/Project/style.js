@@ -8,6 +8,7 @@ export const ProjectWrapper = styled.div`
   height: auto;
   padding: 10px;
   background-color: ${props => props.theme.foreground};
+  box-shadow: 0 4px 12px ${props => props.theme.shadow};
   border 1px solid ${props => props.theme.border};
   ${props => props.preview && 'border: none'};
   overflow: hidden;

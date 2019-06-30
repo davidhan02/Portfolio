@@ -5,5 +5,6 @@ export const ProjectListWrapper = styled.ul`
   list-style: none;
   background: ${props => props.theme.foreground};
   border: 1px solid ${props => props.theme.border};
-  border-radius: 2px;
+  box-shadow: 0 4px 12px ${props => props.theme.shadow};
+  border-radius: 3px;
 `;
