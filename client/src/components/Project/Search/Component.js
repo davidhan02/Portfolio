@@ -8,9 +8,10 @@ const ProjectSearch = ({ handleSubmit }) => (
     <Field
       type="text"
       name="category"
+      label="category:"
       placeholder="Search by project category..."
       component={renderField}
-      nobottom
+      isSearch
     />
     <SearchButton type="submit">Search</SearchButton>
   </SearchForm>

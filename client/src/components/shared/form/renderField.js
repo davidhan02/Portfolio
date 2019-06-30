@@ -50,8 +50,10 @@ const VariableField = field => {
 
     default:
       return (
-        <InputWrapper nobottom={field.nobottom}>
-          <Label htmlFor={field.label}>{field.label}</Label>
+        <InputWrapper search={field.isSearch}>
+          <Label search={field.isSearch} htmlFor={field.label}>
+            {field.label}
+          </Label>
           {field.meta.touched && field.meta.error && (
             <Error>{field.meta.error}</Error>
           )}
@@ -59,7 +61,6 @@ const VariableField = field => {
             id={field.label}
             {...field.input}
             type={field.type}
-            bolden={field.nobottom}
             error={field.meta.touched && !!field.meta.error}
             placeholder={field.placeholder || field.label}
             style={{ resize: 'none', height: '2.375rem' }}

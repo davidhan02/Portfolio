@@ -8,8 +8,8 @@ export const trueCenter = css`
 `;
 
 export const smallFont = css`
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 400;
   text-transform: uppercase;
 `;
 

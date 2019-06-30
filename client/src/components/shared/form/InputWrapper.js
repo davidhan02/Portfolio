@@ -4,8 +4,7 @@ const InputWrapper = styled.div`
   position: relative;
   width: 100%;
   margin-bottom: 24px;
-  ${props =>
-    props.nobottom && 'margin-bottom: 0; display: flex; align-items: center'};
+  ${props => props.search && 'margin-bottom: 0; display: flex; align-items: center'};
 `;
 
 export default InputWrapper;
