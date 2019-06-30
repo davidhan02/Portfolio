@@ -1,7 +1,6 @@
 import { Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider as Theme } from 'styled-components';
 import ErrorDisplayContainer from '../ErrorDisplay/Container';
-import ProjectFormContainer from '../ProjectForm/Container';
 import ProfileFormContainer from '../ProfileForm/Container';
 import LinksFormContainer from '../LinksForm/Container';
 import ContactContainer from '../Contact/Container';
@@ -12,12 +11,11 @@ import GlobalStyle from '../../styles/globalStyle';
 import PrivateRoute from '../shared/PrivateRoute';
 import NavbarContainer from '../Navbar/Container';
 import LoginContainer from '../Login/Container';
+import ProjectRoutes from '../ProjectRoutes';
 import history from '../../util/history';
 import theme from '../../styles/theme';
 import Body from '../Body';
 import React from 'react';
-
-import ProjectSearchContainer from '../Project/Search/Container';
 
 const App = ({ dark }) => (
   <Theme theme={theme(dark)}>
@@ -26,20 +24,11 @@ const App = ({ dark }) => (
         <GlobalStyle />
         <NavbarContainer />
         <ErrorDisplayContainer />
-        <Route
-          exact
-          path={['/projects', '/projects/:projectId', '/projects/cat/:category']}
-          component={ProjectSearchContainer}
-        />
         <Switch>
           <Route path="/login" component={LoginContainer} />
           <Route path="/register" component={RegisterContainer} />
+          <Route path="/projects" component={ProjectRoutes} />
           <PrivateRoute path="/profile/form" component={ProfileFormContainer} />
-          <PrivateRoute
-            exact
-            path={['/projects/form', '/projects/form/:projectId']}
-            component={ProjectFormContainer}
-          />
           <PrivateRoute
             exact
             path={['/profile/eduform/', '/profile/eduform/:eduId']}
