@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import { clearError } from '../../../actions/error';
 import ProjectSearch from './Component';
 
 class ProjectSearchContainer extends Component {
@@ -24,16 +23,14 @@ class ProjectSearchContainer extends Component {
     }
   }
 
-  componentWillUnmount() {
-    this.props.clearError();
-  }
-
   onSubmit = formValues => {
     const { history } = this.props;
     if (!formValues.category) {
       return history.push('/projects');
     }
-    history.push(`/projects/cat/${formValues.category}`);
+    const modifiedCategory =
+      formValues.category.charAt(0).toUpperCase() + formValues.category.slice(1);
+    history.push(`/projects/cat/${modifiedCategory}`);
   };
 
   render() {
@@ -44,7 +41,7 @@ class ProjectSearchContainer extends Component {
 
 const mapStateToProps = null;
 
-const mapDispatchToProps = { clearError };
+const mapDispatchToProps = null;
 
 const enhance = compose(
   reduxForm({ form: 'search' }),
