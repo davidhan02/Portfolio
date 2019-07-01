@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
-import { link } from '../../shared/helpers';
-import OutlineButton from '../../shared/OutlineButton';
+import { link } from '../shared/helpers';
+import OutlineButton from '../shared/OutlineButton';
 
 export const SearchForm = styled.form`
   max-width: 1150px;

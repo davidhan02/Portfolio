@@ -19,9 +19,10 @@ const Input = styled.input`
   font-size: 15px;
   font-family: Roboto;
   resize: vertical;
-  border-radius: 3px;
   outline: none;
   appearance: none;
+  border-radius: 3px;
+  ${props => props.search && 'border-radius: 0 3px 3px 0'};
   color: ${props => props.theme.normalText};
   background-color: ${props => props.theme.inputBackground};
 

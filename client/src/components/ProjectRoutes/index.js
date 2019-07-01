@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from '../shared/PrivateRoute';
-import ProjectSearchContainer from '../Project/Search/Container';
+import ProjectSearchContainer from '../ProjectSearch/Container';
 import ProjectFormContainer from '../ProjectForm/Container';
-import ProjectContainer from '../Project/Container';
 import ProjectListContainer from '../ProjectList/Container';
-import ProjectSideContainer from '../Project/Side/Container';
+import ProjectSideContainer from '../ProjectSide/Container';
+import ProjectContainer from '../Project/Container';
 import { BodyWrapper, MainSection } from './style';
 
 const ProjectRoutes = () => (

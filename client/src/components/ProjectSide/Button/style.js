@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import Button from '../../../shared/Button';
+import Button from '../../shared/Button';
 
 export const CreateButton = styled(Button)`
   padding: 16px;

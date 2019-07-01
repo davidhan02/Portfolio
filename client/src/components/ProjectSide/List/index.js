@@ -1,6 +1,6 @@
 import React from 'react';
 import ProjectSideListItem from './Item';
-import categories from '../../../../util/categories';
+import categories from '../../../util/categories';
 import { ProjectSideListWrapper, ProjectSideListHeader } from './style';
 
 const mapCategories = categories =>

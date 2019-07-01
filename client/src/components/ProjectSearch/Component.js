@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import renderField from '../../shared/form/renderField';
+import renderField from '../shared/form/renderField';
 import { SearchForm, SearchButton } from './style';
 
 const ProjectSearch = ({ handleSubmit }) => (

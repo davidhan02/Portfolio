@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 export const ProjectHeaderWrapper = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   margin: 5px 0px 7px;
 `;

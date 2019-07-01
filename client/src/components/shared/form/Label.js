@@ -8,7 +8,17 @@ const Label = styled.label`
   margin-bottom: 8px;
   color: ${props => props.theme.mutedText};
   ${props =>
-    props.search && 'margin: 0 24px 0 0; font-size: 16px; font-weight: 400'};
+    props.search &&
+    `
+      margin: 0;
+      padding: 9px 17px;
+      font-size: 16px; 
+      font-weight: 400;
+      border: 1px solid ${props.theme.border};
+      border-right: none;
+      border-radius: 3px 0 0 3px;
+      background: ${props.theme.foreground};
+    `};
   @media (max-width: 575px) {
     ${props => props.search && 'display: none'};
   }

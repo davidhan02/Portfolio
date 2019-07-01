@@ -61,6 +61,7 @@ const VariableField = field => {
             id={field.label}
             {...field.input}
             type={field.type}
+            search={field.isSearch}
             error={field.meta.touched && !!field.meta.error}
             placeholder={field.placeholder || field.label}
             style={{ resize: 'none', height: '2.375rem' }}

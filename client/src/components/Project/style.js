@@ -10,7 +10,8 @@ export const ProjectWrapper = styled.div`
   background-color: ${props => props.theme.foreground};
   box-shadow: 0 4px 12px ${props => props.theme.shadow};
   border 1px solid ${props => props.theme.border};
-  ${props => props.preview && 'border: none'};
+  ${props => props.preview && 'border: none; box-shadow: none'};
+  border-radius: 3px;
   overflow: hidden;
 `;
 

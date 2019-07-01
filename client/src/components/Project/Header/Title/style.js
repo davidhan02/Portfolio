@@ -6,6 +6,9 @@ export const BackLink = styled(Link)`
   ${link};
   min-width: 90px;
   font-size: 14px;
+  @media (max-width: 575px) {
+    display: none;
+  }
 `;
 
 export const TitleLink = styled(Link)`
@@ -21,7 +24,6 @@ export const TitleLink = styled(Link)`
 export const BigTitle = styled.h3`
   font-size: 24px;
   font-weight: 400;
-  margin: 0 auto;
   text-align: center;
   color: ${props => props.theme.normalText};
 `;

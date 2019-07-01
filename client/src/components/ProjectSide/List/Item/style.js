@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import NavLink from '../../../../shared/NavLink';
+import NavLink from '../../../shared/NavLink';
 
 export const Item = styled(NavLink)`
   padding: 12px;
