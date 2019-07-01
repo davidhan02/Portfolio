@@ -12,6 +12,7 @@ import PrivateRoute from '../shared/PrivateRoute';
 import NavbarContainer from '../Navbar/Container';
 import LoginContainer from '../Login/Container';
 import ProjectRoutes from '../ProjectRoutes';
+import ProfileRoutes from '../ProfileRoutes'; //
 import history from '../../util/history';
 import theme from '../../styles/theme';
 import Body from '../Body';
@@ -27,19 +28,8 @@ const App = ({ dark }) => (
         <Switch>
           <Route path="/login" component={LoginContainer} />
           <Route path="/register" component={RegisterContainer} />
+          <Route path="/profile" component={ProfileRoutes} />
           <Route path="/projects" component={ProjectRoutes} />
-          <PrivateRoute path="/profile/form" component={ProfileFormContainer} />
-          <PrivateRoute
-            exact
-            path={['/profile/eduform/', '/profile/eduform/:eduId']}
-            component={EduFormContainer}
-          />
-          <PrivateRoute
-            exact
-            path={['/profile/expform/', '/profile/expform/:expId']}
-            component={ExpFormContainer}
-          />
-          <PrivateRoute path="/profile/linksform/" component={LinksFormContainer} />
           <Route path="/contact" component={ContactContainer} />
           <Route path="/" component={Body} />
         </Switch>

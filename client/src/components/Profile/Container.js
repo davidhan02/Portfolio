@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
+import { connect } from 'react-redux';
+import Links from '../Links';
 import Profile from './Component';
 import EduItem from '../EduItem';
 import ExpItem from '../ExpItem';
-import { connect } from 'react-redux';
 import Loading from '../shared/Loading';
 import NotFound from '../shared/NotFound';
-import { getFirstProfile, clearProfile } from '../../actions/profile';
+import { BodyWrapper, MainSection } from './style';
 import AuthLinksContainer from './AuthLinks/Container';
-import Links from '../Links';
+import { getFirstProfile, clearProfile } from '../../actions/profile';
 
 class ProfileContainer extends Component {
   componentDidMount() {
@@ -24,21 +25,23 @@ class ProfileContainer extends Component {
     if (loading) return <Loading />;
     if (!profile) return <NotFound />;
     return (
-      <>
-        {token && <AuthLinksContainer id={profile.id} />}
-        <Profile profile={profile} />
-        {profile.social && <Links social={profile.social} />}
-        <br />
-        Education:
-        <hr />
-        {profile.education.length > 0 &&
-          profile.education.map(edu => <EduItem key={edu.id} edu={edu} />)}
-        <br />
-        Experience:
-        <hr />
-        {profile.experience.length > 0 &&
-          profile.experience.map(exp => <ExpItem key={exp.id} exp={exp} />)}
-      </>
+      <BodyWrapper>
+        <MainSection>
+          {token && <AuthLinksContainer id={profile.id} />}
+          <Profile profile={profile} />
+          {profile.social && <Links social={profile.social} />}
+          <br />
+          Education:
+          <hr />
+          {profile.education.length > 0 &&
+            profile.education.map(edu => <EduItem key={edu.id} edu={edu} />)}
+          <br />
+          Experience:
+          <hr />
+          {profile.experience.length > 0 &&
+            profile.experience.map(exp => <ExpItem key={exp.id} exp={exp} />)}
+        </MainSection>
+      </BodyWrapper>
     );
   }
 }

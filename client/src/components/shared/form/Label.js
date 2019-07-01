@@ -11,8 +11,8 @@ const Label = styled.label`
     props.search &&
     `
       margin: 0;
-      padding: 9px 17px;
-      font-size: 16px; 
+      padding: 10px 17px;
+      font-size: 14px; 
       font-weight: 400;
       border: 1px solid ${props.theme.border};
       border-right: none;
