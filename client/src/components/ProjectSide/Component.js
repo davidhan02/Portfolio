@@ -1,11 +1,16 @@
 import React from 'react';
 import ProjectSideList from './List';
-import ProjectSideButton from './Button';
+import { Link } from 'react-router-dom';
 import { ProjectSideWrapper } from './style';
+import { CreateButton } from '../shared/CreateButton';
 
 const ProjectSide = ({ token }) => (
   <ProjectSideWrapper>
-    {token && <ProjectSideButton />}
+    {token && (
+      <CreateButton as={Link} to="/profile/form">
+        create post
+      </CreateButton>
+    )}
     <ProjectSideList />
   </ProjectSideWrapper>
 );

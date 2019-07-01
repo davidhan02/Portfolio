@@ -1,14 +1,9 @@
 import { Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider as Theme } from 'styled-components';
 import ErrorDisplayContainer from '../ErrorDisplay/Container';
-import ProfileFormContainer from '../ProfileForm/Container';
-import LinksFormContainer from '../LinksForm/Container';
 import ContactContainer from '../Contact/Container';
-import EduFormContainer from '../EduForm/Container';
-import ExpFormContainer from '../ExpForm/Container';
 import RegisterContainer from '../Register/Container';
 import GlobalStyle from '../../styles/globalStyle';
-import PrivateRoute from '../shared/PrivateRoute';
 import NavbarContainer from '../Navbar/Container';
 import LoginContainer from '../Login/Container';
 import ProjectRoutes from '../ProjectRoutes';

@@ -19,4 +19,5 @@ export const BodyWrapper = styled.div`
 export const MainSection = styled.main`
   flex: 1;
   min-width: 0;
+  margin: 24px auto;
 `;
