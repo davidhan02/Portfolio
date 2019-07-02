@@ -1,12 +1,14 @@
 import styled from 'styled-components/macro';
 
 export const ProfileSideWrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
 
   flex-basis: 280px;
   margin: 24px;
   margin-left: 0;
+  overflow: hidden;
 
   border-radius: 3px;
   border: 1px solid ${props => props.theme.border};
