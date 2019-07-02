@@ -47,7 +47,7 @@ const SideContent = styled.div`
 
 export const Line = styled.span`
   width: 100%;
-  padding: 2px 15px;
+  padding: 1px 15px;
   font-size: 16px;
   line-height: 24px;
   color: ${props => props.theme.mutedText};
@@ -64,6 +64,9 @@ export const NameLine = styled(Line)`
   padding: 10px 15px;
   color: ${props => props.theme.normalText};
   border-bottom: 1px solid ${props => props.theme.border};
+`;
+
+const SideNameLine = styled(NameLine)`
   @media (max-width: 525px) {
     border-top: 1px solid ${props => props.theme.border};
   }
@@ -79,7 +82,7 @@ const ProfileSide = ({ token, profile }) => (
     <InnerWrapper>
       <ProfilePicture src="https://avatars0.githubusercontent.com/u/47205512?s=400&u=558c61c1320cadc2f4eb9beb5b7196cc871bbc70&v=4" />
       <SideContent>
-        <NameLine>{profile.name}</NameLine>
+        <SideNameLine>{profile.name}</SideNameLine>
         <Line>A {profile.status}</Line>
         <Line>at {profile.company}</Line>
         <Line>in {profile.location}</Line>
