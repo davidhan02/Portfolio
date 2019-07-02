@@ -45,9 +45,9 @@ const SideContent = styled.div`
   }
 `;
 
-const Line = styled.span`
+export const Line = styled.span`
   width: 100%;
-  padding: 5px 15px;
+  padding: 2px 15px;
   font-size: 16px;
   line-height: 24px;
   color: ${props => props.theme.mutedText};
@@ -59,7 +59,7 @@ const Line = styled.span`
   }
 `;
 
-const NameLine = styled(Line)`
+export const NameLine = styled(Line)`
   font-size: 18px;
   padding: 10px 15px;
   color: ${props => props.theme.normalText};
@@ -71,14 +71,14 @@ const NameLine = styled(Line)`
 
 const ProfileSide = ({ token, profile }) => (
   <ProfileSideWrapper>
+    {token && (
+      <CreateButton as={Link} to="/profile/form">
+        edit profile
+      </CreateButton>
+    )}
     <InnerWrapper>
       <ProfilePicture src="https://avatars0.githubusercontent.com/u/47205512?s=400&u=558c61c1320cadc2f4eb9beb5b7196cc871bbc70&v=4" />
       <SideContent>
-        {token && (
-          <CreateButton as={Link} to="/profile/form">
-            edit profile
-          </CreateButton>
-        )}
         <NameLine>{profile.name}</NameLine>
         <Line>A {profile.status}</Line>
         <Line>at {profile.company}</Line>
