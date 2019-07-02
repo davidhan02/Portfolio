@@ -4,22 +4,35 @@ import { ProfileSideWrapper } from './style';
 import { CreateButton } from '../../shared/CreateButton';
 
 import moment from 'moment';
+import { link } from '../../shared/helpers';
 import styled from 'styled-components/macro';
 
-const ProfilePicture = styled.img`
-  max-width: 100%;
-  height: auto;
+const PictureBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @media (max-width: 768px) {
     max-width: 280px;
   }
-  @media (max-width: 525px) {
+  @media (max-width: 420px) {
     max-width: 100%;
-    border-radius: 4px;
-    margin: 30px auto;
+  }
+`;
+
+const ProfilePicture = styled.img`
+  width: auto;
+  max-height: 100%;
+  @media (max-width: 525px) {
+    border: 1px solid ${props => props.theme.border};
+    border-radius: 50%;
+    margin-left: 10px;
   }
   @media (max-width: 420px) {
     border-radius: 0;
-    margin: 0 auto;
+    border: none;
+    margin: 0;
+    padding: 0;
   }
 `;
 
@@ -29,7 +42,7 @@ const InnerWrapper = styled.div`
   @media (max-width: 768px) {
     flex-direction: row;
   }
-  @media (max-width: 525px) {
+  @media (max-width: 420px) {
     flex-direction: column;
   }
 `;
@@ -39,10 +52,17 @@ const SideContent = styled.div`
   flex-direction: column;
   @media (max-width: 768px) {
     width: 100%;
-  }
-  @media (max-width: 525px) {
+    min-width: 280px;
+    flex-basis: 1;
     text-align: center;
   }
+`;
+
+export const LineWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  margin: 0;
 `;
 
 export const Line = styled.span`
@@ -51,12 +71,6 @@ export const Line = styled.span`
   font-size: 16px;
   line-height: 24px;
   color: ${props => props.theme.mutedText};
-  &:nth-child(2) {
-    margin-top: 10px;
-  }
-  &:last-child {
-    margin-bottom: 10px;
-  }
 `;
 
 export const NameLine = styled(Line)`
@@ -66,9 +80,18 @@ export const NameLine = styled(Line)`
   border-bottom: 1px solid ${props => props.theme.border};
 `;
 
-const SideNameLine = styled(NameLine)`
-  @media (max-width: 525px) {
-    border-top: 1px solid ${props => props.theme.border};
+const ProjectLink = styled(Link)`
+  ${link};
+  color: ${props => props.theme.mutedText};
+  text-transform: uppercase;
+  padding: 10px 8px;
+  margin: 10px;
+  margin-top: auto;
+  border: 1px solid ${props => props.theme.border};
+  border-radius: 4px;
+  text-align: center;
+  :hover {
+    border: 1px solid ${props => props.theme.accent};
   }
 `;
 
@@ -80,13 +103,18 @@ const ProfileSide = ({ token, profile }) => (
       </CreateButton>
     )}
     <InnerWrapper>
-      <ProfilePicture src="https://avatars0.githubusercontent.com/u/47205512?s=400&u=558c61c1320cadc2f4eb9beb5b7196cc871bbc70&v=4" />
+      <PictureBox>
+        <ProfilePicture src="https://avatars0.githubusercontent.com/u/47205512?s=400&u=558c61c1320cadc2f4eb9beb5b7196cc871bbc70&v=4" />
+      </PictureBox>
       <SideContent>
-        <SideNameLine>{profile.name}</SideNameLine>
-        <Line>A {profile.status}</Line>
-        <Line>at {profile.company}</Line>
-        <Line>in {profile.location}</Line>
-        <Line>Born {moment(profile.birthday).fromNow()}</Line>
+        <NameLine>{profile.name}</NameLine>
+        <LineWrapper>
+          <Line>A {profile.status}</Line>
+          <Line>at {profile.company}</Line>
+          <Line>in {profile.location}</Line>
+          <Line>Born {moment(profile.birthday).fromNow()}</Line>
+        </LineWrapper>
+        <ProjectLink to="/projects">my projects</ProjectLink>
       </SideContent>
     </InnerWrapper>
   </ProfileSideWrapper>
