@@ -10,8 +10,11 @@ import ProfileSide from './Side';
 import styled from 'styled-components/macro';
 
 const ProfileLabel = styled(Label)`
-  font-size: 16px;
+  font-size: 18px;
   margin-top: 8px;
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 const BorderWrapper = styled.div`
