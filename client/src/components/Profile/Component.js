@@ -23,6 +23,7 @@ const BorderWrapper = styled.div`
   color: ${props => props.theme.normalText};
   background: ${props => props.theme.foreground};
   border: 1px solid ${props => props.theme.border};
+  box-shadow: 0 4px 12px ${props => props.theme.shadow};
   border-radius: 4px;
 `;
 
