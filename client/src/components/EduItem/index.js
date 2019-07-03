@@ -1,18 +1,19 @@
 import React from 'react';
 import EduItemHeaderContainer from './Header/Container';
-import { Line, NameLine } from '../Profile/Side';
+import { Line, Row, LineWrapper } from '../shared/Line';
 
 const EduItem = ({ edu }) => (
-  <>
-    <NameLine>
-      <EduItemHeaderContainer eduId={edu.id} school={edu.school} />
-    </NameLine>
-    <Line>Degree: {edu.degree}</Line>
-    <Line>Major: {edu.major}</Line>
-    <Line>From: {edu.from.split('T')[0]}</Line>
-    <Line>To: {(edu.current && 'current') || (edu.to && edu.to.split('T')[0])}</Line>
+  <LineWrapper>
+    <EduItemHeaderContainer edu={edu} />
+    <Row>
+      <span>Degree: {edu.degree}</span>
+      <span>
+        {edu.from.split('T')[0]} to{' '}
+        {(edu.current && 'current') || (edu.to && edu.to.split('T')[0])}
+      </span>
+    </Row>
     <Line>{edu.description}</Line>
-  </>
+  </LineWrapper>
 );
 
 export default EduItem;

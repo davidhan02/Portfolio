@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ProfileSideWrapper } from './style';
-import { CreateButton } from '../../shared/CreateButton';
 
 import moment from 'moment';
 import { link } from '../../shared/helpers';
+import { Line, LineWrapper } from '../../shared/Line';
 import styled from 'styled-components/macro';
 
 const PictureBox = styled.div`
@@ -58,21 +58,6 @@ const SideContent = styled.div`
   }
 `;
 
-export const LineWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 10px 0;
-  margin: 0;
-`;
-
-export const Line = styled.span`
-  width: 100%;
-  padding: 1px 15px;
-  font-size: 16px;
-  line-height: 24px;
-  color: ${props => props.theme.mutedText};
-`;
-
 export const NameLine = styled(Line)`
   font-size: 18px;
   padding: 10px 15px;
@@ -80,28 +65,23 @@ export const NameLine = styled(Line)`
   border-bottom: 1px solid ${props => props.theme.border};
 `;
 
-const ProjectLink = styled(Link)`
+const SideLink = styled(Link)`
   ${link};
-  color: ${props => props.theme.mutedText};
+  color: ${props => props.theme.accent};
   text-transform: uppercase;
   padding: 10px 8px;
   margin: 10px;
   margin-top: auto;
-  border: 1px solid ${props => props.theme.border};
+  border: 1px solid ${props => props.theme.accent};
   border-radius: 4px;
   text-align: center;
   :hover {
-    border: 1px solid ${props => props.theme.accent};
+    filter: brightness(140%);
   }
 `;
 
-const ProfileSide = ({ token, profile }) => (
+const ProfileSide = ({ profile }) => (
   <ProfileSideWrapper>
-    {token && (
-      <CreateButton as={Link} to="/profile/form">
-        edit profile
-      </CreateButton>
-    )}
     <InnerWrapper>
       <PictureBox>
         <ProfilePicture src="https://avatars0.githubusercontent.com/u/47205512?s=400&u=558c61c1320cadc2f4eb9beb5b7196cc871bbc70&v=4" />
@@ -114,7 +94,7 @@ const ProfileSide = ({ token, profile }) => (
           <Line>in {profile.location}</Line>
           <Line>Born {moment(profile.birthday).fromNow()}</Line>
         </LineWrapper>
-        <ProjectLink to="/projects">my projects</ProjectLink>
+        <SideLink to="/projects">my projects</SideLink>
       </SideContent>
     </InnerWrapper>
   </ProfileSideWrapper>

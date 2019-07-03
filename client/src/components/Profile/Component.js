@@ -10,7 +10,7 @@ import ProfileSide from './Side';
 import styled from 'styled-components/macro';
 
 const ProfileLabel = styled(Label)`
-  font-size: 18px;
+  font-size: 16px;
   margin-top: 8px;
   @media (max-width: 768px) {
     text-align: center;
@@ -44,7 +44,7 @@ const ListItem = styled.li`
 
 const Profile = ({ token, profile }) => (
   <BodyWrapper>
-    <ProfileSide token={token} profile={profile} />
+    <ProfileSide profile={profile} />
     <MainSection>
       {token && <AuthLinksContainer id={profile.id} />}
       <ProfileLabel>about me</ProfileLabel>

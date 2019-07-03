@@ -1,18 +1,19 @@
 import React from 'react';
 import ExpItemHeaderContainer from './Header/Container';
-import { Line, NameLine } from '../Profile/Side';
+import { Line, Row, LineWrapper } from '../shared/Line';
 
 const ExpItem = ({ exp }) => (
-  <>
-    <NameLine>
-      <ExpItemHeaderContainer expId={exp.id} company={exp.company} />
-    </NameLine>
-    <Line>Title: {exp.title}</Line>
-    <Line>In: {exp.location}</Line>
-    <Line>From: {exp.from.split('T')[0]}</Line>
-    <Line>To: {(exp.current && 'current') || (exp.to && exp.to.split('T')[0])}</Line>
+  <LineWrapper>
+    <ExpItemHeaderContainer exp={exp} />
+    <Row>
+      <span>Title: {exp.title}</span>
+      <span>
+        {exp.from.split('T')[0]} to{' '}
+        {(exp.current && 'current') || (exp.to && exp.to.split('T')[0])}
+      </span>
+    </Row>
     <Line>{exp.description}</Line>
-  </>
+  </LineWrapper>
 );
 
 export default ExpItem;

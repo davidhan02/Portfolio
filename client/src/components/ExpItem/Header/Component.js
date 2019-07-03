@@ -1,18 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Row, Title } from '../../shared/Line';
+import { AuthLink, AuthLinkBox } from '../../shared/AuthLink';
 
-const ExpItemHeader = ({ token, profile, expId, company, deleteExp }) => (
-  <>
-    {company}&nbsp;
-    {token && (
-      <>
-        <Link to={`/profile/expform/${expId}`}>Edit</Link>&nbsp;
-        <Link to="/profile" onClick={() => deleteExp(profile.id, expId)}>
+const ExpItemHeader = ({ token, profile, exp, deleteExp }) => (
+  <Row>
+    <Title>{exp.company}</Title>
+    {token ? (
+      <AuthLinkBox>
+        <AuthLink to={`/profile/expform/${exp.id}`}>Edit</AuthLink>&nbsp;
+        <AuthLink to="/profile" onClick={() => deleteExp(profile.id, exp.id)}>
           Delete
-        </Link>
-      </>
+        </AuthLink>
+      </AuthLinkBox>
+    ) : (
+      exp.location
     )}
-  </>
+  </Row>
 );
 
 export default ExpItemHeader;

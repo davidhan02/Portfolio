@@ -1,18 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Row, Title } from '../../shared/Line';
+import { AuthLink, AuthLinkBox } from '../../shared/AuthLink';
 
-const EduItemHeader = ({ token, profile, eduId, school, deleteEdu }) => (
-  <>
-    {school}&nbsp;
-    {token && (
-      <>
-        <Link to={`/profile/eduform/${eduId}`}>Edit</Link>&nbsp;
-        <Link to="/profile" onClick={() => deleteEdu(profile.id, eduId)}>
+const EduItemHeader = ({ token, profile, edu, deleteEdu }) => (
+  <Row>
+    <Title>{edu.school}</Title>
+    {token ? (
+      <AuthLinkBox>
+        <AuthLink to={`/profile/eduform/${edu.id}`}>Edit</AuthLink>
+        <AuthLink to="/profile" onClick={() => deleteEdu(profile.id, edu.id)}>
           Delete
-        </Link>
-      </>
+        </AuthLink>
+      </AuthLinkBox>
+    ) : (
+      edu.major
     )}
-  </>
+  </Row>
 );
 
 export default EduItemHeader;
