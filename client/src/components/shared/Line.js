@@ -19,6 +19,15 @@ export const Row = styled(Line)`
   justify-content: space-between;
 `;
 
+export const LogoRow = styled(Line)`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  @media (max-width: 768px) {
+    justify-content: space-around;
+  }
+`;
+
 export const LineWrapper = styled.div`
   display: flex;
   flex-direction: column;

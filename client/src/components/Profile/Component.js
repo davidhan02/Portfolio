@@ -23,7 +23,7 @@ const BorderWrapper = styled.div`
   white-space: pre-wrap;
   margin-bottom: 24px;
   list-style: none;
-  color: ${props => props.theme.normalText};
+  color: ${props => props.theme.mutedText};
   background: ${props => props.theme.foreground};
   border: 1px solid ${props => props.theme.border};
   box-shadow: 0 4px 12px ${props => props.theme.shadow};

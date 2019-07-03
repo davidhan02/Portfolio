@@ -4,8 +4,13 @@ import { ProfileSideWrapper } from './style';
 
 import moment from 'moment';
 import { link } from '../../shared/helpers';
-import { Line, LineWrapper } from '../../shared/Line';
+import { Line, LogoRow, LineWrapper } from '../../shared/Line';
 import styled from 'styled-components/macro';
+import GithubLogo from '../../shared/GithubLogo';
+import LinkedinLogo from '../../shared/LinkedinLogo';
+import InstagramLogo from '../../shared/InstagramLogo';
+import CodepenLogo from '../../shared/CodepenLogo';
+import GlitchLogo from '../../shared/GlitchLogo';
 
 const PictureBox = styled.div`
   width: 100%;
@@ -93,6 +98,13 @@ const ProfileSide = ({ profile }) => (
           <Line>at {profile.company}</Line>
           <Line>in {profile.location}</Line>
           <Line>Born {moment(profile.birthday).fromNow()}</Line>
+          <LogoRow>
+            <CodepenLogo />
+            <GithubLogo />
+            <LinkedinLogo />
+            <InstagramLogo />
+            <GlitchLogo />
+          </LogoRow>
         </LineWrapper>
         <SideLink to="/projects">my projects</SideLink>
       </SideContent>
