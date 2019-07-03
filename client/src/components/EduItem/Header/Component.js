@@ -3,7 +3,7 @@ import { Row, Title } from '../../shared/Line';
 import { AuthLink, AuthLinkBox } from '../../shared/AuthLink';
 
 const EduItemHeader = ({ token, profile, edu, deleteEdu }) => (
-  <Row>
+  <Row as="div">
     <Title>{edu.school}</Title>
     {token ? (
       <AuthLinkBox>

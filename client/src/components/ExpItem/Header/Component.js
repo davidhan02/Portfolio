@@ -3,7 +3,7 @@ import { Row, Title } from '../../shared/Line';
 import { AuthLink, AuthLinkBox } from '../../shared/AuthLink';
 
 const ExpItemHeader = ({ token, profile, exp, deleteExp }) => (
-  <Row>
+  <Row as="div">
     <Title>{exp.company}</Title>
     {token ? (
       <AuthLinkBox>
