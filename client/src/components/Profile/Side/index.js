@@ -4,13 +4,9 @@ import { ProfileSideWrapper } from './style';
 
 import moment from 'moment';
 import { link } from '../../shared/helpers';
-import { Line, LogoRow, LineWrapper } from '../../shared/Line';
+import { Line, LineWrapper } from '../../shared/Line';
+import Links from '../../Links';
 import styled from 'styled-components/macro';
-import GithubLogo from '../../shared/GithubLogo';
-import LinkedinLogo from '../../shared/LinkedinLogo';
-import InstagramLogo from '../../shared/InstagramLogo';
-import CodepenLogo from '../../shared/CodepenLogo';
-import GlitchLogo from '../../shared/GlitchLogo';
 
 const PictureBox = styled.div`
   width: 100%;
@@ -28,7 +24,7 @@ const PictureBox = styled.div`
 const ProfilePicture = styled.img`
   width: auto;
   max-height: 100%;
-  @media (max-width: 525px) {
+  @media (max-width: 600px) {
     border: 1px solid ${props => props.theme.border};
     border-radius: 50%;
     margin-left: 10px;
@@ -72,16 +68,16 @@ export const NameLine = styled(Line)`
 
 const SideLink = styled(Link)`
   ${link};
-  color: ${props => props.theme.accent};
+  color: ${props => props.theme.mutedText};
   text-transform: uppercase;
   padding: 10px 8px;
   margin: 10px;
   margin-top: auto;
-  border: 1px solid ${props => props.theme.accent};
+  border: 1px solid ${props => props.theme.border};
   border-radius: 4px;
   text-align: center;
   :hover {
-    filter: brightness(140%);
+    border: 1px solid ${props => props.theme.accent};
   }
 `;
 
@@ -98,13 +94,7 @@ const ProfileSide = ({ profile }) => (
           <Line>at {profile.company}</Line>
           <Line>in {profile.location}</Line>
           <Line>Born {moment(profile.birthday).fromNow()}</Line>
-          <LogoRow>
-            <CodepenLogo />
-            <GithubLogo />
-            <LinkedinLogo />
-            <InstagramLogo />
-            <GlitchLogo />
-          </LogoRow>
+          {profile.social && <Links social={profile.social} />}
         </LineWrapper>
         <SideLink to="/projects">my projects</SideLink>
       </SideContent>

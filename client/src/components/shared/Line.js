@@ -25,6 +25,10 @@ export const LogoRow = styled(Line)`
   margin-top: 10px;
   @media (max-width: 768px) {
     justify-content: space-around;
+    margin-top: 20px;
+  }
+  @media (max-width: 600px) {
+    margin-top: 15px;
   }
 `;
 

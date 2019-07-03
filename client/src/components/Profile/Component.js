@@ -1,5 +1,4 @@
 import React from 'react';
-import Links from '../Links';
 import EduItem from '../EduItem';
 import ExpItem from '../ExpItem';
 import Label from '../shared/form/Label';
@@ -11,7 +10,9 @@ import styled from 'styled-components/macro';
 
 const ProfileLabel = styled(Label)`
   font-size: 16px;
-  margin-top: 8px;
+  &:not(:first-child) {
+    margin-top: 8px;
+  }
   @media (max-width: 768px) {
     text-align: center;
   }
@@ -49,7 +50,8 @@ const Profile = ({ token, profile }) => (
       {token && <AuthLinksContainer id={profile.id} />}
       <ProfileLabel>about me</ProfileLabel>
       <BorderWrapper>{profile.bio}</BorderWrapper>
-      {profile.social && <Links social={profile.social} />}
+      <ProfileLabel>skills</ProfileLabel>
+      <BorderWrapper>{profile.skills.join('   |   ')}</BorderWrapper>
       <ProfileLabel>education</ProfileLabel>
       {profile.education.length > 0 && (
         <ListWrapper as="ol">
