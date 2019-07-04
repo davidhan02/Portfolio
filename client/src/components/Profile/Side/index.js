@@ -62,7 +62,7 @@ const SideContent = styled.div`
 export const NameLine = styled(Line)`
   font-size: 18px;
   padding: 10px 15px;
-  letter-spacing: 0.03rem;
+  letter-spacing: 0.02rem;
   color: ${props => props.theme.normalText};
   border-bottom: 1px solid ${props => props.theme.border};
 `;
@@ -86,7 +86,10 @@ const ProfileSide = ({ profile }) => (
   <ProfileSideWrapper>
     <InnerWrapper>
       <PictureBox>
-        <ProfilePicture src="https://avatars0.githubusercontent.com/u/47205512?s=400&u=558c61c1320cadc2f4eb9beb5b7196cc871bbc70&v=4" />
+        <ProfilePicture
+          src="https://avatars0.githubusercontent.com/u/47205512?s=400&u=558c61c1320cadc2f4eb9beb5b7196cc871bbc70&v=4"
+          alt={`${profile.name} profile picture`}
+        />
       </PictureBox>
       <SideContent>
         <NameLine>{profile.name}</NameLine>
