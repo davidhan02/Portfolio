@@ -7,6 +7,8 @@ import AuthLinksContainer from './AuthLinks/Container';
 import ProfileSide from './Side';
 
 import styled from 'styled-components/macro';
+import { Link } from 'react-router-dom';
+import { link } from '../shared/helpers';
 
 const ProfileLabel = styled(Label)`
   font-size: 16px;
@@ -36,6 +38,14 @@ const ListWrapper = styled(BorderWrapper)`
   padding: 0;
 `;
 
+const SkillsWrapper = styled(BorderWrapper)`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  padding-bottom: 0px;
+`;
+
 const ListItem = styled.li`
   display: flex;
   flex-direction: column;
@@ -44,6 +54,31 @@ const ListItem = styled.li`
   }
 `;
 
+const SkillsItem = styled.li`
+  display: inline;
+  margin-bottom: 10px;
+  &:not(:first-child) {
+    margin-left: 5px;
+  }
+`;
+
+const SkillLink = styled(Link)`
+  ${link}
+  color: ${props => props.theme.mutedText};
+  font-size: 16px;
+  padding: 5px 10px;
+  border: 1px solid ${props => props.theme.border};
+  border-radius: 4px;
+  &:hover {
+    border: 1px solid ${props => props.theme.accent};
+    color: ${props => props.theme.accent};
+  }
+`;
+
+const Skill = ({ skill }) => (
+  <SkillLink to={`/projects/cat/${skill}`}>{skill}</SkillLink>
+);
+
 const Profile = ({ token, profile }) => (
   <BodyWrapper>
     <ProfileSide profile={profile} />
@@ -51,8 +86,14 @@ const Profile = ({ token, profile }) => (
       {token && <AuthLinksContainer id={profile.id} />}
       <ProfileLabel>about me</ProfileLabel>
       <BorderWrapper>{profile.bio}</BorderWrapper>
-      <ProfileLabel>skills</ProfileLabel>
-      <BorderWrapper>{profile.skills.map(skill => `  ${skill}  `)}</BorderWrapper>
+      <ProfileLabel>my skills</ProfileLabel>
+      <SkillsWrapper as="ul">
+        {profile.skills.map(skill => (
+          <SkillsItem key={skill}>
+            <Skill skill={skill} />
+          </SkillsItem>
+        ))}
+      </SkillsWrapper>
       <ProfileLabel>education</ProfileLabel>
       {profile.education.length > 0 && (
         <ListWrapper as="ol">

@@ -2,8 +2,8 @@ import styled from 'styled-components/macro';
 import { transition } from './helpers';
 
 const LinkIcon = styled.svg`
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
 
   & path {
     ${transition('fill')};
