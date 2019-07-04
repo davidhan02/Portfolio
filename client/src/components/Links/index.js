@@ -1,10 +1,10 @@
 import React from 'react';
 import { LogoRow } from '../shared/Line';
-import GithubLogo from '../shared/GithubLogo';
-import LinkedinLogo from '../shared/LinkedinLogo';
-import InstagramLogo from '../shared/InstagramLogo';
-import CodepenLogo from '../shared/CodepenLogo';
-import GlitchLogo from '../shared/GlitchLogo';
+import GithubLogo from '../shared/Logos/GithubLogo';
+import LinkedinLogo from '../shared/Logos/LinkedinLogo';
+import InstagramLogo from '../shared/Logos/InstagramLogo';
+import CodepenLogo from '../shared/Logos/CodepenLogo';
+import GlitchLogo from '../shared/Logos/GlitchLogo';
 import LogoLink from '../shared/LogoLink';
 
 const Links = ({ social }) => (

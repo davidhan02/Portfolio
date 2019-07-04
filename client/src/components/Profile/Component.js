@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ProfileExp from './Exp';
 import ProfileEdu from './Edu';
 import ProfileSide from './Side';

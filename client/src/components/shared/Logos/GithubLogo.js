@@ -1,5 +1,5 @@
 import React from 'react';
-import LinkIcon from './LinkIcon';
+import LinkIcon from '../LinkIcon';
 
 const GithubLogo = () => (
   <LinkIcon viewBox="0 0 438.536 438.536" aria-labelledby="github-logo">

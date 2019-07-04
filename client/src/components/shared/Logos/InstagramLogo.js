@@ -1,5 +1,5 @@
 import React from 'react';
-import LinkIcon from './LinkIcon';
+import LinkIcon from '../LinkIcon';
 
 const InstagramLogo = () => (
   <LinkIcon viewBox="0 0 169.063 169.063" aria-labelledby="instagram-logo">

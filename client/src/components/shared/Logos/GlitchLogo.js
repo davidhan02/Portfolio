@@ -1,5 +1,5 @@
 import React from 'react';
-import LinkIcon from './LinkIcon';
+import LinkIcon from '../LinkIcon';
 
 const GlitchLogo = () => (
   <LinkIcon viewBox="0 0 522.468 522.469" aria-labelledby="glitch-logo">

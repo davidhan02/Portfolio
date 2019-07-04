@@ -1,5 +1,5 @@
 import React from 'react';
-import LinkIcon from './LinkIcon';
+import LinkIcon from '../LinkIcon';
 
 const CodepenLogo = () => (
   <LinkIcon viewBox="0 0 31.665 31.665" aria-labelledby="codepen-logo">
