@@ -5,6 +5,7 @@ import ProjectSearchContainer from '../ProjectSearch/Container';
 import ProjectFormContainer from '../ProjectForm/Container';
 import ProjectListContainer from '../ProjectList/Container';
 import ProjectSideContainer from '../ProjectSide/Container';
+import ProjectSelectContainer from '../ProjectSelect/Container';
 import ProjectContainer from '../Project/Container';
 import { BodyWrapper, MainSection } from './style';
 
@@ -14,6 +15,11 @@ const ProjectRoutes = () => (
       exact
       path={['/projects', '/projects/:projectId', '/projects/cat/:category']}
       component={ProjectSearchContainer}
+    />
+    <Route
+      exact
+      path={['/projects', '/projects/:projectId', '/projects/cat/:category']}
+      component={ProjectSelectContainer}
     />
     <Switch>
       <PrivateRoute
