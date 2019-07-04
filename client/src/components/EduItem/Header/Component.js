@@ -13,7 +13,7 @@ const EduItemHeader = ({ token, profile, edu, deleteEdu }) => (
         </AuthLink>
       </AuthLinkBox>
     ) : (
-      edu.major
+      <span>{edu.major}</span>
     )}
   </Row>
 );

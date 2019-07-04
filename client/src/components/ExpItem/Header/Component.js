@@ -13,7 +13,7 @@ const ExpItemHeader = ({ token, profile, exp, deleteExp }) => (
         </AuthLink>
       </AuthLinkBox>
     ) : (
-      exp.location
+      <span>{exp.location}</span>
     )}
   </Row>
 );
