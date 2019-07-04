@@ -3,7 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import Dashboard from '../Dashboard';
 import NotFound from '../shared/NotFound';
 import PrivateRoute from '../shared/PrivateRoute';
-import { BodyWrapper, MainSection, Placeholder } from './style';
+import { BodyWrapper, MainSection } from '../shared/BodyMain';
+import { Placeholder } from './style';
 
 const Success = () => <Placeholder>Success</Placeholder>;
 const Landing = () => <Placeholder>Landing</Placeholder>;

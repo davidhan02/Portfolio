@@ -1,87 +1,11 @@
 import React from 'react';
-import EduItem from '../EduItem';
-import ExpItem from '../ExpItem';
-import Label from '../shared/form/Label';
-import { BodyWrapper, MainSection } from './style';
+
+import ProfileExp from './Exp';
+import ProfileEdu from './Edu';
 import ProfileSide from './Side';
-
-import styled from 'styled-components/macro';
-import { Link } from 'react-router-dom';
-import { link } from '../shared/helpers';
-import { AuthLink } from '../shared/AuthLink';
-
-const ProfileLabel = styled(Label)`
-  font-size: 16px;
-  &:not(:first-child) {
-    margin-top: 8px;
-  }
-  @media (max-width: 768px) {
-    text-align: center;
-  }
-`;
-
-const BorderWrapper = styled.div`
-  padding: 10px;
-  line-height: 25px;
-  white-space: pre-wrap;
-  margin-bottom: 24px;
-  list-style: none;
-  letter-spacing: 0.02rem;
-  color: ${props => props.theme.mutedText};
-  background: ${props => props.theme.foreground};
-  border: 1px solid ${props => props.theme.border};
-  box-shadow: 0 4px 12px ${props => props.theme.shadow};
-  border-radius: 4px;
-`;
-
-const ListWrapper = styled(BorderWrapper)`
-  padding: 0;
-`;
-
-const SkillsWrapper = styled(BorderWrapper)`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  text-align: center;
-  padding-bottom: 0px;
-`;
-
-const ListItem = styled.li`
-  display: flex;
-  flex-direction: column;
-  :not(:first-child) {
-    border-top: 1px solid ${props => props.theme.border};
-  }
-`;
-
-const SkillsItem = styled.li`
-  display: inline;
-  margin-bottom: 10px;
-  &:not(:first-child) {
-    margin-left: 5px;
-  }
-`;
-
-const LabelLink = styled(AuthLink)`
-  margin-left: 10px;
-`;
-
-const SkillLink = styled(Link)`
-  ${link}
-  color: ${props => props.theme.mutedText};
-  font-size: 16px;
-  padding: 5px 10px;
-  border: 1px solid ${props => props.theme.border};
-  border-radius: 4px;
-  &:hover {
-    border: 1px solid ${props => props.theme.accent};
-    color: ${props => props.theme.accent};
-  }
-`;
-
-const Skill = ({ skill }) => (
-  <SkillLink to={`/projects/cat/${skill}`}>{skill}</SkillLink>
-);
+import ProfileSkills from './Skills';
+import { BodyWrapper, MainSection } from '../shared/BodyMain';
+import { ProfileSection, ProfileLabel, LabelLink } from './style';
 
 const Profile = ({ token, profile }) => (
   <BodyWrapper>
@@ -90,41 +14,19 @@ const Profile = ({ token, profile }) => (
       <ProfileLabel>
         about me {token && <LabelLink to="/profile/form">[edit profile]</LabelLink>}
       </ProfileLabel>
-      <BorderWrapper>{profile.bio}</BorderWrapper>
+      <ProfileSection>{profile.bio}</ProfileSection>
       <ProfileLabel>
         my skills {token && <LabelLink to="/profile/form">[edit profile]</LabelLink>}
       </ProfileLabel>
-      <SkillsWrapper as="ul">
-        {profile.skills.map(skill => (
-          <SkillsItem key={skill}>
-            <Skill skill={skill} />
-          </SkillsItem>
-        ))}
-      </SkillsWrapper>
+      <ProfileSkills skills={profile.skills} />
       <ProfileLabel>
         education {token && <LabelLink to="/profile/eduform">[add new]</LabelLink>}
       </ProfileLabel>
-      {profile.education.length > 0 && (
-        <ListWrapper as="ol">
-          {profile.education.map(edu => (
-            <ListItem key={edu.id}>
-              <EduItem edu={edu} />
-            </ListItem>
-          ))}
-        </ListWrapper>
-      )}
+      {profile.education.length > 0 && <ProfileEdu eduList={profile.education} />}
       <ProfileLabel>
         experience {token && <LabelLink to="/profile/expform">[add new]</LabelLink>}
       </ProfileLabel>
-      {profile.experience.length > 0 && (
-        <ListWrapper as="ol">
-          {profile.experience.map(exp => (
-            <ListItem key={exp.id}>
-              <ExpItem exp={exp} />
-            </ListItem>
-          ))}
-        </ListWrapper>
-      )}
+      {profile.experience.length > 0 && <ProfileExp expList={profile.experience} />}
     </MainSection>
   </BodyWrapper>
 );
