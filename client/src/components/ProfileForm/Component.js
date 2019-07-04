@@ -41,6 +41,13 @@ const ProfileForm = ({ loading, handleSubmit }) => (
       component={renderField}
     />
     <Field
+      type="url"
+      name="photo"
+      label="photo"
+      placeholder="https://your-photo-url-here..."
+      component={renderField}
+    />
+    <Field
       type="textarea"
       rows={3}
       name="skills"

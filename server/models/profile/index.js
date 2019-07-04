@@ -41,6 +41,9 @@ const profileSchema = new Schema({
   bio: {
     type: String
   },
+  photo: {
+    type: String
+  },
   experience: [expSchema],
   education: [eduSchema],
   social: socialSchema
