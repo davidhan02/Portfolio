@@ -3,12 +3,12 @@ import EduItem from '../EduItem';
 import ExpItem from '../ExpItem';
 import Label from '../shared/form/Label';
 import { BodyWrapper, MainSection } from './style';
-import AuthLinksContainer from './AuthLinks/Container';
 import ProfileSide from './Side';
 
 import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 import { link } from '../shared/helpers';
+import { AuthLink } from '../shared/AuthLink';
 
 const ProfileLabel = styled(Label)`
   font-size: 16px;
@@ -62,6 +62,10 @@ const SkillsItem = styled.li`
   }
 `;
 
+const LabelLink = styled(AuthLink)`
+  margin-left: 10px;
+`;
+
 const SkillLink = styled(Link)`
   ${link}
   color: ${props => props.theme.mutedText};
@@ -83,10 +87,13 @@ const Profile = ({ token, profile }) => (
   <BodyWrapper>
     <ProfileSide profile={profile} />
     <MainSection>
-      {token && <AuthLinksContainer id={profile.id} />}
-      <ProfileLabel>about me</ProfileLabel>
+      <ProfileLabel>
+        about me {token && <LabelLink to="/profile/form">[edit profile]</LabelLink>}
+      </ProfileLabel>
       <BorderWrapper>{profile.bio}</BorderWrapper>
-      <ProfileLabel>my skills</ProfileLabel>
+      <ProfileLabel>
+        my skills {token && <LabelLink to="/profile/form">[edit profile]</LabelLink>}
+      </ProfileLabel>
       <SkillsWrapper as="ul">
         {profile.skills.map(skill => (
           <SkillsItem key={skill}>
@@ -94,7 +101,9 @@ const Profile = ({ token, profile }) => (
           </SkillsItem>
         ))}
       </SkillsWrapper>
-      <ProfileLabel>education</ProfileLabel>
+      <ProfileLabel>
+        education {token && <LabelLink to="/profile/eduform">[add new]</LabelLink>}
+      </ProfileLabel>
       {profile.education.length > 0 && (
         <ListWrapper as="ol">
           {profile.education.map(edu => (
@@ -104,7 +113,9 @@ const Profile = ({ token, profile }) => (
           ))}
         </ListWrapper>
       )}
-      <ProfileLabel>experience</ProfileLabel>
+      <ProfileLabel>
+        experience {token && <LabelLink to="/profile/expform">[add new]</LabelLink>}
+      </ProfileLabel>
       {profile.experience.length > 0 && (
         <ListWrapper as="ol">
           {profile.experience.map(exp => (
