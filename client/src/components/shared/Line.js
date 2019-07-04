@@ -5,6 +5,7 @@ export const Line = styled.span`
   padding: 1px 15px;
   font-size: 16px;
   line-height: 24px;
+  letter-spacing: 0.01rem;
   color: ${props => props.theme.mutedText};
 `;
 
@@ -12,11 +13,16 @@ export const Title = styled.span`
   color: ${props => props.theme.normalText};
   font-size: 18px;
   font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0.02rem;
 `;
 
 export const Row = styled(Line)`
   display: flex;
   justify-content: space-between;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.02rem;
 `;
 
 export const LogoRow = styled(Line)`

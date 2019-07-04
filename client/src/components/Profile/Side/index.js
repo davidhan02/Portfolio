@@ -62,6 +62,7 @@ const SideContent = styled.div`
 export const NameLine = styled(Line)`
   font-size: 18px;
   padding: 10px 15px;
+  letter-spacing: 0.03rem;
   color: ${props => props.theme.normalText};
   border-bottom: 1px solid ${props => props.theme.border};
 `;

@@ -24,6 +24,7 @@ const BorderWrapper = styled.div`
   white-space: pre-wrap;
   margin-bottom: 24px;
   list-style: none;
+  letter-spacing: 0.02rem;
   color: ${props => props.theme.mutedText};
   background: ${props => props.theme.foreground};
   border: 1px solid ${props => props.theme.border};
@@ -51,7 +52,7 @@ const Profile = ({ token, profile }) => (
       <ProfileLabel>about me</ProfileLabel>
       <BorderWrapper>{profile.bio}</BorderWrapper>
       <ProfileLabel>skills</ProfileLabel>
-      <BorderWrapper>{profile.skills.join('   |   ')}</BorderWrapper>
+      <BorderWrapper>{profile.skills.map(skill => `  ${skill}  `)}</BorderWrapper>
       <ProfileLabel>education</ProfileLabel>
       {profile.education.length > 0 && (
         <ListWrapper as="ol">
