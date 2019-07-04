@@ -1,35 +1,23 @@
 import React from 'react';
-import styled from 'styled-components/macro';
 import { Route } from 'react-router-dom';
 import ProjectSelectDropdown from './Dropdown';
-import ProjectSelectCreateButton from './CreateButton';
-
-import { ProjectSelectLabel } from './style';
-
-const Menu = styled.nav`
-  display: none;
-  border: none;
-  margin: 0 10px;
-
-  @media (max-width: 768px) {
-    display: flex;
-  }
-`;
+import { ProjectSelectMenu, ProjectSelectLabel, CreateButton } from './style';
 
 const ProjectSelect = ({ token }) => (
-  <Menu>
+  <ProjectSelectMenu>
     <ProjectSelectLabel>Select:</ProjectSelectLabel>
     <Route
       path="/projects/cat/:category"
       children={({ match, history }) => (
         <ProjectSelectDropdown
-          category={match ? match.params.category : 'all'}
+          category={match ? match.params.category : 'All'}
           history={history}
+          token={token}
         />
       )}
     />
-    {token && <ProjectSelectCreateButton />}
-  </Menu>
+    {token && <CreateButton>add new</CreateButton>}
+  </ProjectSelectMenu>
 );
 
 export default ProjectSelect;

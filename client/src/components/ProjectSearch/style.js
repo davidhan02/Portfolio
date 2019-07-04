@@ -17,4 +17,5 @@ export const SearchButton = styled(OutlineButton)`
   font-weight: 400;
   ${link};
   color: ${props => props.theme.mutedText};
+  background: ${props => props.theme.foreground};
 `;
