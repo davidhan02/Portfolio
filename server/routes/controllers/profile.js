@@ -1,17 +1,8 @@
 const Profile = require('../../models/profile');
 
+// PROFILE
+
 exports.getAll = async (req, res) => {
-  await Profile.updateMany(
-    {},
-    {
-      $push: {
-        education: {
-          $each: [],
-          $sort: { from: -1 }
-        }
-      }
-    }
-  );
   const profiles = await Profile.find();
   if (profiles.length < 1) {
     return res.status(500).json({ message: 'No profiles found' });
@@ -64,6 +55,8 @@ exports.delete = async (req, res) => {
   }
 };
 
+// PROFILE EDUCATION
+
 exports.getOneEdu = async (req, res) => {
   const edu = await req.profile.education.id(req.params.edu);
   if (!edu) {
@@ -82,6 +75,17 @@ exports.getAllEdu = async (req, res) => {
 exports.postEdu = async (req, res) => {
   try {
     const profile = await req.profile.postEdu(req.body);
+    await Profile.updateMany(
+      {},
+      {
+        $push: {
+          education: {
+            $each: [],
+            $sort: { from: -1 }
+          }
+        }
+      }
+    );
     res.status(201).json(profile);
   } catch ({ message }) {
     res.status(500).json({ message });
@@ -107,6 +111,8 @@ exports.deleteEdu = async (req, res) => {
   }
 };
 
+// PROFILE EXPERIENCE
+
 exports.getOneExp = async (req, res) => {
   const exp = await req.profile.experience.id(req.params.exp);
   if (!exp) {
@@ -125,6 +131,17 @@ exports.getAllExp = async (req, res) => {
 exports.postExp = async (req, res) => {
   try {
     const profile = await req.profile.postExp(req.body);
+    await Profile.updateMany(
+      {},
+      {
+        $push: {
+          experience: {
+            $each: [],
+            $sort: { from: -1 }
+          }
+        }
+      }
+    );
     res.status(201).json(profile);
   } catch ({ message }) {
     res.status(500).json({ message });
@@ -149,6 +166,8 @@ exports.deleteExp = async (req, res) => {
     res.status(500).json({ message });
   }
 };
+
+// PROFILE SOCIAL
 
 exports.getSocial = async (req, res) => {
   const social = req.profile.social;
