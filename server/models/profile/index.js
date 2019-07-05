@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const shortid = require('shortid');
-const Schema = mongoose.Schema;
-
-const expSchema = require('./experience');
 const eduSchema = require('./education');
+const expSchema = require('./experience');
+const certSchema = require('./certificate');
 const socialSchema = require('./social');
+const Schema = mongoose.Schema;
 
 const profileSchema = new Schema({
   _id: {
@@ -44,9 +44,10 @@ const profileSchema = new Schema({
   photo: {
     type: String
   },
-  experience: [expSchema],
+  social: socialSchema,
   education: [eduSchema],
-  social: socialSchema
+  experience: [expSchema],
+  certificates: [certSchema]
 });
 
 profileSchema.set('toJSON', { getters: true });
@@ -73,6 +74,8 @@ profileSchema.methods.update = function(body) {
   return this.save();
 };
 
+// EDUCATION SCHEMA METHODS
+
 profileSchema.methods.postEdu = function(body) {
   this.education.unshift({ ...body });
   return this.save();
@@ -92,6 +95,8 @@ profileSchema.methods.deleteEdu = function(eduId) {
   return this.save();
 };
 
+// EXPERIENCE SCHEMA METHODS
+
 profileSchema.methods.postExp = function(body) {
   this.experience.unshift({ ...body });
   return this.save();
@@ -110,6 +115,29 @@ profileSchema.methods.deleteExp = function(expId) {
   exp.remove();
   return this.save();
 };
+
+// CERTIFICATES SCHEMA METHODS
+
+profileSchema.methods.postCert = function(body) {
+  this.certificates.unshift({ ...body });
+  return this.save();
+};
+
+profileSchema.methods.updateCert = function(certId, body) {
+  const cert = this.certificates.id(certId);
+  if (!cert) throw new Error('No certificate matches that ID');
+  cert.set(body);
+  return this.save();
+};
+
+profileSchema.methods.deleteCert = function(certId) {
+  const cert = this.certificates.id(certId);
+  if (!cert) throw new Error('No certificate matches that ID');
+  cert.remove();
+  return this.save();
+};
+
+// SOCIAL SCHEMA METHODS
 
 profileSchema.methods.postSocial = function(body) {
   this.social = { ...body };
