@@ -1,6 +1,17 @@
 const Profile = require('../../models/profile');
 
 exports.getAll = async (req, res) => {
+  await Profile.updateMany(
+    {},
+    {
+      $push: {
+        education: {
+          $each: [],
+          $sort: { from: -1 }
+        }
+      }
+    }
+  );
   const profiles = await Profile.find();
   if (profiles.length < 1) {
     return res.status(500).json({ message: 'No profiles found' });
