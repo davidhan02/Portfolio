@@ -13,6 +13,9 @@ export const ProjectWrapper = styled.div`
   ${props => props.preview && 'border: none; box-shadow: none'};
   border-radius: 3px;
   overflow: hidden;
+  @media (max-width: 768px) {
+    border-top: none;
+  }
 `;
 
 export const ProjectText = styled.div`
