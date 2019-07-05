@@ -14,15 +14,15 @@ export const Title = styled.span`
   font-size: 18px;
   font-weight: 400;
   text-transform: none;
-  letter-spacing: 0.02rem;
+  letter-spacing: 0.01rem;
 `;
 
 export const Row = styled(Line)`
   display: flex;
   justify-content: space-between;
-  font-size: 13px;
+  font-size: 14px;
   text-transform: uppercase;
-  letter-spacing: 0.02rem;
+  letter-spacing: 0.01rem;
 `;
 
 export const LogoRow = styled(Line)`

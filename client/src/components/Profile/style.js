@@ -22,7 +22,7 @@ export const ProfileSection = styled.div`
   white-space: pre-wrap;
   margin-bottom: 24px;
   list-style: none;
-  letter-spacing: 0.02rem;
+  letter-spacing: 0.01rem;
   color: ${props => props.theme.mutedText};
   background: ${props => props.theme.foreground};
   border: 1px solid ${props => props.theme.border};
