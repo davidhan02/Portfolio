@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import ProjectSelectDropdown from './Dropdown';
 import { ProjectSelectMenu, ProjectSelectLabel, CreateButton } from './style';
 
@@ -16,7 +16,11 @@ const ProjectSelect = ({ token }) => (
         />
       )}
     />
-    {token && <CreateButton>add new</CreateButton>}
+    {token && (
+      <CreateButton as={Link} to="/projects/form">
+        add new
+      </CreateButton>
+    )}
   </ProjectSelectMenu>
 );
 

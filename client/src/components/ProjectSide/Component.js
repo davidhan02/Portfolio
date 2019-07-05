@@ -7,8 +7,8 @@ import { CreateButton } from '../shared/CreateButton';
 const ProjectSide = ({ token }) => (
   <ProjectSideWrapper>
     {token && (
-      <CreateButton as={Link} to="/profile/form">
-        create post
+      <CreateButton as={Link} to="/projects/form">
+        new project
       </CreateButton>
     )}
     <ProjectSideList />
