@@ -7,13 +7,11 @@ import { BodyWrapper, MainSection } from '../shared/BodyMain';
 import { Placeholder } from './style';
 
 const Success = () => <Placeholder>Success</Placeholder>;
-const Landing = () => <Placeholder>Landing</Placeholder>;
 
 const Body = () => (
   <BodyWrapper>
     <MainSection>
       <Switch>
-        <Route exact path="/" component={Landing} />
         <Route path="/success" component={Success} />
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <Route component={NotFound} />

@@ -13,6 +13,8 @@ import theme from '../../styles/theme';
 import Body from '../Body';
 import React from 'react';
 
+import Landing from '../Landing';
+
 const App = ({ dark }) => (
   <Theme theme={theme(dark)}>
     <Router history={history}>
@@ -21,6 +23,7 @@ const App = ({ dark }) => (
         <NavbarContainer />
         <ErrorDisplayContainer />
         <Switch>
+          <Route exact path="/" component={Landing} />
           <Route path="/login" component={LoginContainer} />
           <Route path="/register" component={RegisterContainer} />
           <Route path="/profile" component={ProfileRoutes} />
