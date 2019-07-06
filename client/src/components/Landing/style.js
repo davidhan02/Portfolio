@@ -3,11 +3,9 @@ import { trueCenter } from '../shared/helpers';
 
 export const LandingWrapper = styled.header`
   ${trueCenter};
-  position: absolute;
   top: 0;
   width: 100%;
-  height: 100vh;
-  min-height: 650px;
+  height: 85vh;
   flex-direction: column;
   text-transform: uppercase;
   transition: height 0.3s ease;
@@ -22,6 +20,7 @@ export const LandingBox = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  min-height: 400px;
 `;
 
 export const LandingItemSm = styled.p`
@@ -50,7 +49,4 @@ export const LandingLinksWrapper = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-around;
-  @media (max-width: 551px) {
-    justify-content: space-between;
-  }
 `;

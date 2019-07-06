@@ -7,13 +7,12 @@ import GlobalStyle from '../../styles/globalStyle';
 import NavbarContainer from '../Navbar/Container';
 import LoginContainer from '../Login/Container';
 import ProjectRoutes from '../ProjectRoutes';
-import ProfileRoutes from '../ProfileRoutes'; //
+import ProfileRoutes from '../ProfileRoutes';
 import history from '../../util/history';
 import theme from '../../styles/theme';
+import Landing from '../Landing';
 import Body from '../Body';
 import React from 'react';
-
-import Landing from '../Landing';
 
 const App = ({ dark }) => (
   <Theme theme={theme(dark)}>
