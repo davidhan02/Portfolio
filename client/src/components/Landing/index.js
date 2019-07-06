@@ -8,11 +8,15 @@ import {
   LandingLinksWrapper
 } from './style';
 
-const Landing = () => (
+const Landing = ({ success }) => (
   <LandingWrapper>
     <LandingBox>
-      <LandingItemSm>Hi, I'm a full stack developer.</LandingItemSm>
-      <LandingItemLg>I build web apps.</LandingItemLg>
+      <LandingItemSm>
+        {success ? 'Your message is on its way.' : "Hi, I'm a full stack developer."}
+      </LandingItemSm>
+      <LandingItemLg>
+        {success ? 'Successfully sent.' : 'I build web apps.'}
+      </LandingItemLg>
       <LandingLinksWrapper>
         <LandingLink to="/profile" text="about me" />
         <LandingLink to="/projects" text="my work" />

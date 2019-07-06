@@ -29,6 +29,7 @@ const App = ({ dark }) => (
           <Route path="/profile" component={ProfileRoutes} />
           <Route path="/projects" component={ProjectRoutes} />
           <Route path="/contact" component={ContactContainer} />
+          <Route path="/success" render={() => <Landing success />} />
           <Route path="/" component={Body} />
         </Switch>
       </>
