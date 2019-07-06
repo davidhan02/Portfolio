@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import Loading from '../shared/Loading';
 import Footer from './Component';
 import { getFirstProfile, clearProfile } from '../../actions/profile';
 
 class FooterContainer extends Component {
   componentDidMount() {
-    this.props.getFirstProfile();
+    if (!this.props.profile) {
+      this.props.getFirstProfile();
+    }
   }
 
   componentWillUnmount() {
@@ -21,7 +24,7 @@ class FooterContainer extends Component {
 
   render() {
     const { loading, profile, token } = this.props;
-    if (loading) return null;
+    if (loading) return <Loading />;
     if (!profile) return null;
     return <Footer token={token} profile={profile} />;
   }

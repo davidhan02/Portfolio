@@ -19,13 +19,13 @@ const Profile = ({ token, profile }) => (
       </ProfileLabel>
       <ProfileSkills skills={profile.skills} />
       <ProfileLabel>
-        education {token && <LabelLink to="/profile/eduform">[add new]</LabelLink>}
-      </ProfileLabel>
-      {profile.education.length > 0 && <ProfileEdu eduList={profile.education} />}
-      <ProfileLabel>
         experience {token && <LabelLink to="/profile/expform">[add new]</LabelLink>}
       </ProfileLabel>
       {profile.experience.length > 0 && <ProfileExp expList={profile.experience} />}
+      <ProfileLabel>
+        education {token && <LabelLink to="/profile/eduform">[add new]</LabelLink>}
+      </ProfileLabel>
+      {profile.education.length > 0 && <ProfileEdu eduList={profile.education} />}
     </MainSection>
   </BodyWrapper>
 );
