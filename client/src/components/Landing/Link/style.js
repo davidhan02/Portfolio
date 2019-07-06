@@ -8,7 +8,7 @@ export const SpanLink = styled(Link)`
   position: relative;
   display: inline-block;
   margin: 0px;
-  padding: 15px 20px;
+  padding: 20px;
   cursor: pointer;
   transition: all 0.5s ease;
   text-decoration: none;

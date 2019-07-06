@@ -14,6 +14,8 @@ import Landing from '../Landing';
 import Body from '../Body';
 import React from 'react';
 
+import FooterContainer from '../Footer/Container';
+
 const App = ({ dark }) => (
   <Theme theme={theme(dark)}>
     <Router history={history}>
@@ -31,6 +33,7 @@ const App = ({ dark }) => (
           <Route path="/success" render={() => <Landing success />} />
           <Route path="/" component={Body} />
         </Switch>
+        <FooterContainer />
       </>
     </Router>
   </Theme>
