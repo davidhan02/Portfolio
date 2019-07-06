@@ -3,7 +3,7 @@ import { TitleLink, BackLink, BigTitle } from './style';
 
 const ProjectHeaderTitle = ({ preview, project }) =>
   preview ? (
-    <TitleLink to={`/projects/${project.id}`}>{project.title}</TitleLink>
+    <TitleLink to={`/projects/one/${project.id}`}>{project.title}</TitleLink>
   ) : (
     <>
       <BackLink to="/projects">&larr; to projects</BackLink>

@@ -64,7 +64,7 @@ export const submitProject = formValues => async dispatch => {
   dispatch(setProjectLoading());
   try {
     const response = await axios.post('/api/project', formValues);
-    history.push(`/projects/${response.data.id}`);
+    history.push(`/projects/one/${response.data.id}`);
   } catch (err) {
     dispatch(setError(err));
   }
@@ -74,7 +74,7 @@ export const updateProject = (formValues, projectId) => async dispatch => {
   dispatch(setProjectLoading());
   try {
     const response = await axios.patch(`/api/project/${projectId}`, formValues);
-    history.push(`/projects/${response.data.id}`);
+    history.push(`/projects/one/${response.data.id}`);
   } catch (err) {
     dispatch(setError(err));
   }

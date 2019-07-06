@@ -13,12 +13,12 @@ const ProjectRoutes = () => (
   <>
     <Route
       exact
-      path={['/projects', '/projects/:projectId', '/projects/cat/:category']}
+      path={['/projects', '/projects/one/:projectId', '/projects/cat/:category']}
       component={ProjectSearchContainer}
     />
     <Route
       exact
-      path={['/projects', '/projects/:projectId', '/projects/cat/:category']}
+      path={['/projects', '/projects/one/:projectId', '/projects/cat/:category']}
       component={ProjectSelectContainer}
     />
     <Switch>
@@ -42,7 +42,7 @@ const ProjectRoutes = () => (
                 />
                 <Route
                   exact
-                  path="/projects/:projectId"
+                  path="/projects/one/:projectId"
                   render={({ match }) => (
                     <ProjectContainer projectId={match.params.projectId} />
                   )}
