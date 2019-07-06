@@ -4,20 +4,26 @@ import { FooterWrapper, FooterSection, FooterLink } from './style';
 
 const Footer = ({ profile }) => (
   <FooterWrapper>
-    <FooterSection style={{ textAlign: 'left' }}>
+    <FooterSection>
       <FooterLink to="/">HOME</FooterLink>
       <FooterLink to="/profile">PROFILE</FooterLink>
       <FooterLink to="/projects">PROJECTS</FooterLink>
       <FooterLink to="/contact">CONTACT ME</FooterLink>
     </FooterSection>
     <FooterSection>
-      <Links social={profile.social} />
+      <Links social={profile.social} footer />
     </FooterSection>
-    <FooterSection style={{ textAlign: 'right' }}>
-      <span>David Han, Arctara LLC</span>
+    <FooterSection>
+      <span>&copy; David Han, Arctara LLC</span>
       <span>Icons from FlatIcon</span>
       <FooterLink to="/register">REGISTER</FooterLink>
       <FooterLink to="/login">LOGIN</FooterLink>
+    </FooterSection>
+    <FooterSection>
+      <FooterLink to="/">HOME</FooterLink>
+      <FooterLink to="/profile">PROFILE</FooterLink>
+      <FooterLink to="/projects">PROJECTS</FooterLink>
+      <FooterLink to="/contact">CONTACT ME</FooterLink>
     </FooterSection>
   </FooterWrapper>
 );

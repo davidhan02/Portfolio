@@ -20,4 +20,5 @@ export const MainSection = styled.main`
   flex: 1;
   min-width: 0;
   margin: 24px auto;
+  margin-bottom: 0;
 `;

@@ -7,8 +7,8 @@ import CodepenLogo from '../shared/Logos/CodepenLogo';
 import GlitchLogo from '../shared/Logos/GlitchLogo';
 import LogoLink from '../shared/LogoLink';
 
-const Links = ({ social }) => (
-  <LogoRow>
+const Links = ({ social, footer }) => (
+  <LogoRow footer={footer}>
     {social.codepen && (
       <LogoLink href={social.codepen}>
         <CodepenLogo />

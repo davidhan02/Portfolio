@@ -32,6 +32,9 @@ export const ProfileSection = styled.div`
 
 export const ListWrapper = styled(ProfileSection)`
   padding: 0;
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 export const ListItem = styled.li`

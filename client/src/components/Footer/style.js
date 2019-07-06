@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 export const FooterWrapper = styled.footer`
   width: 100%;
   max-width: 1150px;
-  margin: 24px auto;
+  margin: 48px auto;
   margin-bottom: 0;
   padding: 0 10px;
   padding-bottom: 24px;
   display: flex;
   @media (max-width: 650px) {
     flex-direction: column;
+    border-top: 1px solid ${props => props.theme.border};
   }
 `;
 
@@ -25,8 +26,11 @@ export const FooterSection = styled.div`
     margin-left: 48px;
     }
   }
-  &:last-child {
+  &:nth-child(3) {
     text-align: right;
+  }
+  &:last-child {
+    display: none;
   }
   @media (max-width: 800px) {
     &:not(:first-child) {
@@ -35,7 +39,14 @@ export const FooterSection = styled.div`
     }
   }
   @media (max-width: 650px) {
+    &:first-child {
+      display: none;
+    }
     &:nth-child(2) {
+      margin-top: 0;
+    }
+    &:last-child {
+      display: flex;
       margin-top: 0;
     }
     text-align: center !important;
