@@ -36,6 +36,9 @@ export const LandingItemLg = styled.h2`
   color: ${props => props.theme.normalText};
   font-size: 3.9rem;
   font-weight: 100;
+  border: 1px solid ${props => props.theme.normalText};
+  border-left: none;
+  border-right: none;
   @media (max-width: 991px) {
     font-size: 3rem;
   }
