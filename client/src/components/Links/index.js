@@ -14,14 +14,14 @@ const Links = ({ social }) => (
         <CodepenLogo />
       </LogoLink>
     )}
-    {social.github && (
-      <LogoLink href={social.github}>
-        <GithubLogo />
-      </LogoLink>
-    )}
     {social.linkedin && (
       <LogoLink href={social.linkedin}>
         <LinkedinLogo />
+      </LogoLink>
+    )}
+    {social.github && (
+      <LogoLink href={social.github}>
+        <GithubLogo />
       </LogoLink>
     )}
     {social.instagram && (

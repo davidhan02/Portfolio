@@ -5,6 +5,7 @@ import ContactContainer from '../Contact/Container';
 import RegisterContainer from '../Register/Container';
 import GlobalStyle from '../../styles/globalStyle';
 import NavbarContainer from '../Navbar/Container';
+import FooterContainer from '../Footer/Container';
 import LoginContainer from '../Login/Container';
 import ProjectRoutes from '../ProjectRoutes';
 import ProfileRoutes from '../ProfileRoutes';
@@ -13,8 +14,6 @@ import theme from '../../styles/theme';
 import Landing from '../Landing';
 import Body from '../Body';
 import React from 'react';
-
-import FooterContainer from '../Footer/Container';
 
 const App = ({ dark }) => (
   <Theme theme={theme(dark)}>
