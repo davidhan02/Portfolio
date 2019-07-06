@@ -16,12 +16,6 @@ class FooterContainer extends Component {
     this.props.clearProfile();
   }
 
-  componentDidUpdate(prevProps) {
-    if (!this.props.profile) {
-      this.props.getFirstProfile();
-    }
-  }
-
   render() {
     const { loading, profile, token } = this.props;
     if (loading) return <Loading />;

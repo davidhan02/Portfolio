@@ -7,14 +7,6 @@ import NotFound from '../shared/NotFound';
 import { getFirstProfile, clearProfile } from '../../actions/profile';
 
 class ProfileContainer extends Component {
-  componentDidMount() {
-    this.props.getFirstProfile();
-  }
-
-  componentWillUnmount() {
-    this.props.clearProfile();
-  }
-
   render() {
     const { loading, profile, token } = this.props;
     if (loading) return <Loading />;
