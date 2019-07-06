@@ -9,6 +9,7 @@ import FooterContainer from '../Footer/Container';
 import LoginContainer from '../Login/Container';
 import ProjectRoutes from '../ProjectRoutes';
 import ProfileRoutes from '../ProfileRoutes';
+import ScrollToTop from '../ScrollToTop';
 import history from '../../util/history';
 import theme from '../../styles/theme';
 import Landing from '../Landing';
@@ -18,22 +19,24 @@ import React from 'react';
 const App = ({ dark }) => (
   <Theme theme={theme(dark)}>
     <Router history={history}>
-      <>
-        <GlobalStyle />
-        <NavbarContainer />
-        <ErrorDisplayContainer />
-        <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route path="/login" component={LoginContainer} />
-          <Route path="/register" component={RegisterContainer} />
-          <Route path="/profile" component={ProfileRoutes} />
-          <Route path="/projects" component={ProjectRoutes} />
-          <Route path="/contact" component={ContactContainer} />
-          <Route path="/success" render={() => <Landing success />} />
-          <Route path="/" component={Body} />
-        </Switch>
-        <FooterContainer />
-      </>
+      <ScrollToTop>
+        <>
+          <GlobalStyle />
+          <NavbarContainer />
+          <ErrorDisplayContainer />
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route path="/login" component={LoginContainer} />
+            <Route path="/register" component={RegisterContainer} />
+            <Route path="/profile" component={ProfileRoutes} />
+            <Route path="/projects" component={ProjectRoutes} />
+            <Route path="/contact" component={ContactContainer} />
+            <Route path="/success" render={() => <Landing success />} />
+            <Route path="/" component={Body} />
+          </Switch>
+          <FooterContainer />
+        </>
+      </ScrollToTop>
     </Router>
   </Theme>
 );

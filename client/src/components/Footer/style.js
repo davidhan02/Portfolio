@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 
 export const FooterWrapper = styled.footer`
   width: 100%;
-  max-width: 1151px;
+  max-width: 1150px;
   margin: 24px auto;
+  margin-bottom: 0;
   padding: 0 10px;
+  padding-bottom: 24px;
   display: flex;
   @media (max-width: 650px) {
     flex-direction: column;
