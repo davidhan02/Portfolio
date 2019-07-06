@@ -50,3 +50,7 @@ export const LineWrapper = styled.div`
   padding: 10px 0;
   margin: 0;
 `;
+
+export const NoWrap = styled.span`
+  white-space: nowrap;
+`;
