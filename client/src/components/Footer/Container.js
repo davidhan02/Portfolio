@@ -17,7 +17,7 @@ class FooterContainer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (!this.props.profile) {
+    if (!this.props.profile || !prevProps.profile) {
       this.props.getFirstProfile();
     }
   }
