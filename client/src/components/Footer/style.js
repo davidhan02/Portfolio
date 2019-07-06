@@ -7,7 +7,6 @@ export const FooterWrapper = styled.footer`
   margin: 24px auto;
   padding: 0 10px;
   display: flex;
-
   @media (max-width: 650px) {
     flex-direction: column;
   }
@@ -18,7 +17,7 @@ export const FooterSection = styled.div`
   flex-basis: 100%;
   display: flex;
   flex-direction: column;
-  line-height: 25px;
+  line-height: 35px;
   color: ${props => props.theme.mutedText};
   &:not(:first-child) {
     margin-left: 48px;
@@ -37,6 +36,7 @@ export const FooterSection = styled.div`
     &:nth-child(2) {
       margin-top: 0;
     }
+    text-align: center !important;
   }
 `;
 

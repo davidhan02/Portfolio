@@ -6,6 +6,7 @@ export const LandingWrapper = styled.header`
   top: 0;
   width: 100%;
   height: 90vh;
+  min-height: 600px;
   flex-direction: column;
   text-transform: uppercase;
   transition: height 0.3s ease;
