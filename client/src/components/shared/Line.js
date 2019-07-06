@@ -29,11 +29,11 @@ export const LogoRow = styled(Line)`
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  ${props => props.footer && 'margin-top: 0'};
+  ${props => props.footer && 'margin-top: 3px'};
   @media (max-width: 768px) {
     justify-content: space-around;
     margin-top: 20px;
-    ${props => props.footer && 'justify-content: space-between; margin-top: 0px'};
+    ${props => props.footer && 'justify-content: space-between; margin-top: 3px'};
   }
   @media (max-width: 650px) {
     ${props => props.footer && 'justify-content: space-around; margin-top: 24px'};

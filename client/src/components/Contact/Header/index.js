@@ -5,7 +5,7 @@ const ContactHeader = () => (
   <HeaderWrapper>
     <HeaderRow>
       <HeaderLabel>number: </HeaderLabel>
-      <HeaderContent>650 - 815- 9091</HeaderContent>
+      <HeaderContent>650 - 815 - 9091</HeaderContent>
     </HeaderRow>
     <HeaderRow>
       <HeaderLabel>available: </HeaderLabel>
