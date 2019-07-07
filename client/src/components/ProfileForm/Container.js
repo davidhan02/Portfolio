@@ -27,7 +27,7 @@ class ProfileFormContainer extends Component {
   };
 
   componentWillUnmount() {
-    this.props.clearProfile();
+    this.props.getFirstProfile();
   }
 
   onSubmit = formValues => {

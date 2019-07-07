@@ -44,6 +44,15 @@ const profileSchema = new Schema({
   photo: {
     type: String
   },
+  number: {
+    type: String
+  },
+  hours: {
+    type: String
+  },
+  email: {
+    type: String
+  },
   social: socialSchema,
   education: [eduSchema],
   experience: [expSchema],
@@ -153,6 +162,8 @@ profileSchema.methods.deleteSocial = function() {
   this.social = {};
   return this.save();
 };
+
+// EXPORT
 
 const Profile = mongoose.model('Profile', profileSchema);
 
