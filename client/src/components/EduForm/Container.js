@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import EduForm from './Component';
 import { submitEdu, updateEdu } from '../../actions/edu';
-import { getFirstProfile, clearProfile } from '../../actions/profile';
+import { getFirstProfile } from '../../actions/profile';
 
 class EduFormContainer extends Component {
   state = { editMode: false };
@@ -28,7 +28,7 @@ class EduFormContainer extends Component {
   };
 
   componentWillUnmount() {
-    this.props.clearProfile();
+    this.props.getFirstProfile();
   }
 
   onSubmit = formValues => {
@@ -60,8 +60,7 @@ const mapStateToProps = ({ profile, form }) => ({
 const mapDispatchToProps = {
   getFirstProfile,
   submitEdu,
-  updateEdu,
-  clearProfile
+  updateEdu
 };
 
 const enhance = compose(

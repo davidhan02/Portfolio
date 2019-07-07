@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import ExpForm from './Component';
 import { submitExp, updateExp } from '../../actions/exp';
-import { getFirstProfile, clearProfile } from '../../actions/profile';
+import { getFirstProfile } from '../../actions/profile';
 
 class ExpFormContainer extends Component {
   state = { editMode: false };
@@ -28,7 +28,7 @@ class ExpFormContainer extends Component {
   };
 
   componentWillUnmount() {
-    this.props.clearProfile();
+    this.props.getFirstProfile();
   }
 
   onSubmit = formValues => {
@@ -60,8 +60,7 @@ const mapStateToProps = ({ profile, form }) => ({
 const mapDispatchToProps = {
   getFirstProfile,
   submitExp,
-  updateExp,
-  clearProfile
+  updateExp
 };
 
 const enhance = compose(
