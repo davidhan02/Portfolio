@@ -4,6 +4,7 @@ import PrivateRoute from '../shared/PrivateRoute';
 
 import ProfileFormContainer from '../ProfileForm/Container';
 import LinksFormContainer from '../LinksForm/Container';
+import CertFormContainer from '../CertForm/Container';
 import EduFormContainer from '../EduForm/Container';
 import ExpFormContainer from '../ExpForm/Container';
 import ProfileContainer from '../Profile/Container';
@@ -23,6 +24,11 @@ const ProfileRoutes = () => (
         exact
         path={['/profile/expform/', '/profile/expform/:expId']}
         component={ExpFormContainer}
+      />
+      <PrivateRoute
+        exact
+        path={['/profile/certform/', '/profile/certform/:certId']}
+        component={CertFormContainer}
       />
     </Switch>
   </>
