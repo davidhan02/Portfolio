@@ -1,6 +1,6 @@
 const Profile = require('../../models/profile');
 
-// PROFILE
+// PROFILE ROUTE CONTROLLERS
 
 exports.getAll = async (req, res) => {
   const profiles = await Profile.find();
@@ -55,7 +55,20 @@ exports.delete = async (req, res) => {
   }
 };
 
-// PROFILE EDUCATION
+exports.load = async (req, res, next, profileId) => {
+  try {
+    req.profile = await Profile.findById(profileId);
+    if (!req.profile) return res.status(404).json({ message: 'Profile not found' });
+  } catch (err) {
+    if (err.name === 'CastError') {
+      return res.status(400).json({ message: 'Invalid resume ID' });
+    }
+    return next(err);
+  }
+  next();
+};
+
+// EDUCATION ROUTE CONTROLLERS
 
 exports.getOneEdu = async (req, res) => {
   const edu = await req.profile.education.id(req.params.edu);
@@ -111,7 +124,7 @@ exports.deleteEdu = async (req, res) => {
   }
 };
 
-// PROFILE EXPERIENCE
+// EXPERIENCE ROUTE CONTROLLERS
 
 exports.getOneExp = async (req, res) => {
   const exp = await req.profile.experience.id(req.params.exp);
@@ -167,7 +180,63 @@ exports.deleteExp = async (req, res) => {
   }
 };
 
-// PROFILE SOCIAL
+// CERTIFICATES ROUTE CONTROLLERS
+
+exports.getOneCert = async (req, res) => {
+  const cert = await req.profile.certificates.id(req.params.cert);
+  if (!cert) {
+    return res.status(500).json({ message: 'No certificate matches that ID' });
+  }
+  res.status(201).json(cert);
+};
+
+exports.getAllCerts = async (req, res) => {
+  if (req.profile.certificates.length < 1) {
+    return res.status(500).json({ message: 'No certificates found' });
+  }
+  res.status(201).json(req.profile.certificates);
+};
+
+exports.postCert = async (req, res) => {
+  try {
+    const cert = await req.profile.postCert(req.body);
+    await Profile.updateMany(
+      {},
+      {
+        $push: {
+          certificates: {
+            $each: [],
+            $sort: { issued: -1 }
+          }
+        }
+      }
+    );
+    res.status(201).json(cert);
+  } catch ({ message }) {
+    res.status(500).json({ message });
+  }
+};
+
+exports.updateCert = async (req, res) => {
+  try {
+    const { cert } = req.params;
+    const profile = await req.profile.updateCert(cert, req.body);
+    res.status(201).json(profile);
+  } catch ({ message }) {
+    res.status(500).json({ message });
+  }
+};
+
+exports.deleteCert = async (req, res) => {
+  try {
+    const profile = await req.profile.deleteCert(req.params.cert);
+    res.status(201).json(profile);
+  } catch ({ message }) {
+    res.status(500).json({ message });
+  }
+};
+
+// SOCIAL
 
 exports.getSocial = async (req, res) => {
   const social = req.profile.social;
@@ -209,17 +278,4 @@ exports.deleteSocial = async (req, res) => {
   } catch ({ message }) {
     res.status(500).json({ message });
   }
-};
-
-exports.load = async (req, res, next, profileId) => {
-  try {
-    req.profile = await Profile.findById(profileId);
-    if (!req.profile) return res.status(404).json({ message: 'Profile not found' });
-  } catch (err) {
-    if (err.name === 'CastError') {
-      return res.status(400).json({ message: 'Invalid resume ID' });
-    }
-    return next(err);
-  }
-  next();
 };

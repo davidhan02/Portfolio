@@ -15,7 +15,11 @@ const certSchema = new Schema({
     type: Date,
     required: true
   },
-  credential: {
+  from: {
+    type: String,
+    required: true
+  },
+  url: {
     type: String,
     required: true
   }
