@@ -3,29 +3,27 @@ import ProfileExp from './Exp';
 import ProfileEdu from './Edu';
 import ProfileSide from './Side';
 import ProfileSkills from './Skills';
+import { ProfileSection } from './style';
 import { BodyWrapper, MainSection } from '../shared/BodyMain';
-import { ProfileSection, ProfileLabel, LabelLink } from './style';
+import ProfileLabelContainer from './Label/Container';
 
-const Profile = ({ token, profile }) => (
+const Profile = ({
+  profile,
+  profile: { bio, skills, experience, education, certificates }
+}) => (
   <BodyWrapper>
     <ProfileSide profile={profile} />
     <MainSection>
-      <ProfileLabel>
-        about me {token && <LabelLink to="/profile/form">[edit profile]</LabelLink>}
-      </ProfileLabel>
-      <ProfileSection>{profile.bio}</ProfileSection>
-      <ProfileLabel>
-        my skills {token && <LabelLink to="/profile/form">[edit profile]</LabelLink>}
-      </ProfileLabel>
-      <ProfileSkills skills={profile.skills} />
-      <ProfileLabel>
-        experience {token && <LabelLink to="/profile/expform">[add new]</LabelLink>}
-      </ProfileLabel>
-      {profile.experience.length > 0 && <ProfileExp expList={profile.experience} />}
-      <ProfileLabel>
-        education {token && <LabelLink to="/profile/eduform">[add new]</LabelLink>}
-      </ProfileLabel>
-      {profile.education.length > 0 && <ProfileEdu eduList={profile.education} />}
+      <ProfileLabelContainer text="about me" link="form" linkText="[edit profile]" />
+      <ProfileSection>{bio}</ProfileSection>
+      <ProfileLabelContainer text="my skills" link="form" linkText="[edit skills]" />
+      <ProfileSkills skills={skills} />
+      <ProfileLabelContainer text="experience" link="expform" />
+      {experience.length > 0 && <ProfileExp expList={experience} />}
+      <ProfileLabelContainer text="education" link="eduform" />
+      {education.length > 0 && <ProfileEdu eduList={education} />}
+      <ProfileLabelContainer text="certifications" link="certform" />
+      {/* {certificates.length > 0 && <ProfileCerts certList={certificates} />} */}
     </MainSection>
   </BodyWrapper>
 );
