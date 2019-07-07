@@ -41,6 +41,17 @@ exports.update = async (req, res) => {
   try {
     const { cert } = req.params;
     const profile = await req.profile.updateCert(cert, req.body);
+    await Profile.updateMany(
+      {},
+      {
+        $push: {
+          certificates: {
+            $each: [],
+            $sort: { issued: -1 }
+          }
+        }
+      }
+    );
     res.status(201).json(profile);
   } catch ({ message }) {
     res.status(500).json({ message });

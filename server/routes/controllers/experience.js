@@ -41,6 +41,17 @@ exports.update = async (req, res) => {
   try {
     const { exp } = req.params;
     const profile = await req.profile.updateExp(exp, req.body);
+    await Profile.updateMany(
+      {},
+      {
+        $push: {
+          experience: {
+            $each: [],
+            $sort: { from: -1 }
+          }
+        }
+      }
+    );
     res.status(201).json(profile);
   } catch ({ message }) {
     res.status(500).json({ message });
