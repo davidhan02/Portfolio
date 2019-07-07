@@ -5,7 +5,7 @@ import { ListItem, Wrapper, ThumbnailBox, Thumbnail, NoImage } from './style';
 const ProjectListItem = ({ project }) => (
   <ListItem>
     <Wrapper>
-      <ThumbnailBox to={`/projects/${project.id}`}>
+      <ThumbnailBox to={`/projects/one/${project.id}`}>
         {project.screenshot ? (
           <Thumbnail src={project.screenshot} alt={`${project.title} thumbnail`} />
         ) : (
