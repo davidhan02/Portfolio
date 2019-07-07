@@ -68,10 +68,10 @@ router.delete('/profile/:profile/exp/:exp', auth.jwt, exp.delete);
 // CERTIFICATE ROUTES
 
 router.get('/profile/:profile/cert', cert.getAll);
-router.post('/profile/:profile/cert', auth.jwt, cert.post);
+router.post('/profile/:profile/cert', auth.jwt, valid.cert, cert.post);
 
 router.get('/profile/:profile/cert/:cert', cert.getOne);
-router.patch('/profile/:profile/cert/:cert', auth.jwt, cert.update);
+router.patch('/profile/:profile/cert/:cert', auth.jwt, valid.cert, cert.update);
 router.delete('/profile/:profile/cert/:cert', auth.jwt, cert.delete);
 
 // SOCIAL ROUTES
