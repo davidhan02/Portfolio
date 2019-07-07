@@ -4,6 +4,7 @@ const projectValidator = require('./project');
 const profileValidator = require('./profile');
 const eduValidator = require('./education');
 const expValidator = require('./experience');
+const certValidator = require('./certificate');
 const socialValidator = require('./social');
 const messageValidator = require('./message');
 
@@ -14,6 +15,7 @@ const forms = [
   'profile',
   'edu',
   'exp',
+  'cert',
   'social',
   'message'
 ];
