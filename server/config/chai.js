@@ -44,6 +44,13 @@ exports.experience = {
   description: 'A test experience description'
 };
 
+exports.certificate = {
+  title: 'Full Stack Developer',
+  issued: '01/01/2019',
+  from: 'freeCodeCamp',
+  url: 'https://www.freecodecamp.org/certification/davidhan02/full-stack'
+};
+
 exports.social = {
   linkedin: 'https://linkedin.com/in/davidhan02',
   instagram: 'https://instagram.com/littlehansolo',
