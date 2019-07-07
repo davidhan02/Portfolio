@@ -2,6 +2,7 @@ import React from 'react';
 import ProfileExp from './Exp';
 import ProfileEdu from './Edu';
 import ProfileSide from './Side';
+import ProfileCerts from './Certs';
 import ProfileSkills from './Skills';
 import { ProfileSection } from './style';
 import { BodyWrapper, MainSection } from '../shared/BodyMain';
@@ -23,7 +24,7 @@ const Profile = ({
       <ProfileLabelContainer text="education" link="eduform" />
       {education.length > 0 && <ProfileEdu eduList={education} />}
       <ProfileLabelContainer text="certifications" link="certform" />
-      {/* {certificates.length > 0 && <ProfileCerts certList={certificates} />} */}
+      {certificates.length > 0 && <ProfileCerts certList={certificates} />}
     </MainSection>
   </BodyWrapper>
 );
