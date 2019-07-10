@@ -11,6 +11,7 @@ const FormWrapper = styled.div`
 
   border: 1px solid ${props => props.theme.border};
   background-color: ${props => props.theme.foreground};
+  box-shadow: 0 4px 12px ${props => props.theme.shadow};
   max-width: ${props => (props.wide ? '600px' : '375px')};
 
   @media (max-width: 768px) {

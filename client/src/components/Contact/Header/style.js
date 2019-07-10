@@ -8,6 +8,7 @@ export const HeaderWrapper = styled.ul`
   padding: 18px 0;
   border: 1px solid ${props => props.theme.border};
   background: ${props => props.theme.foreground};
+  box-shadow: 0 4px 12px ${props => props.theme.shadow};
   border-radius: 2px;
   @media (max-width: 600px) {
     border-radius: 0px;

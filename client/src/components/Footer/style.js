@@ -20,6 +20,7 @@ export const FooterSection = styled.div`
   flex-basis: 100%;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   line-height: 35px;
   color: ${props => props.theme.mutedText};
   &:not(:first-child) {
@@ -28,6 +29,7 @@ export const FooterSection = styled.div`
   }
   &:nth-child(3) {
     text-align: right;
+    align-items: flex-end;
   }
   &:last-child {
     display: none;
@@ -50,11 +52,13 @@ export const FooterSection = styled.div`
       margin-top: 0;
     }
     text-align: center !important;
+    align-items: center !important;
   }
 `;
 
 export const FooterLink = styled(Link)`
   text-decoration: none;
+  width: auto;
   color: ${props => props.theme.mutedText};
   &:hover {
     color: ${props => props.theme.accent};

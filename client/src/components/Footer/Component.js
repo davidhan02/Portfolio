@@ -14,7 +14,7 @@ const Footer = ({ profile }) => (
       <Links social={profile.social} footer />
     </FooterSection>
     <FooterSection>
-      <span>&copy; David Han, Arctara LLC</span>
+      <span>&copy; David Han, Arctaras LLC</span>
       <span>Icons from FlatIcon</span>
       <FooterLink to="/register">REGISTER</FooterLink>
       <FooterLink to="/login">LOGIN</FooterLink>
