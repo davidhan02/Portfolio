@@ -1,7 +1,7 @@
 import React from 'react';
 import { FooterSection, FooterLink } from '../style';
 
-const FooterLinksOne = () => (
+const FooterPageLinks = () => (
   <FooterSection>
     <FooterLink to="/">HOME</FooterLink>
     <FooterLink to="/profile">PROFILE</FooterLink>
@@ -10,4 +10,4 @@ const FooterLinksOne = () => (
   </FooterSection>
 );
 
-export default FooterLinksOne;
+export default FooterPageLinks;
