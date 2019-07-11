@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { submitMessage, clearMessage } from '../../actions/message';
 import Contact from './Component';
+import validate from './validate';
 
 class ContactContainer extends Component {
   componentWillUnmount() {
@@ -37,7 +38,7 @@ const mapDispatchToProps = {
 };
 
 const enhance = compose(
-  reduxForm({ form: 'message' }),
+  reduxForm({ form: 'message', validate }),
   connect(
     mapStateToProps,
     mapDispatchToProps

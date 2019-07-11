@@ -40,3 +40,9 @@ export const projectTextValidator = value =>
 
 export const projectCatValidator = value =>
   required(value) || checkMinLength(value, 8);
+
+export const contactNameValidator = value =>
+  required(value) || checkMinLength(value, 3) || checkMaxLength(value, 30);
+
+export const contactEmailValidator = value =>
+  required(value) || checkMinLength(value, 5) || checkMaxLength(value, 40);
