@@ -1,30 +1,17 @@
 import React from 'react';
 import Links from '../Links';
-import { FooterWrapper, FooterSection, FooterLink } from './style';
+import FooterLinksOne from './LinksOne';
+import FooterAuthLinks from './AuthLinks';
+import { FooterWrapper, FooterSection } from './style';
 
-const Footer = ({ profile }) => (
+const Footer = ({ token, profile, logout }) => (
   <FooterWrapper>
-    <FooterSection>
-      <FooterLink to="/">HOME</FooterLink>
-      <FooterLink to="/profile">PROFILE</FooterLink>
-      <FooterLink to="/projects">PROJECTS</FooterLink>
-      <FooterLink to="/contact">CONTACT ME</FooterLink>
-    </FooterSection>
+    <FooterLinksOne />
     <FooterSection>
       <Links social={profile.social} footer />
     </FooterSection>
-    <FooterSection>
-      <span>&copy; David Han, Arctaras LLC</span>
-      <span>Icons from FlatIcon</span>
-      <FooterLink to="/register">REGISTER</FooterLink>
-      <FooterLink to="/login">LOGIN</FooterLink>
-    </FooterSection>
-    <FooterSection>
-      <FooterLink to="/">HOME</FooterLink>
-      <FooterLink to="/profile">PROFILE</FooterLink>
-      <FooterLink to="/projects">PROJECTS</FooterLink>
-      <FooterLink to="/contact">CONTACT ME</FooterLink>
-    </FooterSection>
+    <FooterAuthLinks token={token} logout={logout} />
+    <FooterLinksOne />
   </FooterWrapper>
 );
 
