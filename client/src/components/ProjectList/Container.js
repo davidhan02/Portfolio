@@ -30,7 +30,7 @@ class ProjectListContainer extends Component {
   render() {
     const { loading, list } = this.props;
     if (loading) return <Loading />;
-    if (!list) return <NotFound />;
+    if (list.length < 1) return <NotFound />;
     return <ProjectList list={list} />;
   }
 }
