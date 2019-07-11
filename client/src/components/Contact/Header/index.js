@@ -1,23 +1,23 @@
 import React from 'react';
 import { HeaderWrapper, HeaderRow, HeaderLabel, HeaderContent } from './style';
 
-const ContactHeader = () => (
+const ContactHeader = ({ profile }) => (
   <HeaderWrapper>
     <HeaderRow>
       <HeaderLabel>number: </HeaderLabel>
-      <HeaderContent>650 - 815 - 9091</HeaderContent>
+      <HeaderContent>{profile.number}</HeaderContent>
     </HeaderRow>
     <HeaderRow>
       <HeaderLabel>available: </HeaderLabel>
-      <HeaderContent>Mon - Fri, 9am - 5pm</HeaderContent>
+      <HeaderContent>{profile.hours}</HeaderContent>
     </HeaderRow>
     <HeaderRow>
       <HeaderLabel>email: </HeaderLabel>
-      <HeaderContent>davidhan.5.25@gmail.com</HeaderContent>
+      <HeaderContent>{profile.email}</HeaderContent>
     </HeaderRow>
     <HeaderRow>
       <HeaderLabel>location: </HeaderLabel>
-      <HeaderContent>Santa Clara, California</HeaderContent>
+      <HeaderContent>{profile.location}</HeaderContent>
     </HeaderRow>
   </HeaderWrapper>
 );

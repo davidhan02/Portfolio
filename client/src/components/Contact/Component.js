@@ -5,9 +5,9 @@ import renderField from '../shared/form/renderField';
 import SubmitButton from '../shared/form/SubmitButton';
 import ContactHeader from './Header';
 
-const Contact = ({ loading, handleSubmit }) => (
+const Contact = ({ loading, profile, handleSubmit }) => (
   <>
-    <ContactHeader />
+    {profile && <ContactHeader profile={profile} />}
     <Form loading={loading} onSubmit={handleSubmit} wide>
       <Field
         type="text"
