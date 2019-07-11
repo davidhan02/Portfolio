@@ -21,7 +21,8 @@ export const TitleLink = styled(Link)`
   }
 `;
 
-export const BigTitle = styled.h3`
+export const BigTitle = styled.a`
+  ${link};
   font-size: 24px;
   font-weight: 400;
   text-align: center;

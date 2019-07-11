@@ -7,7 +7,9 @@ const ProjectHeaderTitle = ({ preview, project }) =>
   ) : (
     <>
       <BackLink to="/projects">&larr; to projects</BackLink>
-      <BigTitle>{project.title}</BigTitle>
+      <BigTitle href={project.url} target="_blank" rel="noopener noreferrer">
+        {project.title}
+      </BigTitle>
     </>
   );
 
