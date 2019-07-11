@@ -3,14 +3,14 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Profile from './Component';
 import Loading from '../shared/Loading';
-import NotFound from '../shared/NotFound';
+import NotFoundWrap from '../shared/NotFoundWrap';
 import { getFirstProfile, clearProfile } from '../../actions/profile';
 
 class ProfileContainer extends Component {
   render() {
     const { loading, profile, token } = this.props;
     if (loading) return <Loading />;
-    if (!profile) return <NotFound />;
+    if (!profile) return <NotFoundWrap />;
     return <Profile token={token} profile={profile} />;
   }
 }
