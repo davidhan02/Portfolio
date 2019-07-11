@@ -1,7 +1,15 @@
 import React from 'react';
+import { ListWrapper, ListItem } from '../shared/ListAssets';
 import MessageHeaderContainer from '../Message/Header/Container';
 
-const MessageList = ({ messages }) =>
-  messages.map(msg => <MessageHeaderContainer key={msg.id} message={msg} details />);
+const MessageList = ({ messages }) => (
+  <ListWrapper as="ol">
+    {messages.map(msg => (
+      <ListItem key={msg.id}>
+        <MessageHeaderContainer message={msg} details />
+      </ListItem>
+    ))}
+  </ListWrapper>
+);
 
 export default MessageList;

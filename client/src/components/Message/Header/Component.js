@@ -1,9 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import styled from 'styled-components/macro';
+
+const Wrapper = styled.div`
+  display: flex;
+  padding: 10px;
+`;
+
 const MessageHeader = ({ details, message, deleteMessage }) => (
-  <>
-    <br />
+  <Wrapper>
     <Link
       to={`/dashboard/${message.id}`}
       style={{ fontWeight: message.read ? '400' : '600' }}
@@ -20,8 +26,7 @@ const MessageHeader = ({ details, message, deleteMessage }) => (
     <Link to="/dashboard" onClick={() => deleteMessage(message.id)}>
       Delete
     </Link>
-    <br />
-  </>
+  </Wrapper>
 );
 
 export default MessageHeader;

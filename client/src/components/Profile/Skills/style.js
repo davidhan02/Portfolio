@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { ProfileSection } from '../style';
+import { ProfileSection } from '../../shared/ListAssets';
 
 export const SkillsWrapper = styled(ProfileSection)`
   display: flex;

@@ -1,6 +1,6 @@
 import React from 'react';
 import ExpItem from '../../ExpItem';
-import { ListWrapper, ListItem } from '../style';
+import { ListWrapper, ListItem } from '../../shared/ListAssets';
 
 const ProfileExp = ({ expList }) => (
   <ListWrapper as="ol">

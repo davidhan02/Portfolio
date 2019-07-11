@@ -1,6 +1,6 @@
 import React from 'react';
 import EduItem from '../../EduItem';
-import { ListWrapper, ListItem } from '../style';
+import { ListWrapper, ListItem } from '../../shared/ListAssets';
 
 const ProfileEdu = ({ eduList }) => (
   <ListWrapper as="ol">

@@ -4,7 +4,7 @@ import ProfileEdu from './Edu';
 import ProfileSide from './Side';
 import ProfileCerts from './Certs';
 import ProfileSkills from './Skills';
-import { ProfileSection } from './style';
+import { ProfileSection } from '../shared/ListAssets';
 import { BodyWrapper, MainSection } from '../shared/BodyMain';
 import ProfileLabelContainer from './Label/Container';
 

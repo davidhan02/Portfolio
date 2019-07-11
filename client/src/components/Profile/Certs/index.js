@@ -1,6 +1,6 @@
 import React from 'react';
 import Certificate from '../../Certificate';
-import { ListWrapper, ListItem } from '../style';
+import { ListWrapper, ListItem } from '../../shared/ListAssets';
 
 const ProfileCerts = ({ certList }) => (
   <ListWrapper as="ol">
