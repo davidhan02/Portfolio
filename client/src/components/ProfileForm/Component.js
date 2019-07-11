@@ -14,6 +14,13 @@ const ProfileForm = ({ loading, handleSubmit }) => (
       component={renderField}
     />
     <Field
+      type="text"
+      name="email"
+      label="email"
+      placeholder="johndoe@gmail.com"
+      component={renderField}
+    />
+    <Field
       type="date"
       name="birthday"
       label="date of birth"
@@ -38,6 +45,20 @@ const ProfileForm = ({ loading, handleSubmit }) => (
       name="location"
       label="location"
       placeholder="San Francisco, CA"
+      component={renderField}
+    />
+    <Field
+      type="text"
+      name="number"
+      label="number"
+      placeholder="123 - 456 - 7890"
+      component={renderField}
+    />
+    <Field
+      type="text"
+      name="hours"
+      label="work hours"
+      placeholder="Mon - Fri, 9am - 5pm"
       component={renderField}
     />
     <Field
