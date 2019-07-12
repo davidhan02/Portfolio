@@ -1,8 +1,8 @@
 import {
   urlValidator,
-  projectCatValidator,
-  projectTextValidator,
-  projectTitleValidator
+  categoriesValidator,
+  textValidator,
+  titleValidator
 } from '../../util/validators';
 
 const validate = fields => {
@@ -11,9 +11,9 @@ const validate = fields => {
   const categories = fields.categories ? fields.categories : '';
   const text = fields.text ? fields.text : '';
 
-  errors.text = projectTextValidator(text);
-  errors.title = projectTitleValidator(title);
-  errors.categories = projectCatValidator(categories);
+  errors.text = textValidator(text);
+  errors.title = titleValidator(title);
+  errors.categories = categoriesValidator(categories);
   if (fields.url && fields.url !== 'offline') errors.url = urlValidator(fields.url);
   if (fields.code) errors.code = urlValidator(fields.code);
 

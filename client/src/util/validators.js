@@ -32,17 +32,16 @@ export const usernameValidator = [required, min(2), max(25), trimmed];
 
 export const passwordValidator = [required, min(6), max(32), trimmed];
 
-export const projectTitleValidator = value =>
+export const titleValidator = value =>
   required(value) || checkMinLength(value, 3) || checkMaxLength(value, 50);
 
-export const projectTextValidator = value =>
-  required(value) || checkMinLength(value, 10);
+export const textValidator = value => required(value) || checkMinLength(value, 10);
 
-export const projectCatValidator = value =>
+export const categoriesValidator = value =>
   required(value) || checkMinLength(value, 8);
 
-export const contactNameValidator = value =>
+export const nameValidator = value =>
   required(value) || checkMinLength(value, 3) || checkMaxLength(value, 30);
 
-export const contactEmailValidator = value =>
+export const emailValidator = value =>
   required(value) || checkMinLength(value, 5) || checkMaxLength(value, 40);

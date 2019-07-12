@@ -1,8 +1,8 @@
 import {
-  contactNameValidator,
-  contactEmailValidator,
-  projectTitleValidator,
-  projectTextValidator
+  nameValidator,
+  emailValidator,
+  titleValidator,
+  textValidator
 } from '../../util/validators';
 
 const validate = fields => {
@@ -12,10 +12,10 @@ const validate = fields => {
   const subject = fields.subject ? fields.subject : '';
   const body = fields.body ? fields.body : '';
 
-  errors.name = contactNameValidator(name);
-  errors.email = contactEmailValidator(email);
-  errors.subject = projectTitleValidator(subject);
-  errors.body = projectTextValidator(body);
+  errors.name = nameValidator(name);
+  errors.email = emailValidator(email);
+  errors.subject = titleValidator(subject);
+  errors.body = textValidator(body);
 
   return errors;
 };
