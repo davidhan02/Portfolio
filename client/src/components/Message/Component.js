@@ -1,12 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import MessageHeaderContainer from './Header/Container';
 
+import styled from 'styled-components/macro';
+const Wrapper = styled.div`
+  padding: 10px;
+  border: 1px solid ${props => props.theme.border};
+  border-radius: 3px;
+  background: ${props => props.theme.foreground};
+  color: ${props => props.theme.mutedText};
+`;
+
 const Message = ({ message }) => (
-  <>
-    <br />
-    <Link to="/dashboard">Back to Message List</Link>
-    <br />
+  <Wrapper>
     <MessageHeaderContainer message={message} />
     From: {message.name}
     <br />
@@ -17,7 +22,7 @@ const Message = ({ message }) => (
     Body: <br />
     <span style={{ whiteSpace: 'pre-wrap' }}>{message.body}</span>
     <br />
-  </>
+  </Wrapper>
 );
 
 export default Message;

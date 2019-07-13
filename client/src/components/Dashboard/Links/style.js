@@ -9,6 +9,7 @@ export const DashboardSideWrapper = styled.aside`
   margin: 24px;
   margin-left: 0;
   overflow: hidden;
+  padding: 10px;
 
   border-radius: 3px;
   border: 1px solid ${props => props.theme.border};

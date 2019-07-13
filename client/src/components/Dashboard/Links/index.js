@@ -4,6 +4,7 @@ import { DashboardSideWrapper } from './style';
 
 const DashboardLinks = () => (
   <DashboardSideWrapper>
+    <Link to="/dashboard">Inbox</Link>
     <Link to="/profile">Delete Profile</Link>
     <Link to="/profile/form">Edit Profile</Link>
     <Link to="/projects/form">Add New Project</Link>

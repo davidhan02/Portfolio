@@ -5,7 +5,6 @@ import styled from 'styled-components/macro';
 
 const Wrapper = styled.div`
   display: flex;
-  padding: 10px;
 `;
 
 const MessageHeader = ({ details, message, deleteMessage }) => (
