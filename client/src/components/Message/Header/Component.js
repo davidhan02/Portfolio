@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { TitleLink, DeleteLink } from '../../shared/CommonLinks';
 
 import styled from 'styled-components/macro';
 
@@ -9,22 +9,21 @@ const Wrapper = styled.div`
 
 const MessageHeader = ({ details, message, deleteMessage }) => (
   <Wrapper>
-    <Link
+    <TitleLink
       to={`/dashboard/${message.id}`}
       style={{ fontWeight: message.read ? '400' : '600' }}
     >
       {message.subject}
-    </Link>
+    </TitleLink>
     {details && (
       <>
-        &nbsp; From: {message.name}
-        &nbsp; Sent: {message.sent.split('T')[0]}
+        &nbsp; from {message.name} on {message.sent.split('T')[0]}
       </>
     )}
     &nbsp;
-    <Link to="/dashboard" onClick={() => deleteMessage(message.id)}>
+    <DeleteLink to="/dashboard" onClick={() => deleteMessage(message.id)}>
       Delete
-    </Link>
+    </DeleteLink>
   </Wrapper>
 );
 

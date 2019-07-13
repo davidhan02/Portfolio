@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   border-radius: 3px;
   background: ${props => props.theme.foreground};
   color: ${props => props.theme.mutedText};
+  line-height: 30px;
 `;
 
 const Message = ({ message }) => (
