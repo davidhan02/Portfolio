@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import LinksForm from './Component';
 import { submitSocial, updateSocial } from '../../actions/social';
-import { getFirstProfile, clearProfile } from '../../actions/profile';
+import { getFirstProfile } from '../../actions/profile';
+import LinksForm from './Component';
+import validate from './validate';
 
 class LinksFormContainer extends Component {
   state = { editMode: false };
@@ -21,7 +22,7 @@ class LinksFormContainer extends Component {
   };
 
   componentWillUnmount() {
-    this.props.clearProfile();
+    this.props.getFirstProfile();
   }
 
   onSubmit = formValues => {
@@ -52,12 +53,11 @@ const mapStateToProps = ({ profile }) => ({
 const mapDispatchToProps = {
   getFirstProfile,
   submitSocial,
-  updateSocial,
-  clearProfile
+  updateSocial
 };
 
 const enhance = compose(
-  reduxForm({ form: 'social' }),
+  reduxForm({ form: 'social', validate }),
   connect(
     mapStateToProps,
     mapDispatchToProps
